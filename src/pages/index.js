@@ -51,8 +51,14 @@ const BlogIndex = ({ data, location }) => {
   useEffect(() => {
     fetch('https://devrocket.io/blog-posts.json')
       .then(response => response.json())
-      .then(data => setBlogPosts(data))
-      .catch(error => console.error(error))
+      .then(data => {
+        // if we have any posts
+        if (data.length > 0) {
+          // only show the first 3
+          setBlogPosts(data.slice(0, 3));
+        }
+      })
+      .catch(error => console.error(error));
   }, []);
   
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -121,7 +127,6 @@ const BlogIndex = ({ data, location }) => {
                       <li><span className="pro-title"> Name </span> <span className="pro-detail">Preston Wallace</span></li>
                       <li><span className="pro-title"> Location </span> <span className="pro-detail">San Luis Obispo, CA</span></li>
                       <li><span className="pro-title"> e-mail </span> <span className="pro-detail">wallace.preston@gmail.com</span></li>
-                      
                     </ul>
                   </div>
                   <button className="button button-info button-medium hover-grow">

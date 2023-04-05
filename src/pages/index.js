@@ -9,6 +9,7 @@ import Testimonial from "../components/Testimonial"
 import WhyItem from "../components/WhyItem"
 import GetFree from "../components/GetFree"
 import YouTubeVideo from "../components/YouTubeVideo"
+const { useState, useEffect } = React;
 
 const testimonials = [
   {
@@ -121,8 +122,16 @@ const whyItems = [
 ];
 
 const BlogIndex = ({ data, location }) => {
+  const [blogPosts, setBlogPosts] = useState([])
+
+  useEffect(() => {
+    fetch('https://devrocket.io/blog-posts.json')
+      .then(response => response.json())
+      .then(data => setBlogPosts(data))
+      .catch(error => console.error(error))
+  }, []);
+  
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
 
   return (
     <Layout location={location} title={siteTitle} addMargin={false} hideTitle>
@@ -135,8 +144,8 @@ const BlogIndex = ({ data, location }) => {
               <div className="hero-content">
                 <div>
                   <h2 className="hero-title">Code</h2>
-                  <div className="script-font with-rules">YOUR</div>
-                  <h2 className="hero-title">Future</h2>
+                  <div className="script-font with-rules">WITH</div>
+                  <h2 className="hero-title">Confidence</h2>
                   <div className="hero-tagline">Master the programming skills <br/>that are <b>irresistible</b> to tech companies.</div>
 
                   <StaticImage
@@ -193,7 +202,10 @@ const BlogIndex = ({ data, location }) => {
 
 
         {/* blog post list */}
-        <PostList posts={posts} />
+        {
+          blogPosts?.length > 0 && <PostList posts={blogPosts} />
+        }
+        
       </div>
     </Layout>
   )

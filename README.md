@@ -1,5 +1,5 @@
 # prestonwallace.com
-Source code for prestonwallace.com - Code and Architecture training. Built with Gatsby.
+Source code for [prestonwallace.com](https://prestonwallace.com/), my personal site. Built with Gatsby.
 
 ## Deploying
 Locally, run this command

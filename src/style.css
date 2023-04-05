@@ -517,7 +517,7 @@ a:hover {
   font-weight: 700;
   font-family: 'Bodoni Moda', serif;
   color: #fff;
-  font-size: 3.5em;
+  font-size: 2.5em;
 }
 
 .hero-content h5 {
@@ -1149,7 +1149,7 @@ a:hover {
 }
 
 /* make the background-color of each div in the .home-container alternate from white to light gray, every other element */
-.home-container > *:nth-child(2n + 1) {
+.home-container > *:nth-child(even) {
   background-color: #f5f5f5;
 }
 

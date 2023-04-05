@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Link } from "gatsby"
 import { blogBaseUrl } from "../constants"
 
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -23,14 +22,14 @@ const PostList = ({ posts }) => {
                     itemType="http://schema.org/Article"
                   >
                     <section className="row">
-                      <Link to={`${blogBaseUrl}${post.fields.slug}`} itemProp="url">
+                      <a href={`${blogBaseUrl}${post.fields.slug}`}>
                         <GatsbyImage image={featuredImg} className="post-list-item-img" />
-                      </Link>
+                      </a>
                       <div className="pl-5">
                         <h2>
-                          <Link to={`${blogBaseUrl}${post.fields.slug}`} itemProp="url">
+                          <a href={`${blogBaseUrl}${post.fields.slug}`}>
                             <span itemProp="headline">{title}</span>
-                          </Link>
+                          </a>
                         </h2>
                         <small>{post.frontmatter.date}</small>
                         <p

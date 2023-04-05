@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { blogBaseUrl } from "../constants";
 
 const GetFree = () => {
 
@@ -13,8 +13,7 @@ const GetFree = () => {
         
         <div className="section-padding">
         <button className="button button-info button-medium hover-grow">
-          {/* alternate signup form https://mailchi.mp/93f51d833d92/free-typescript-essentials-guide */}
-          <Link to="/typescript-essentials-free-guide">Get Your FREE Guide</Link>
+          <a href={`${blogBaseUrl}/typescript-essentials-free-guide`}>Get Your FREE Guide</a>
         </button>
         </div>
       </div>

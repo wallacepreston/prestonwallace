@@ -5,120 +5,44 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { StaticImage } from "gatsby-plugin-image"
 import PostList from "../components/PostList"
-import Testimonial from "../components/Testimonial"
-import WhyItem from "../components/WhyItem"
 import GetFree from "../components/GetFree"
-import YouTubeVideo from "../components/YouTubeVideo"
+import resumePDF from '../img/about/preston-wallace-software-engineer.pdf'
 const { useState, useEffect } = React;
 
-const testimonials = [
-  {
-    name: 'Stephanie Stampher',
-    image: 'https://media.licdn.com/dms/image/C4E03AQG0EjeZTypv9g/profile-displayphoto-shrink_100_100/0/1550461693987?e=1681948800&v=beta&t=wKF4Gfcv78Sqt9o5li28H9iIIhV6LU_OGw-x-SOIpOY',
-    social: 'stephaniestampher',
-    quote: "I would not be where I am today as a software engineer without Preston's mentorship and guidance."
-  },
-  {
-    name: 'Jean Leconte II',
-    image: 'https://media.licdn.com/dms/image/C5603AQGIYUwdaU0_aQ/profile-displayphoto-shrink_400_400/0/1616987166130?e=1681948800&v=beta&t=e73mER1tEOL-MrVLP1YIe90jgu0XJNcWJQCq06uuI6A',
-    social: 'jean-leconte-ii',
-    quote: "I've learned a ton from Preston and recommend if anyone reading this has the opportunity to work with him in any capacity they should take it!",
-  },
-  {
-    name: 'Hugo Campos',
-    image: 'https://media.licdn.com/dms/image/C5603AQGoUpmO8mzxtg/profile-displayphoto-shrink_100_100/0/1550855929642?e=1681948800&v=beta&t=HDOp27ZcrieyXdpngSQE9glyjC7-brmZSF7bZjTt2GQ',
-    social: 'o6nh',
-    quote: "I am continuously impressed by Preston's ability to convince newer coders to keep soldiering on. He provides a positive energy that tends to boost morale.",
-  },
-  {
-    name: 'Laurence Parmentier-Reeds',
-    image: 'https://media.licdn.com/dms/image/C5603AQFdvJXl6lHobw/profile-displayphoto-shrink_100_100/0/1611033386893?e=1681948800&v=beta&t=AfUEB3gkyrvsh5sxbUo-k07Wx8xOl-9zAgUCY1mDPtE',
-    social: 'remoteuxproductmanager',
-    quote: "Preston's passion for coding and teaching really translate into his instruction method. He is definitely a great teacher and mentor.",
-  },
-  {
-    name: 'Justin Cook',
-    image: 'https://media.licdn.com/dms/image/C5603AQHXho5iEHcOMA/profile-displayphoto-shrink_100_100/0/1611858938755?e=1681948800&v=beta&t=bjNlX_5HqmPoCEZtxKZwXLkc1xXhAArw6AgtrpdzcS8',
-    social: 'justin-cook-developer',
-    quote: 'Preston is always thorough in his explanations and demonstrates great technical competency.'
-  },
-  {
-    name: 'Yahya Hafez',
-    image: 'https://media.licdn.com/dms/image/C5603AQHZd2F__7gFVQ/profile-displayphoto-shrink_100_100/0/1593070143668?e=1681948800&v=beta&t=tCqG6t5aQ85QueVwh-mD2iVe8TMDUuqTGUZqQXoYxdc',
-    social: 'yahya-hafez',
-    quote: "Preston's impressive experience and skill as a developer was consistently highlighted through the deep knowledge of web development he shared."
-  },
-  {
-    name: 'Riley Smith',
-    image: 'https://media.licdn.com/dms/image/C5603AQHmlM_z2WQweQ/profile-displayphoto-shrink_200_200/0/1560034191068?e=1681948800&v=beta&t=sprncOx7Qh9kvl75sBXhs340Z2iMvp-olt8721Dn2ZM',
-    social: 'rileysheldonsmith',
-    quote: "Preston is a thoughtful instructor who strives to see his students succeed. He is always happy to work with students at their pace, and help them gain thorough understanding of the curriculum."
-  },
-  {
-    name: 'Tilly Wright',
-    image: 'https://media.licdn.com/dms/image/C5603AQG6G_vE0Hc8-g/profile-displayphoto-shrink_200_200/0/1608654958930?e=1681948800&v=beta&t=rg4jdOcBZieFHXIeAk37VBLVxtwehz05kW8-nPZroug',
-    social: 'tillywright',
-    quote: "Preston's instruction and lessons were really easy to follow as I was building JS projects."
-  },
-  {
-    name: 'Sal Guerrero',
-    image: 'https://media.licdn.com/dms/image/C4E03AQHN3zwV__TInA/profile-displayphoto-shrink_400_400/0/1615440348360?e=1683763200&v=beta&t=yelr1-oXtF4llB9jwlNihDiR4z7tgDQz4-2TqQjbsqk',
-    social: 'sal-guerrero',
-    quote: "Preston helped me understand critical programming concepts and further my programming skills. As a result of his teaching I was able to break into tech and find the career of my dreams.",
-  },
-  {
-    name: 'Bienvenido Rodriguez',
-    image: 'https://media.licdn.com/dms/image/D4E03AQEhKHm19c9rrQ/profile-displayphoto-shrink_100_100/0/1669090489392?e=1683763200&v=beta&t=Or8QQfQc-HVMlGYOcZgji_DfaCtQWvByEUqp_Vy1fxA',
-    social: 'b17z',
-    quote: 'Preston is a gifted Software Engineer and a thought leader in technical education, training, and communication.'
-  }
-];
-
-
-// icons come from simple-line-icons https://simplelineicons.github.io/
-const whyItems = [
-  {
-    title: 'Easy to Follow',
-    subtitle: 'All of the learning. None of the angst.',  
-    description: "Say goodbye to confusing lessons and hello to a simple and beginner-friendly experience with Preston's online coding videos.",
-    icon: 'directions',
-    borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70% ',
-  },
-  {
-    borderRadius: '60% 40% 34% 66% / 30% 56% 44% 70%',
-    title: 'Fast-track lessons',
-    subtitle: 'Accelerate Your Learning',
-    description: "Join the Coding Revolution!  Get ahead of the game with Preston's clear and concise lessons that leave out the fluff and get straight to the point.",
-    icon: 'rocket',
-  },
-  {
-    title: 'Compassionate Teacher',
-    subtitle: "Learn coding with a passion, don't hate it with one.",
-    description: "Get inspired and motivated with Preston's passionate teaching style and fun, friendly voice that makes coding a fun and engaging experience.",
-    icon: 'heart',
-    borderRadius: '30% 70% 43% 57% / 81% 30% 70% 19%',
-  },
-  {
-    title: 'Master the Mindset',
-    subtitle: 'Unlock Your Inner Coding Genius',
-    description: "Learn from a true expert with Preston's years of experience in the industry and gain valuable tips and tricks that will help you code with confidence.",
-    icon: 'bulb',
-    borderRadius: '64% 36% 43% 57% / 53% 30% 70% 47%',
-  },
-  {
-    title: 'Fun Videos',
-    subtitle: 'Exciting lessons that are fun and Engaging',
-    description: "Get excited about coding with Preston's fun and engaging videos that are packed with real-world examples and exercises to help you learn by doing.",
-    icon: 'camrecorder',
-    borderRadius: '36% 64% 43% 57% / 53% 79% 21% 47%',
-  },
-  {
-    title: 'Prepare for Coding Interviews',
-    subtitle: 'Boost Your Career Options with a Job-Ready Education',
-    description: "Get ahead of the competition with Preston's in-depth and comprehensive video lessons that are packed with real-world examples and exercises to prepare you for the job.",
-    icon: 'briefcase',
-    borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
-  },
+const skills = [
+  'TypeScript',
+  'JavaScript',
+  'Node',
+  'GraphQL',
+  'React',
+  'Express',
+  'Vue',
+  'MySQL',
+  'Sequelize',
+  'HTML5',
+  'CSS3',
+  'Git',
+  'PostgreSQL',
+  'Jest',
+  'React Native',
+  'Docker',
+  'Kubernetes',
+  'Redux',
+  'Perl',
+  'Knex',
+  'SEO',
+  'WordPress',
+  'Figma',
+  'Bootstrap',
+  'jQuery',
+  'C#',
+  'PHP',
+  'Unity',
+  'Angular',
+  'Sass',
+  'Mercurial',
+  'MongoDB',
+  'AWS',
 ];
 
 const BlogIndex = ({ data, location }) => {
@@ -138,65 +62,283 @@ const BlogIndex = ({ data, location }) => {
       <div className="home-container">
 
         {/* hero section */}
-        <div id="hero-area" className="hero-area-bg">
+        <section id="hero-area" className="hero-area-bg section-padding">
           <div className="content-container">
             <div className="row">
               <div className="hero-content">
                 <div>
-                  <h2 className="hero-title">Code</h2>
-                  <div className="script-font with-rules">WITH</div>
-                  <h2 className="hero-title">Confidence</h2>
-                  <div className="hero-tagline">Master the programming skills <br/>that are <b>irresistible</b> to tech companies.</div>
+                  <div className="script-font">Hi I'm</div>
+                  <h2>Preston Wallace</h2>
+                  <div className="script-font">Full Stack Software Engineer (and All-Around Nice Guy)</div>
+                <ul className="social-icon wow fadeInUp" data-wow-delay="0.8s">
+                  <li>
+                    <a className="twitter" href="https://twitter.com/PrestonCreate"><i className="icon-social-twitter"></i></a>
+                  </li>
+                  <li>
+                    <a className="linkedin" href="https://www.linkedin.com/in/prestonwallace/"><i className="icon-social-linkedin"></i></a>
+                  </li>
+                  <li>
+                    <a className="google" href="https://www.youtube.com/channel/UCoiCi3NyMZ98Rj5K3vZfExw"><i className="icon-social-youtube"></i></a>
+                  </li>
+                </ul>
 
-                  <StaticImage
-                    className="hero-avatar"
-                    formats={["auto", "webp", "avif"]}
-                    src='../img/about/headshot.jpg'
-                    quality={95}
-                    alt="Preston Wallace"
-                    style={{zIndex:'10', borderRadius: '50%'}}
-                  />
+                <button className="button button-info button-medium hover-grow">
+                  <a href="#about" className="btn btn-common">About Me</a>
+
+                </button>
+
                   <br/>
 
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* free download section */}
-        <GetFree />
 
         {/* about section */}
         <section id="about" className="section-padding">
-          <div id="hello-area" className="content-container">
-            <div className="text-3xl font-extrabold text-gray-600">Hello! I'm Preston</div>
-            <p className="section-padding text-xl">I empower new and seasoned engineers to level-up their skills, <br/> get that promotion, and ultimately crush it in life.</p>
-            <YouTubeVideo src="https://www.youtube.com/embed/K0Q48l0060I?&controls=0" />
-          </div>
-        </section>
-
-        {/* testimonials section */}
-        <section id="testimonials" className="section-padding">
-          <div className="content-container">
-
-            <div className="testimonials-container">
-              {testimonials.map((testimonial, index) => (
-                <Testimonial key={index} testimonial={testimonial} />
-              ))}
+          <div className="flex flex-column content-container">
+            <div className="sm:flex section-padding">
+              <div className="basis-1/2 m-2">
+                <div className="card wow fadeInLeft" data-wow-delay="0.3s">
+                  <StaticImage
+                    className="profile-image"
+                    formats={["auto", "webp", "avif"]}
+                    src='../img/about/headshot.jpg'
+                    quality={95}
+                    alt="Preston Wallace"
+                    style={{zIndex:'10'}}
+                  />
+                </div>
+              </div> 
+              <div className="basis-1/2 m-2">
+                <div className="profile-wrapper section-padding wow fadeInRight" data-wow-delay="0.3s">
+                  <div className="text-3xl font-extrabold text-gray-600">Hey there!</div>
+                  <p className="section-padding">I'm Preston Wallace. I am a Full Stack Software Engineer with a longstanding love for everything tech. I currently work as a Software Engineer at <a href="https://mountain.com/">MNTN</a> in what I absolutely love: Node.js and GraphQL on the backend and React on the front end. I build backend solutions that work with SQL databases (PostgreSQL, Sequelize) to efficiently manage large datasets. On the frontend, I create reusable components that can efficiently display and interact with this data. At night, I teach React, Node, Express, and many other things CS-related.</p>
+                  <div className="about-profile">
+                    <ul className="admin-profile">
+                      <li><span className="pro-title"> Name </span> <span className="pro-detail">Preston Wallace</span></li>
+                      <li><span className="pro-title"> Location </span> <span className="pro-detail">San Luis Obispo, CA</span></li>
+                      <li><span className="pro-title"> e-mail </span> <span className="pro-detail">wallace.preston@gmail.com</span></li>
+                      
+                    </ul>
+                  </div>
+                  <button className="button button-info button-medium hover-grow">
+                    <a href={resumePDF}><i className="icon-paper-clip"></i> Download Resume</a>
+                  </button>
+                  <button className="button button-danger button-medium hover-grow">
+                    <a href="https://www.linkedin.com/in/prestonwallace/" ><i className="icon-speech"></i> Connect with Me</a>
+                  </button>
+                  
+                </div>
+              </div>   
             </div>
           </div>
         </section>
 
-        {/* why section */}
-        <section id="why" className="section-padding">
-          <div className="content-container">
-            <h2 className="section-title  wow flipInX" data-wow-delay="0.4s">why code with me</h2>
-            <div className="why-container">
-              {whyItems.map((why, index) => (
-                <WhyItem key={index} {...why} />
-              ))}
+        {/* services section */}
+        <section id="services" className="services section-padding content-container">
+          <h2 className="section-title  wow flipInX" data-wow-delay="0.4s">What I do</h2>
+          <div>
+            <div className="services-row">
+              
+                <div className="services-item hover-grow" data-wow-delay="0.3s">
+                  <div className="icon">
+                    <i className="icon-grid"></i>
+                  </div>
+                  <div className="services-content">
+                    <h3>Front-end Development</h3>
+                    <p>I work mainly with TypeScript, React, and Apollo, creating Single Page Applications.</p>
+                  </div>
+                </div>
+              
+                <div className="services-item hover-grow" data-wow-delay="0.6s">
+                  <div className="icon">
+                    <i className="icon-layers"></i>
+                  </div>
+                  <div className="services-content">
+                    <h3>Back-End Development</h3>
+                    <p>Using TypeScript, Node.js, Express, and PostgreSQL, I build REST and GraphQL APIs.</p>
+                  </div>
+                </div>
+              
+                <div className="services-item hover-grow" data-wow-delay="0.9s">
+                  <div className="icon">
+                    <i className="icon-briefcase"></i>
+                  </div>
+                  <div className="services-content">
+                    <h3>Design</h3>
+                    <p>I create using Figma and Photoshop. I love working with CSS3, SASS, TailwindCSS, and Styled Components.</p>
+                  </div>
+                </div>
+              
+                <div className="services-item hover-grow" data-wow-delay="1.2s">
+                  <div className="icon">
+                    <i className="icon-bubbles"></i>
+                  </div>
+                  <div className="services-content">
+                    <h3>Agile Development</h3>
+                    <p>I work iteratively and efficiently. I believe we can achieve so much more as a team.</p>
+                  </div>
+                </div>
             </div>
+          </div>
+        </section>
+
+
+
+
+        {/* resume section */}
+        <section id="experience" className="section-padding">
+          <div className="content-container">
+            <div className="timeline-row">
+              <div className="timeline-col">
+                <div className="experience wow fadeInRight" data-wow-delay="0.6s">
+                  <ul className="timeline">
+                    <li>
+                      <i className="icon-briefcase"></i>
+                      <h2 className="timelin-title">Experience</h2>
+                    </li>
+                    <li>
+                      <div className="content-text">
+                        <h3>Software Engineer (Node/React/GraphQL)</h3>
+                        <span><b>MNTN</b> | Jul 2021 - Present</span>
+                        <p className="line-text">Integrating user-facing elements developed by front-end developers with server side logic.
+                          Writing reusable, testable, and efficient code.
+                          Designing and implementing low-latency, high-availability, and performant applications.
+                          Implementing security and data protection.
+                          Collaborating with Product Designers, Product Managers, and Software Engineers to deliver performant server side applications.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="content-text">
+                        <h3>Lead Software Engineering Curriculum Writer</h3>
+                        <span><b>Multiverse</b> | Dec 2021 - Present</span>
+                        <p className="line-text">Created intensive Admissions Assessment from the ground up, including automated testing challenges to evaluate candidates to determine readiness for our bootcamp. Writing part-time technical SWE apprenticeship program for companies like Google, Facebook and Verizon. Leading team of Curriculum Writers, reviewing & editing lessons. Adding lessons on advanced topics like Docker, AWS and React</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="content-text">
+                        <h3>Lead Software Engineering Instructor</h3>
+                        <span><b>Fullstack Academy</b> | Apr 2019 - Nov 2021</span>
+                        <p className="line-text">Lead remote cohorts for a remote software engineering course as a part of Cal Poly's Extended Education Program.  Instruct on topics such as CSS/HTML, DOM, Object Oriented Programming, React, Node, REST, Express, and PostgreSQL. Teach students to design web applications that solve user needs as professional developers. Lecture on complex CS concepts, including design and theory. Perform live demos, and impart practical skills, such as Node/React demo (3x/week), respond to student questions, complete on-demand demonstrations.  Develop and build out curriculums. Invest in students' lives, helping highly-talented people reach higher levels of excellence.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="content-text">
+                        <h3>Software Engineer (Node/Vue/REST)</h3>
+                        <span><b>Liquidity Services</b> | Apr 2019 - Jul 2021</span>
+                        <p className="line-text">Created automated data-collection tool to populate inventory data for thousands of records at a time, increasing efficiency of warehouse associate receive-and-sort time by 50%. Bootstrapped integration testing solution for Rest and GraphQL API endpoints, increasing backend code coverage from 0% to over 70%. Increased Google Lighthouse Best Practices score over 5% by upgrading dependencies site-wide, patching security vulnerabilities. Spearheaded use of Docker in development to test and debug application performance, using artillery to mock high throughput and user traffic. Increased QA effectiveness by describing test procedures for 100% of new front-end tickets. Implemented multi-launch tool used by hundreds of enterprise users, drastically reducing internal customer service hours spent on repetitive tasks. Developed internal software solutions for warehouse management of dataset on order of millions. Leveraged Node.js, Express.js, MySQL, and Vue.js to enable user interaction with complex Schemas and logical automated decision making for internal routing of inventory in a reverse supply chain process. Communicated with DevOps and Business Managers to determine business goals and develop timely, efficient solutions accordingly. Engineered solutions in a team, while working largely independent on a daily basis, planning and executing unique solutions to problems presented.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="content-text">
+                        <h3>Network Admin, Assistant Manager</h3>
+                        <span><b>K.Jons Diamonds & Gems</b> | Feb 2010 - Oct 2018</span>
+                        <p className="line-text">Designed and Managed major version of company e-commerce site, with 1000+ items, and total inventory value of $800K. Oversaw Migration from local database to continuous updates of Third Party data via API. Managed network of 8 PCs. Managed permissions. Resolved workstation issues, fax connection to server, Network  devices. Assisted 3-person team in managing assets of $1.5M.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="content-text">
+                        <h3>Web Developer</h3>
+                        <span><b>K.Jons Diamonds & Gems</b> | Feb 2008 - Feb 2010</span>
+                        <p className="line-text">Transitioned website from static HTML to Dynamic WordPress site with blog, automatic database backups, and scheduled automatic deployment. Increased traffic to website by estimated 100% over 2 years (mostly local).  Landed site first-position worldwide in Google SERP listings for keywords. Managed $50K marketing budget. Edited via Photoshop, Illustrator, and Flash. Created digital/print ads and approximately 10 billboards displayed on Hwy 101.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="content-text">
+                        <h3>Web Developer</h3>
+                        <span><b>Preston's Creations</b> | Sep 2008 - Jul 2011</span>
+                        <p className="line-text">Developed website plan, from Intake to Wire Frames. Designed using Photoshop. Sliced Photoshop file. Created and coded HTML/CSS files sitewide. Secured hosting and domain name for client. Uploaded via FTP and deployed. Tracked site traffic via Google Analytics and reported to client.</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              {/* education section */}
+              <div className="timeline-col">
+                <div className="education wow fadeInRight" data-wow-delay="0.3s">
+                  <ul className="timeline">
+                    <li>
+                      <i className="icon-graduation"></i>
+                      <h2 className="timelin-title">Education</h2>
+                    </li>
+                    <li>
+                      <div className="content-text">
+                        <h3>LinkedIn Learning</h3>
+                        <span>Jun 2022 - Present</span>
+                        <p className="line-text">Studying topics like TypeScript, Authentication, Deployment, Agile Development and more.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="content-text">
+                        <h3>AWS</h3>
+                        <span>Sep 2022</span>
+                        <p className="line-text">Learning AWS Cloud Practitioner Essentials, Overview of AWS Cloud, AWS Cloud concepts, AWS services, security, architecture, pricing, and support.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="content-text">
+                        <h3>Cisco</h3>
+                        <span>Jul 2022</span>
+                        <p className="line-text">Dove deep into Cyber Best Practices, Cybersecurity, Network Vulnerabilities, Privacy And Data Confidentiality, and Threat Detection</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="content-text">
+                        <h3>Binsec Academy</h3>
+                        <span>Sep 2020</span>
+                        <p className="line-text">Performed a comprehensive secure coding review of an ExpressJS server running on NodeJS. Dove into the depths of the most common security risks for web applications (OWASP Top 10). This course included identifying and fixing multiple vulnerabilities in the web application's source code.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="content-text">
+                        <h3>Fullstack Academy</h3>
+                        <span>2018-2019</span>
+                        <p className="line-text">Leveled-up my Javascript skills, diving deep into Node, Express, React, and PostgreSQL. Computer Science topics included data structures, closure, prototypal inheritance, and recursion. Fullstack Academy is a top-ranked school with campuses in New York City, Chicago, and remote campuses.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="content-text">
+                        <h3>GIA (Gemological Institute of America)</h3>
+                        <span>2004 - 2011</span>
+                        <p className="line-text">Developed in-depth, hands-on experience with Diamond Grading and the 4Cs (color, clarity, cut and carat weight). Used the GIA Colored Stone Grading System to evaluate gemstone quality. Successfully identified colored gemstones at random, including simulants and treatments. Learned how quality, rarity and color affect value. Determined how market factors affect gem value.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="content-text">
+                        <h3>Cuesta College</h3>
+                        <span>2002 - 2008</span>
+                        <p className="line-text">Associate of Arts (A.A.), General Studies, 3.83 GPA w/ High Honors</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* skills section */}
+        <section id="skills" className="skills section-padding content-container">
+          <h2 className="section-title  wow flipInX" data-wow-delay="0.4s">Skills</h2>
+          <h4 className="section-subtitle">
+            These are just a few!
+          </h4>
+          <div className="skills-container">
+            {
+              skills.map((skill, index) => {
+                return (
+                  <div key={index} className="skills-row">
+                    <div className="skills-item hover-grow">
+                      {skill}
+                    </div>
+                  </div>
+                )
+              })
+            }
           </div>
         </section>
 
@@ -205,6 +347,9 @@ const BlogIndex = ({ data, location }) => {
         {
           blogPosts?.length > 0 && <PostList posts={blogPosts} />
         }
+
+        {/* free download section */}
+        <GetFree />
         
       </div>
     </Layout>
@@ -218,31 +363,13 @@ export default BlogIndex
  *
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
-export const Head = () => <Seo title="Dev Rocket" />
+export const Head = () => <Seo title="Preston Wallace" />
 
 export const pageQuery = graphql`
   {
     site {
       siteMetadata {
         title
-      }
-    }
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }, filter: { frontmatter: { type: { ne: "exclusive" } } }) {
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
-          featuredImage {
-            childImageSharp {
-              gatsbyImageData(width: 275, height: 175)
-            }
-          }
-        }
       }
     }
   }

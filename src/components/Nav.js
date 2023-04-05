@@ -1,16 +1,18 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
+import { blogBaseUrl } from "../constants"
 
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'What I Do', href: '/' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'Experience', href: '/about/#experience' },
-  { name: 'FREE Guide', href: '/typescript-essentials-free-guide', className: 'block px-3 py-2 rounded-md text-base bg-cyan-600 hover:bg-cyan-500 text-white font-bold' },
-  { name: 'About', href: '/about' },
+  { name: 'What I Do', href: '#services' },
+  { name: 'Blog', href: `${blogBaseUrl}/blog` },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'FREE Guide', href: `${blogBaseUrl}/typescript-essentials-free-guide`, className: 'block px-3 py-2 rounded-md text-base bg-cyan-600 hover:bg-cyan-500 text-white font-bold' },
+  { name: 'About', href: '#about' },
 ]
 
 export const Nav = () => {

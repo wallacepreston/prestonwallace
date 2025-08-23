@@ -11,8 +11,8 @@ const navigation = [
   { name: 'What I Do', href: '#services' },
   { name: 'Blog', href: `${blogBaseUrl}/blog` },
   { name: 'Experience', href: '#experience' },
-  { name: 'FREE Guide', href: `${blogBaseUrl}/typescript-essentials-free-guide`, className: 'block px-3 py-2 rounded-md text-base bg-cyan-600 hover:bg-cyan-500 text-white font-bold' },
   { name: 'About', href: '#about' },
+  { name: 'Learn Dev', href: `${blogBaseUrl}`, className: 'block px-3 py-2 rounded-md text-base bg-cyan-600 hover:bg-cyan-500 text-white font-bold' },
 ]
 
 export const Nav = () => {

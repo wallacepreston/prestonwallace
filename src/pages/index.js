@@ -211,35 +211,62 @@ const BlogIndex = ({ data, location }) => {
                       <div className="content-text">
                         <h3>Senior Full-Stack Software Engineer (TypeScript/React)</h3>
                         <span><b>MNTN</b> | Feb 2023 - Present</span>
-                        <p className="line-text">AdDNA (AI): Led 10-person team to build web scraping app (RAG), cutting campaign build time 90% and reducing churn 15%. Deliverability (AI): Built predictive budget-spend system, increasing revenue by 40% and decreasing support tickets by 25%. Designed and owned CI/CD pipeline (PR envs, Development, QA, Prod), reducing test-build-deploy time by 40%. Broke Campaign Service into micro frontends, integrating with Clerk for auth. Reduced merge conflicts by approx 50%. Leveraged Cursor Background Agents to automate PR creation, doubling developer efficiency.</p>
+                        <p className="line-text">
+                          - AdDNA (AI): Led 10-person team to build web scraping app (RAG), cutting campaign build time 90% and reducing churn 15%. 
+                          <br/>
+                          - Deliverability (AI): Built predictive budget-spend system, increasing revenue by 40% and decreasing support tickets by 25%. 
+                          <br/>
+                          - Designed and owned CI/CD pipeline (PR envs, Development, QA, Prod), reducing test-build-deploy time by 40%. 
+                          <br/>
+                          - Broke Campaign Service into micro frontends, integrating with Clerk for auth. Reduced merge conflicts by approx 50%. 
+                          <br/>
+                          - Leveraged Cursor Background Agents to automate PR creation, doubling developer efficiency.</p>
                       </div>
                     </li>
                     <li>
                       <div className="content-text">
                         <h3>Back End Software Engineer (Node/GraphQL/SQS/Kafka)</h3>
                         <span><b>MNTN</b> | Jul 2021 - Jan 2023</span>
-                        <p className="line-text">Built event-driven sync (SQS, Kafka), cutting idle compute costs and saving ~$40K/mo via on-demand scaling. Bootstrapped flighted budgets feature, boosting seasonal ad revenue up to 30%. Architected Node + GraphQL APIs, improving response times by up to 90%.</p>
+                        <p className="line-text">
+                          - Built event-driven sync (SQS, Kafka), cutting idle compute costs and saving ~$40K/mo via on-demand scaling. 
+                          <br/>
+                          - Bootstrapped flighted budgets feature, boosting seasonal ad revenue up to 30%. 
+                          <br/>
+                          - Architected Node + GraphQL APIs, improving response times by up to 90%.</p>
                       </div>
                     </li>
                     <li>
                       <div className="content-text">
                         <h3>Lead SWE Instructor / Curriculum Writer</h3>
                         <span><b>Multiverse, Fullstack Academy</b> | 2019 - 2023</span>
-                        <p className="line-text">Wrote & delivered 12-week SWE bootcamp (Google, Verizon, Barclays), generating $10M+ revenue, achieving +70 NPS. Led up to 6 instructors, managed 10-cohort curriculum, and delivered 550+ hours content of live code demo on Web Dev.</p>
+                        <p className="line-text">
+                          - Wrote & delivered 12-week SWE bootcamp (Google, Verizon, Barclays), generating $10M+ revenue, achieving +70 NPS. 
+                          <br/>
+                          - Led up to 6 instructors, managed 10-cohort curriculum, and delivered 550+ hours content of live code demo on Web Dev.</p>
                       </div>
                     </li>
                     <li>
                       <div className="content-text">
                         <h3>Software Engineer (Node/Vue/REST)</h3>
                         <span><b>Liquidity Services</b> | Apr 2019 - Jul 2021</span>
-                        <p className="line-text">Built warehouse management system, reducing sort time by 20% and saving $2M annually in software costs. Automated inventory data-collection tool, improving lookup efficiency by ~85%. Raised API test coverage from 0% to 70%, strengthening reliability. Integrated with external systems like Stripe, eliminating sensitive data storage in company databases.</p>
+                        <p className="line-text">
+                          - Built warehouse management system, reducing sort time by 20% and saving $2M annually in software costs. 
+                          <br/>
+                          - Automated inventory data-collection tool, improving lookup efficiency by ~85%. 
+                          <br/>
+                          - Raised API test coverage from 0% to 70%, strengthening reliability. 
+                          <br/>
+                          - Integrated with external systems like Stripe, eliminating sensitive data storage in company databases.</p>
                       </div>
                     </li>
                     <li>
                       <div className="content-text">
                         <h3>Network Admin, Assistant Manager, Web Dev</h3>
                         <span><b>K.Jons Diamonds & Gems</b> | until 2018</span>
-                        <p className="line-text">Designed and managed major version of company e-commerce site, with 1000+ items, and total inventory value of $800K. Increased traffic to site by 100%, and landed site first-position worldwide in Google SERP listings for keywords.</p>
+                        <p className="line-text">
+                          - Designed and managed major version of company e-commerce site, with 1000+ items, and total inventory value of $800K. 
+                          <br/>
+                          - Increased traffic to site by 100%, and landed site first-position worldwide in Google SERP listings for keywords.</p>
                       </div>
                     </li>
                   </ul>
@@ -256,9 +283,16 @@ const BlogIndex = ({ data, location }) => {
                     </li>
                     <li>
                       <div className="content-text">
+                        <h3>Coursera</h3>
+                        <span>Jun 2025 - Present</span>
+                        <p className="line-text">Courses on AI, Data Science, Architecture, and Micro Frontends</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="content-text">
                         <h3>LinkedIn Learning</h3>
-                        <span>Jun 2022 - Present</span>
-                        <p className="line-text">Studying topics like TypeScript, Authentication, Deployment, Agile Development and more.</p>
+                        <span>Jun 2022 - 2024</span>
+                        <p className="line-text">Courses on TypeScript, Authentication, Deployment, Agile Development.</p>
                       </div>
                     </li>
                     <li>

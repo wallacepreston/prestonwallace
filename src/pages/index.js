@@ -12,37 +12,39 @@ const { useState, useEffect } = React;
 const skills = [
   'TypeScript',
   'JavaScript',
-  'Node',
-  'GraphQL',
   'React',
+  'Next.js',
+  'Node.js',
+  'GraphQL',
   'Express',
+  'tRPC',
+  'Tailwind CSS',
   'Vue',
-  'MySQL',
-  'Sequelize',
-  'HTML5',
-  'CSS3',
-  'Git',
-  'PostgreSQL',
-  'Jest',
   'React Native',
+  'PostgreSQL',
+  'MySQL',
+  'MongoDB',
+  'Prisma',
+  'Python',
+  'REST APIs',
+  'Micro Frontends',
+  'Event-Driven Systems',
+  'SQS',
+  'Kafka',
+  'AWS',
+  'GCP',
   'Docker',
   'Kubernetes',
-  'Redux',
-  'Perl',
-  'Knex',
-  'SEO',
-  'WordPress',
+  'CI/CD',
   'Figma',
-  'Bootstrap',
-  'jQuery',
-  'C#',
-  'PHP',
-  'Unity',
-  'Angular',
-  'Sass',
-  'Mercurial',
-  'MongoDB',
-  'AWS',
+  'Git',
+  'Jest',
+  'HTML5',
+  'CSS3',
+  'Redux',
+  'Cursor AI',
+  'GitHub Copilot',
+  'Background Agents',
 ];
 
 const BlogIndex = ({ data, location }) => {
@@ -75,7 +77,7 @@ const BlogIndex = ({ data, location }) => {
                 <div>
                   <div className="script-font">Hi I'm</div>
                   <h2>Preston Wallace</h2>
-                  <div className="script-font">Full Stack Software Engineer (and All-Around Nice Guy)</div>
+                  <div className="script-font">FULL STACK SOFTWARE ENGINEER</div>
                 <ul className="social-icon wow fadeInUp" data-wow-delay="0.8s">
                   <li>
                     <a className="twitter" href="https://twitter.com/PrestonCreate"><i className="icon-social-twitter"></i></a>
@@ -121,11 +123,11 @@ const BlogIndex = ({ data, location }) => {
               <div className="basis-1/2 m-2">
                 <div className="profile-wrapper section-padding wow fadeInRight" data-wow-delay="0.3s">
                   <div className="text-3xl font-extrabold text-gray-600">Hey there!</div>
-                  <p className="section-padding">I'm Preston Wallace. I am a Full Stack Software Engineer with a longstanding love for everything tech. I currently work as a Software Engineer at <a href="https://mountain.com/">MNTN</a> in what I absolutely love: Node.js and GraphQL on the backend and React on the front end. I build backend solutions that work with SQL databases (PostgreSQL, Sequelize) to efficiently manage large datasets. On the frontend, I create reusable components that can efficiently display and interact with this data. At night, I teach React, Node, Express, and many other things CS-related.</p>
+                  <p className="section-padding">I'm Preston Wallace, a startup-tested engineer passionate about building scalable SaaS and AI systems that streamline complex, real-world workflows. I currently work as a Senior Full Stack Software Engineer at <a href="https://mountain.com/">MNTN</a>, where I lead teams building AI-powered applications using React, TypeScript, Node.js, and GraphQL. I specialize in micro frontends, event-driven systems, and architecting solutions that deliver measurable business impact - like cutting campaign build times by 90% and increasing revenue by 40%. I leverage modern AI tools like Cursor Background Agents to automate workflows and double developer efficiency.</p>
                   <div className="about-profile">
                     <ul className="admin-profile">
                       <li><span className="pro-title"> Name </span> <span className="pro-detail">Preston Wallace</span></li>
-                      <li><span className="pro-title"> Location </span> <span className="pro-detail">San Luis Obispo, CA</span></li>
+                      <li><span className="pro-title"> Phone </span> <span className="pro-detail">(805) 286-0588</span></li>
                       <li><span className="pro-title"> e-mail </span> <span className="pro-detail">wallace.preston@gmail.com</span></li>
                     </ul>
                   </div>
@@ -153,8 +155,8 @@ const BlogIndex = ({ data, location }) => {
                     <i className="icon-grid"></i>
                   </div>
                   <div className="services-content">
-                    <h3>Front-end Development</h3>
-                    <p>I work mainly with TypeScript, React, and Apollo, creating Single Page Applications.</p>
+                    <h3>Full-Stack Development</h3>
+                    <p>I build scalable applications with React, TypeScript, Next.js, and tRPC on the frontend, creating micro frontends that scale with your business needs.</p>
                   </div>
                 </div>
               
@@ -163,8 +165,8 @@ const BlogIndex = ({ data, location }) => {
                     <i className="icon-layers"></i>
                   </div>
                   <div className="services-content">
-                    <h3>Back-End Development</h3>
-                    <p>Using TypeScript, Node.js, Express, and PostgreSQL, I build REST and GraphQL APIs.</p>
+                    <h3>AI-Powered Systems</h3>
+                    <p>I architect event-driven systems using Node.js, GraphQL, SQS, and Kafka, integrating AI tools to automate workflows and boost efficiency by up to 90%.</p>
                   </div>
                 </div>
               
@@ -173,8 +175,8 @@ const BlogIndex = ({ data, location }) => {
                     <i className="icon-briefcase"></i>
                   </div>
                   <div className="services-content">
-                    <h3>Design</h3>
-                    <p>I create using Figma and Photoshop. I love working with CSS3, SASS, TailwindCSS, and Styled Components.</p>
+                    <h3>Cloud Architecture</h3>
+                    <p>I deploy and manage applications on AWS and GCP using Docker, Kubernetes, and CI/CD pipelines for scalable, reliable infrastructure.</p>
                   </div>
                 </div>
               
@@ -183,8 +185,8 @@ const BlogIndex = ({ data, location }) => {
                     <i className="icon-bubbles"></i>
                   </div>
                   <div className="services-content">
-                    <h3>Agile Development</h3>
-                    <p>I work iteratively and efficiently. I believe we can achieve so much more as a team.</p>
+                    <h3>Team Leadership</h3>
+                    <p>I lead engineering teams, mentor developers, and drive projects that deliver measurable business impact - from 40% revenue increases to 50% reduction in merge conflicts.</p>
                   </div>
                 </div>
             </div>
@@ -207,55 +209,37 @@ const BlogIndex = ({ data, location }) => {
                     </li>
                     <li>
                       <div className="content-text">
-                        <h3>Software Engineer (Node/React/GraphQL)</h3>
-                        <span><b>MNTN</b> | Jul 2021 - Present</span>
-                        <p className="line-text">Integrating user-facing elements developed by front-end developers with server side logic.
-                          Writing reusable, testable, and efficient code.
-                          Designing and implementing low-latency, high-availability, and performant applications.
-                          Implementing security and data protection.
-                          Collaborating with Product Designers, Product Managers, and Software Engineers to deliver performant server side applications.</p>
+                        <h3>Senior Full-Stack Software Engineer (TypeScript/React)</h3>
+                        <span><b>MNTN</b> | Feb 2023 - Present</span>
+                        <p className="line-text">AdDNA (AI): Led 10-person team to build web scraping app (RAG), cutting campaign build time 90% and reducing churn 15%. Deliverability (AI): Built predictive budget-spend system, increasing revenue by 40% and decreasing support tickets by 25%. Designed and owned CI/CD pipeline (PR envs, Development, QA, Prod), reducing test-build-deploy time by 40%. Broke Campaign Service into micro frontends, integrating with Clerk for auth. Reduced merge conflicts by approx 50%. Leveraged Cursor Background Agents to automate PR creation, doubling developer efficiency.</p>
                       </div>
                     </li>
                     <li>
                       <div className="content-text">
-                        <h3>Lead Software Engineering Curriculum Writer</h3>
-                        <span><b>Multiverse</b> | Dec 2021 - Present</span>
-                        <p className="line-text">Created intensive Admissions Assessment from the ground up, including automated testing challenges to evaluate candidates to determine readiness for our bootcamp. Writing part-time technical SWE apprenticeship program for companies like Google, Facebook and Verizon. Leading team of Curriculum Writers, reviewing & editing lessons. Adding lessons on advanced topics like Docker, AWS and React</p>
+                        <h3>Back End Software Engineer (Node/GraphQL/SQS/Kafka)</h3>
+                        <span><b>MNTN</b> | Jul 2021 - Jan 2023</span>
+                        <p className="line-text">Built event-driven sync (SQS, Kafka), cutting idle compute costs and saving ~$40K/mo via on-demand scaling. Bootstrapped flighted budgets feature, boosting seasonal ad revenue up to 30%. Architected Node + GraphQL APIs, improving response times by up to 90%.</p>
                       </div>
                     </li>
                     <li>
                       <div className="content-text">
-                        <h3>Lead Software Engineering Instructor</h3>
-                        <span><b>Fullstack Academy</b> | Apr 2019 - Nov 2021</span>
-                        <p className="line-text">Lead remote cohorts for a remote software engineering course as a part of Cal Poly's Extended Education Program.  Instruct on topics such as CSS/HTML, DOM, Object Oriented Programming, React, Node, REST, Express, and PostgreSQL. Teach students to design web applications that solve user needs as professional developers. Lecture on complex CS concepts, including design and theory. Perform live demos, and impart practical skills, such as Node/React demo (3x/week), respond to student questions, complete on-demand demonstrations.  Develop and build out curriculums. Invest in students' lives, helping highly-talented people reach higher levels of excellence.</p>
+                        <h3>Lead SWE Instructor / Curriculum Writer</h3>
+                        <span><b>Multiverse, Fullstack Academy</b> | 2019 - 2023</span>
+                        <p className="line-text">Wrote & delivered 12-week SWE bootcamp (Google, Verizon, Barclays), generating $10M+ revenue, achieving +70 NPS. Led up to 6 instructors, managed 10-cohort curriculum, and delivered 550+ hours content of live code demo on Web Dev.</p>
                       </div>
                     </li>
                     <li>
                       <div className="content-text">
                         <h3>Software Engineer (Node/Vue/REST)</h3>
                         <span><b>Liquidity Services</b> | Apr 2019 - Jul 2021</span>
-                        <p className="line-text">Created automated data-collection tool to populate inventory data for thousands of records at a time, increasing efficiency of warehouse associate receive-and-sort time by 50%. Bootstrapped integration testing solution for Rest and GraphQL API endpoints, increasing backend code coverage from 0% to over 70%. Increased Google Lighthouse Best Practices score over 5% by upgrading dependencies site-wide, patching security vulnerabilities. Spearheaded use of Docker in development to test and debug application performance, using artillery to mock high throughput and user traffic. Increased QA effectiveness by describing test procedures for 100% of new front-end tickets. Implemented multi-launch tool used by hundreds of enterprise users, drastically reducing internal customer service hours spent on repetitive tasks. Developed internal software solutions for warehouse management of dataset on order of millions. Leveraged Node.js, Express.js, MySQL, and Vue.js to enable user interaction with complex Schemas and logical automated decision making for internal routing of inventory in a reverse supply chain process. Communicated with DevOps and Business Managers to determine business goals and develop timely, efficient solutions accordingly. Engineered solutions in a team, while working largely independent on a daily basis, planning and executing unique solutions to problems presented.</p>
+                        <p className="line-text">Built warehouse management system, reducing sort time by 20% and saving $2M annually in software costs. Automated inventory data-collection tool, improving lookup efficiency by ~85%. Raised API test coverage from 0% to 70%, strengthening reliability. Integrated with external systems like Stripe, eliminating sensitive data storage in company databases.</p>
                       </div>
                     </li>
                     <li>
                       <div className="content-text">
-                        <h3>Network Admin, Assistant Manager</h3>
-                        <span><b>K.Jons Diamonds & Gems</b> | Feb 2010 - Oct 2018</span>
-                        <p className="line-text">Designed and Managed major version of company e-commerce site, with 1000+ items, and total inventory value of $800K. Oversaw Migration from local database to continuous updates of Third Party data via API. Managed network of 8 PCs. Managed permissions. Resolved workstation issues, fax connection to server, Network  devices. Assisted 3-person team in managing assets of $1.5M.</p>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="content-text">
-                        <h3>Web Developer</h3>
-                        <span><b>K.Jons Diamonds & Gems</b> | Feb 2008 - Feb 2010</span>
-                        <p className="line-text">Transitioned website from static HTML to Dynamic WordPress site with blog, automatic database backups, and scheduled automatic deployment. Increased traffic to website by estimated 100% over 2 years (mostly local).  Landed site first-position worldwide in Google SERP listings for keywords. Managed $50K marketing budget. Edited via Photoshop, Illustrator, and Flash. Created digital/print ads and approximately 10 billboards displayed on Hwy 101.</p>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="content-text">
-                        <h3>Web Developer</h3>
-                        <span><b>Preston's Creations</b> | Sep 2008 - Jul 2011</span>
-                        <p className="line-text">Developed website plan, from Intake to Wire Frames. Designed using Photoshop. Sliced Photoshop file. Created and coded HTML/CSS files sitewide. Secured hosting and domain name for client. Uploaded via FTP and deployed. Tracked site traffic via Google Analytics and reported to client.</p>
+                        <h3>Network Admin, Assistant Manager, Web Dev</h3>
+                        <span><b>K.Jons Diamonds & Gems</b> | until 2018</span>
+                        <p className="line-text">Designed and managed major version of company e-commerce site, with 1000+ items, and total inventory value of $800K. Increased traffic to site by 100%, and landed site first-position worldwide in Google SERP listings for keywords.</p>
                       </div>
                     </li>
                   </ul>

@@ -1,10 +1,7 @@
 import * as React from "react"
 import { blogBaseUrl } from "../constants"
 
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-
 const PostList = ({ posts }) => {
-
   return (
     <div id="posts" className="section-padding">
       <div className="content-container">
@@ -12,7 +9,9 @@ const PostList = ({ posts }) => {
           <ol style={{ listStyle: `none` }}>
             {posts.map(post => {
               const title = post.frontmatter.title || post.fields.slug
-              const featuredImg = getImage(post.frontmatter.featuredImage?.childImageSharp?.gatsbyImageData)
+              
+              // Get the fallback image URL directly from the processed data
+              const imageSrc = post.frontmatter.featuredImage?.childImageSharp?.gatsbyImageData?.images?.fallback?.src
 
               return (
                 <li key={post.fields.slug}>
@@ -23,7 +22,14 @@ const PostList = ({ posts }) => {
                   >
                     <section className="row">
                       <a href={`${blogBaseUrl}${post.fields.slug}`}>
-                        <GatsbyImage image={featuredImg} className="post-list-item-img" />
+                        {imageSrc && (
+                          <img 
+                            src={imageSrc} 
+                            alt={title}
+                            className="post-list-item-img" 
+                            style={{ width: '200px', height: '150px', objectFit: 'cover' }}
+                          />
+                        )}
                       </a>
                       <div className="pl-5">
                         <h2>

@@ -7,13 +7,17 @@ import Seo from "../components/seo"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import GetFree from "../components/GetFree"
 import YouTubeVideo from "../components/YouTubeVideo"
+import { blogBaseUrl } from "../constants"
 
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
   location,
 }) => {
   const siteTitle = site.siteMetadata?.title || `Title`
-  const featuredImg = getImage(post.frontmatter.featuredImage?.childImageSharp?.gatsbyImageData)
+  
+  // Get the processed Gatsby image
+  const processedImage = getImage(post.frontmatter.featuredImage?.childImageSharp?.gatsbyImageData)
+  
   const isExclusive = post.frontmatter.type === "exclusive";
   const youTubeVideo = post.frontmatter.youTubeVideo;
 
@@ -28,9 +32,9 @@ const BlogPostTemplate = ({
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <h4 itemProp="headline">{post.frontmatter.description}</h4>
           <p className="date">{post.frontmatter.date}</p>
-          {
-            featuredImg && <GatsbyImage image={featuredImg} className="my-5" />
-          }
+          {processedImage && (
+            <GatsbyImage image={processedImage} className="my-5" />
+          )}
           {
             youTubeVideo && <YouTubeVideo src={youTubeVideo} />
           }
@@ -117,6 +121,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         description
         featuredImage {
+          relativePath
           childImageSharp {
             gatsbyImageData(width: 900, height: 600)
           }

@@ -327,6 +327,7 @@ export const pageQuery = graphql`
           title
           description
           featuredImage {
+            relativePath
             childImageSharp {
               gatsbyImageData(width: 150, height: 100)
             }

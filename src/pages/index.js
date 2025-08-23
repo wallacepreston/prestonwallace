@@ -7,7 +7,6 @@ import { StaticImage } from "gatsby-plugin-image"
 import PostList from "../components/PostList"
 import GetFree from "../components/GetFree"
 import resumePDF from '../img/about/preston-wallace-software-engineer.pdf'
-const { useState, useEffect } = React;
 
 const skills = [
   'TypeScript',
@@ -48,21 +47,7 @@ const skills = [
 ];
 
 const BlogIndex = ({ data, location }) => {
-  const [blogPosts, setBlogPosts] = useState([])
-
-  useEffect(() => {
-    fetch('https://devrocket.io/blog-posts.json')
-      .then(response => response.json())
-      .then(data => {
-        // if we have any posts
-        if (data.length > 0) {
-          // only show the first 3
-          setBlogPosts(data.slice(0, 3));
-        }
-      })
-      .catch(error => console.error(error));
-  }, []);
-  
+  const blogPosts = data.allMarkdownRemark?.nodes || []
   const siteTitle = data.site.siteMetadata?.title || `Title`
 
   return (
@@ -367,9 +352,7 @@ const BlogIndex = ({ data, location }) => {
 
 
         {/* blog post list */}
-        {
-          blogPosts?.length > 0 && <PostList posts={blogPosts} />
-        }
+        <PostList posts={blogPosts} />
 
         {/* free download section */}
         <GetFree />
@@ -393,6 +376,30 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    allMarkdownRemark(
+      sort: { frontmatter: { date: DESC } }
+      filter: { frontmatter: { type: { ne: "exclusive" } } }
+      limit: 3
+    ) {
+      nodes {
+        id
+        excerpt
+        frontmatter {
+          title
+          date(formatString: "MMMM DD, YYYY")
+          description
+          featuredImage {
+            relativePath
+            childImageSharp {
+              gatsbyImageData(width: 300, height: 200)
+            }
+          }
+        }
+        fields {
+          slug
+        }
       }
     }
   }

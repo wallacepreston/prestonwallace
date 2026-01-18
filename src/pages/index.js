@@ -4,8 +4,6 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { StaticImage } from "gatsby-plugin-image"
-import PostList from "../components/PostList"
-import GetFree from "../components/GetFree"
 import resumePDF from '../img/about/preston-wallace-software-engineer.pdf'
 const { useState, useEffect } = React;
 
@@ -366,14 +364,6 @@ const BlogIndex = ({ data, location }) => {
         </section>
 
 
-        {/* blog post list */}
-        {
-          blogPosts?.length > 0 && <PostList posts={blogPosts} />
-        }
-
-        {/* free download section */}
-        <GetFree />
-        
       </div>
     </Layout>
   )

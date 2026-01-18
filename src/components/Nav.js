@@ -1,7 +1,6 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
-import { blogBaseUrl } from "../constants"
 
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -9,10 +8,8 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 const navigation = [
   { name: 'Skills', href: '#skills' },
   { name: 'What I Do', href: '#services' },
-  { name: 'Blog', href: `${blogBaseUrl}/blog` },
   { name: 'Experience', href: '#experience' },
   { name: 'About', href: '#about' },
-  { name: 'Learn Dev', href: `${blogBaseUrl}`, className: 'block px-3 py-2 rounded-md text-base bg-cyan-600 hover:bg-cyan-500 text-white font-bold' },
 ]
 
 export const Nav = () => {

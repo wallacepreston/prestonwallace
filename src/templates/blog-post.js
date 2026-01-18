@@ -5,7 +5,6 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import GetFree from "../components/GetFree"
 import YouTubeVideo from "../components/YouTubeVideo"
 
 const BlogPostTemplate = ({
@@ -72,9 +71,6 @@ const BlogPostTemplate = ({
               </ul>
             </nav>
           }
-
-          {/* free download section */}
-          <GetFree />
 
           {/* bio section */}
           <Bio />

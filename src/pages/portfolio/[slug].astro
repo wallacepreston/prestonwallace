@@ -1,0 +1,234 @@
+---
+import Layout from '../../components/Layout.astro';
+import { portfolioItems, type PortfolioItem } from '../../data/portfolioItems';
+
+export function getStaticPaths() {
+  return portfolioItems.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+interface Props {
+  item: PortfolioItem;
+}
+
+const { item } = Astro.props;
+const currentIndex = portfolioItems.findIndex((entry) => entry.slug === item.slug);
+const previousItem = currentIndex > 0 ? portfolioItems[currentIndex - 1] : undefined;
+const nextItem =
+  currentIndex < portfolioItems.length - 1 ? portfolioItems[currentIndex + 1] : undefined;
+---
+
+<Layout
+  title={`${item.title} | Preston Wallace`}
+  description={item.summary}
+>
+  <article class="portfolio-page">
+    {item.isPlaceholder ? (
+      <section class="portfolio-placeholder">
+        <div class="content-container portfolio-placeholder__inner">
+          <p class="eyebrow">Portfolio item 02</p>
+          <h1>Coming soon.</h1>
+          <p>This space is ready for the next project case study.</p>
+          <div class="portfolio-placeholder__actions">
+            <a class="button button-primary" href="/portfolio/llm-contact-discovery">
+              <i class="fa fa-arrow-left" aria-hidden="true"></i>
+              Previous project
+            </a>
+            <a class="button button-ghost" href="/#systems">Back to portfolio</a>
+          </div>
+        </div>
+      </section>
+    ) : (
+      <>
+    <header class="portfolio-hero">
+      <div class="content-container portfolio-hero__inner">
+        <nav class="portfolio-hero__nav" aria-label="Portfolio navigation">
+          <a class="portfolio-back" href="/#systems">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            Portfolio
+          </a>
+          {nextItem && (
+            <a class="portfolio-next" href={`/portfolio/${nextItem.slug}`}>
+              Next project
+              <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          )}
+        </nav>
+
+        <div class="portfolio-hero__copy">
+          <p class="eyebrow">{item.eyebrow}</p>
+          <h1>{item.title}</h1>
+          <p>{item.summary}</p>
+          <div class="portfolio-hero__actions">
+            <a class="button button-primary" href="#demo">
+              <i class="fa fa-play" aria-hidden="true"></i>
+              Watch the demo
+            </a>
+            <a class="button button-ghost" href="#approach">
+              Explore the build
+              <i class="fa fa-arrow-down" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="portfolio-hero__visual">
+          <div class="portfolio-browser" aria-hidden="true">
+            <div class="portfolio-browser__bar"><span></span><span></span><span></span></div>
+            <img src={item.screenshots[2].src} alt="" width="1290" height="969" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section-padding portfolio-section" aria-labelledby="challenge-title">
+      <div class="content-container portfolio-two-column">
+        <div>
+          <p class="eyebrow">Business problem</p>
+          <h2 id="challenge-title" class="section-title">The challenge</h2>
+        </div>
+        <div class="portfolio-prose">
+          {item.challenge.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="approach" class="section-padding portfolio-section portfolio-section--tinted" aria-labelledby="approach-title">
+      <div class="content-container">
+        <div class="section-heading">
+          <p class="eyebrow">Technical solution</p>
+          <h2 id="approach-title" class="section-title">Our approach</h2>
+          <p class="section-lead">
+            A hybrid architecture pairs deterministic crawling and validation with selective AI
+            reasoning, so the system stays scalable, inspectable, and grounded in source data.
+          </p>
+        </div>
+        <ol class="portfolio-approach">
+          {item.approach.map((step, index) => (
+            <li>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.detail}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="section-padding portfolio-section" aria-labelledby="results-title">
+      <div class="content-container">
+        <div class="section-heading">
+          <p class="eyebrow">Results &amp; impact</p>
+          <h2 id="results-title" class="section-title">A repeatable research system.</h2>
+          <p class="section-lead">
+            The finished product replaces scattered manual browsing with one traceable workflow,
+            while keeping operators in control of review and enrichment.
+          </p>
+        </div>
+        <div class="portfolio-results">
+          {item.results.map((result) => (
+            <article>
+              <strong>{result.value}</strong>
+              <h3>{result.label}</h3>
+              <p>{result.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding portfolio-section portfolio-section--tinted" aria-labelledby="visuals-title">
+      <div class="content-container">
+        <div class="section-heading">
+          <p class="eyebrow">Visual assets</p>
+          <h2 id="visuals-title" class="section-title">From search to actionable results.</h2>
+        </div>
+        <div class="portfolio-gallery">
+          {item.screenshots.map((screenshot, index) => (
+            <figure class={index === 0 ? 'portfolio-gallery__wide' : ''}>
+              <div class="portfolio-browser">
+                <div class="portfolio-browser__bar" aria-hidden="true"><span></span><span></span><span></span></div>
+                <img src={screenshot.src} alt={screenshot.alt} loading="lazy" />
+              </div>
+              <figcaption>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                {screenshot.caption}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="demo" class="section-padding portfolio-section" aria-labelledby="demo-title">
+      <div class="content-container portfolio-two-column portfolio-two-column--top">
+        <div>
+          <p class="eyebrow">Product demo</p>
+          <h2 id="demo-title" class="section-title">See the workflow in action.</h2>
+          <p class="section-lead">
+            Follow the full journey from a university query to discovered, reviewable contacts.
+          </p>
+          <a class="portfolio-text-link" href={item.demoUrl} target="_blank" rel="noreferrer">
+            Open on YouTube
+            <i class="fa fa-external-link" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="portfolio-video">
+          <iframe
+            src={item.demoEmbedUrl}
+            title={`${item.title} product demo`}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding portfolio-section portfolio-section--tinted" aria-labelledby="stack-title">
+      <div class="content-container portfolio-two-column portfolio-two-column--top">
+        <div>
+          <p class="eyebrow">Tech stack</p>
+          <h2 id="stack-title" class="section-title">Built for production.</h2>
+          <p class="section-lead">{item.context}</p>
+        </div>
+        <div class="tech-pill-grid" aria-label="Project technologies">
+          {item.techStack.map((technology) => <span>{technology}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <nav class="portfolio-pagination" aria-label="Portfolio items">
+      <div class="content-container portfolio-pagination__inner">
+        {previousItem ? (
+          <a href={`/portfolio/${previousItem.slug}`}>
+            <span>Previous project</span>
+            <strong>{previousItem.title}</strong>
+          </a>
+        ) : (
+          <a href="/#systems">
+            <span>Back to</span>
+            <strong>Portfolio</strong>
+          </a>
+        )}
+        <p>{String(currentIndex + 1).padStart(2, '0')} / {String(portfolioItems.length).padStart(2, '0')}</p>
+        {nextItem ? (
+          <a class="portfolio-pagination__next" href={`/portfolio/${nextItem.slug}`}>
+            <span>Next project</span>
+            <strong>{nextItem.title}</strong>
+          </a>
+        ) : (
+          <a class="portfolio-pagination__next" href="/#contact">
+            <span>Have a project?</span>
+            <strong>Let’s talk</strong>
+          </a>
+        )}
+      </div>
+    </nav>
+      </>
+    )}
+  </article>
+</Layout>

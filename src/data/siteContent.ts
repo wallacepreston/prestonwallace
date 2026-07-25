@@ -116,6 +116,9 @@ export const selectedWork = [
   {
     id: "llm-contact-discovery",
     title: "LLM contact discovery",
+    href: "/portfolio/llm-contact-discovery",
+    image: "/img/portfolio/llm-contact-discovery/results.png",
+    imageAlt: "LLM Contact Discovery results dashboard",
     problem:
       "Sales teams needed a faster way to identify and enrich prospects from public web data.",
     architecture:

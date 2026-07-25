@@ -8,6 +8,9 @@ interface SystemCard {
   metric?: string;
   outcomes: string[];
   details?: string[];
+  href?: string;
+  image?: string;
+  imageAlt?: string;
 }
 
 interface Props {
@@ -48,30 +51,48 @@ const { systems } = Astro.props;
         data-accordion-body
       >
         <div class="system-accordion__body-inner">
-          <dl>
+          <div class:list={['system-accordion__content', { 'system-accordion__content--visual': system.image }]}>
             <div>
-              <dt>Business problem</dt>
-              <dd>{system.problem}</dd>
-            </div>
-            <div>
-              <dt>System type</dt>
-              <dd>{system.type}</dd>
-            </div>
-            <div>
-              <dt>Architecture category</dt>
-              <dd>{system.architecture}</dd>
-            </div>
-          </dl>
+              <dl>
+                <div>
+                  <dt>Business problem</dt>
+                  <dd>{system.problem}</dd>
+                </div>
+                <div>
+                  <dt>System type</dt>
+                  <dd>{system.type}</dd>
+                </div>
+                <div>
+                  <dt>Architecture category</dt>
+                  <dd>{system.architecture}</dd>
+                </div>
+              </dl>
 
-          {system.details && (
-            <ul class="system-detail-list">
-              {system.details.map((detail) => <li>{detail}</li>)}
-            </ul>
-          )}
+              {system.details && (
+                <ul class="system-detail-list">
+                  {system.details.map((detail) => <li>{detail}</li>)}
+                </ul>
+              )}
 
-          <ul class="outcome-list">
-            {system.outcomes.map((outcome) => <li>{outcome}</li>)}
-          </ul>
+              <ul class="outcome-list">
+                {system.outcomes.map((outcome) => <li>{outcome}</li>)}
+              </ul>
+
+              {system.href && (
+                <a class="button button-primary system-accordion__link" href={system.href}>
+                  View full case study
+                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              )}
+            </div>
+
+            {system.image && system.href && (
+              <a class="system-accordion__preview" href={system.href} aria-label={`View ${system.title} case study`}>
+                <img src={system.image} alt={system.imageAlt ?? ''} loading="lazy" />
+                <span>Explore project <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </article>

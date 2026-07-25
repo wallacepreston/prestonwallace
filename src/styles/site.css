@@ -1971,6 +1971,128 @@ h1 span {
   background: rgba(29, 249, 248, 0.1);
 }
 
+.bio-longform-section {
+  background:
+    radial-gradient(circle at 88% 12%, rgba(29, 249, 248, 0.08), transparent 36%),
+    rgba(7, 10, 18, 0.92);
+}
+
+.bio-longform-grid {
+  display: block;
+}
+
+.bio-longform-copy,
+.bio-approach-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(13, 18, 30, 0.86);
+}
+
+.bio-longform-copy {
+  padding: 30px;
+}
+
+.bio-longform-copy p {
+  color: var(--muted-strong);
+  line-height: 1.78;
+}
+
+.bio-longform-copy p + p {
+  margin-top: 18px;
+}
+
+.bio-longform-cta {
+  margin-top: 24px !important;
+  color: var(--accent) !important;
+  font-weight: 800;
+}
+
+.bio-link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.bio-link-row a {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(29, 249, 248, 0.3);
+  border-radius: 999px;
+  padding: 0 14px;
+  color: var(--muted-strong);
+  font-weight: 700;
+}
+
+.bio-link-row a:hover,
+.bio-link-row a:focus-visible {
+  border-color: var(--accent);
+  color: var(--text);
+  background: rgba(29, 249, 248, 0.1);
+}
+
+.bio-approach-card {
+  padding: 28px;
+  background:
+    linear-gradient(170deg, rgba(29, 249, 248, 0.08), transparent 34%),
+    rgba(10, 14, 24, 0.94);
+}
+
+.bio-approach-card h3 {
+  color: var(--text);
+  font-size: 1.18rem;
+}
+
+.bio-approach-card ol {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.bio-approach-card li {
+  display: grid;
+  gap: 6px;
+}
+
+.bio-approach-card strong {
+  color: var(--accent);
+  font-size: 0.94rem;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.bio-approach-card span {
+  color: var(--muted-strong);
+  line-height: 1.68;
+}
+
+.tech-stack-section {
+  background:
+    linear-gradient(180deg, rgba(5, 12, 16, 0.9), rgba(5, 7, 13, 0.95));
+}
+
+.tech-pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-pill-grid span {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(29, 249, 248, 0.32);
+  border-radius: 999px;
+  padding: 0 14px;
+  background: rgba(29, 249, 248, 0.08);
+  color: var(--muted-strong);
+  font-size: 0.9rem;
+  font-weight: 760;
+}
+
 @media (max-width: 1024px) {
   .site-header__inner {
     grid-template-columns: auto minmax(0, 1fr) auto;
@@ -2015,7 +2137,8 @@ h1 span {
   }
 
   .founder-bio,
-  .insight-group {
+  .insight-group,
+  .bio-longform-grid {
     grid-template-columns: 1fr;
     gap: 42px;
   }

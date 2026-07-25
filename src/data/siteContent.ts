@@ -360,6 +360,77 @@ export const founder = {
   ],
 }
 
+export const longFormBio = {
+  heading: "Helping businesses automate with AI.",
+  paragraphs: [
+    "Most growing businesses do not have an AI problem. They have a work problem. Important tasks are scattered across inboxes, CRMs, spreadsheets, documents, and internal tools. Teams lose hours to manual follow-up, repeated questions, and processes held together by hand. As the business grows, the workload grows with it.",
+    "That is where I make the difference.",
+    "I build AI agents that carry repetitive workflows forward: gathering information, drafting outreach, updating systems, routing requests, and involving people when judgment is needed. The result is more time, more consistent execution, and greater capacity to grow without simply adding more manual work.",
+    "My background spans full-stack engineering, AI systems, and 0 to 1 product development. I have led major platform and RAG initiatives and delivered systems that increased revenue by up to 40%, created more than $500,000 in annual efficiency gains, and saved approximately 5,000 hours of work per year.",
+    "I currently build AI systems full-time at MNTN and take on a limited number of independent client projects during evenings and weekends.",
+  ],
+  approach: [
+    {
+      title: "Discovery",
+      detail:
+        "Identify where your team is losing time, missing follow-ups, or relying on repetitive manual work.",
+    },
+    {
+      title: "Solution design",
+      detail:
+        "Map the right AI workflow around your existing tools, people, and processes.",
+    },
+    {
+      title: "Build and integrate",
+      detail:
+        "Create the system, connect it to your business, deploy it to production, and keep people involved where judgment matters.",
+    },
+    {
+      title: "Refine and grow",
+      detail:
+        "Improve reliability, measure results, and expand what works as your needs evolve.",
+    },
+  ],
+  cta: "Book a free 30-minute call",
+}
+
+export const techStack = [
+  "React",
+  "TypeScript",
+  "Next.js",
+  "Node.js",
+  "Python",
+  "GraphQL",
+  "REST APIs",
+  "PostgreSQL",
+  "MySQL",
+  "MongoDB",
+  "Prisma",
+  "AWS",
+  "GCP",
+  "Docker",
+  "Kubernetes",
+  "Terraform",
+  "CI/CD",
+  "OpenAI",
+  "Claude",
+  "Gemini",
+  "n8n",
+  "RAG",
+  "vector search",
+  "LLM applications",
+  "AI agents",
+  "workflow automation",
+  "OCR",
+  "CRM integrations",
+  "Slack integrations",
+  "email automation",
+  "calendar integrations",
+  "event-driven systems",
+  "micro frontends",
+  "backend-for-frontend architecture",
+]
+
 export const testimonials = [
   {
     name: "Jean Leconte II",

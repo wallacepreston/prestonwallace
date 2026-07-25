@@ -13,9 +13,11 @@ import {
   capabilities,
   founder,
   founderPrinciples,
+  longFormBio,
   processSteps,
   proofStats,
   selectedWork,
+  techStack,
   experienceHistory,
   testimonials,
 } from '../data/siteContent';
@@ -121,6 +123,47 @@ import {
               <h3>{principle.title}</h3>
               <p>{principle.detail}</p>
             </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="bio" class="section-padding bio-longform-section">
+      <div class="content-container">
+        <div class="section-heading">
+          <p class="eyebrow">Bio</p>
+          <h2 class="section-title">{longFormBio.heading}</h2>
+        </div>
+
+        <div class="bio-longform-grid">
+          <article class="bio-longform-copy">
+            {longFormBio.paragraphs.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+
+            <br />
+            <a class="bio-longform-cta" href="https://cal.com/prestonwallace/introduction-call" target="_blank" rel="noreferrer">{longFormBio.cta}</a>
+
+            
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tech-stack" class="section-padding tech-stack-section">
+      <div class="content-container">
+        <div class="section-heading">
+          <p class="eyebrow">Capabilities</p>
+          <h2 class="section-title">Tech stack and capabilities</h2>
+          <p class="section-lead">
+            Tools and platforms I use to design, build, deploy, and improve AI and software
+            systems in production.
+          </p>
+        </div>
+
+        <div class="tech-pill-grid" aria-label="Tech stack">
+          {techStack.map((item) => (
+            <span>{item}</span>
           ))}
         </div>
       </div>

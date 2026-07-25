@@ -1,0 +1,39 @@
+---
+interface ExperienceEntry {
+  title: string;
+  company: string;
+  period: string;
+  summary: string;
+  bullets: string[];
+}
+
+interface Props {
+  entries: ExperienceEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<div class="experience-history" aria-label="Experience history timeline">
+  {entries.map((entry, index) => (
+    <article class="experience-history__item">
+      <div class="experience-history__marker" aria-hidden="true">
+        <span>{String(index + 1).padStart(2, '0')}</span>
+      </div>
+
+      <div class="experience-history__card">
+        <header class="experience-history__header">
+          <p>{entry.period}</p>
+          <h3>{entry.title}</h3>
+          <h4>{entry.company}</h4>
+        </header>
+
+        <p class="experience-history__summary">{entry.summary}</p>
+
+        <ul>
+          {entry.bullets.map((bullet) => <li>{bullet}</li>)}
+        </ul>
+      </div>
+    </article>
+  ))}
+</div>

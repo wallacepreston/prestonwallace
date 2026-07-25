@@ -1,0 +1,39 @@
+---
+interface Props {
+  primaryHref?: string;
+}
+
+const { primaryHref = 'https://cal.com/prestonwallace/introduction-call' } = Astro.props;
+---
+
+<section id="contact" class="section-padding schedule-section">
+  <div class="content-container">
+    <div class="schedule-card">
+      <div class="schedule-copy">
+        <p class="eyebrow">Let's connect</p>
+        <h2 class="section-title">Want to work together?</h2>
+        <p>
+          Share the workflow, product idea, or operational bottleneck. You'll get a candid view of feasibility, a practical starting scope, and the best path to production.
+        </p>
+      </div>
+
+      <div class="schedule-side">
+        <a href={primaryHref} class="button button-outline-strong" target="_blank" rel="noreferrer">
+          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+          Discuss your project
+        </a>
+
+        <div class="schedule-links" aria-label="Contact links">
+          <a href="mailto:wallace.preston@gmail.com">
+            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            Email Preston
+          </a>
+          <a href="https://www.linkedin.com/in/prestonwallace/" target="_blank" rel="noreferrer">
+            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+            Connect on LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

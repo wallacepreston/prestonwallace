@@ -1,0 +1,90 @@
+---
+interface Testimonial {
+  name: string;
+  detail: string;
+  image?: string;
+  socialUrl?: string;
+  quote: string;
+}
+
+interface Props {
+  testimonials: Testimonial[];
+}
+
+const { testimonials } = Astro.props;
+const testimonialGroups = testimonials.length > 3 ? [testimonials, testimonials] : [testimonials];
+const getInitials = (name: string) =>
+  name
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+---
+
+<section id="testimonials" class="section-padding testimonials-section">
+  <div class="content-container">
+    <div class="section-heading section-heading--split">
+      <div>
+        <p class="eyebrow">Testimonials</p>
+        <h2 class="section-title">Clear thinking. Strong delivery.</h2>
+      </div>
+      <p class="section-lead">
+        Real notes from people who have worked with Preston and seen the way he explains,
+        builds, and delivers technical work.
+      </p>
+    </div>
+
+    <div class:list={["testimonial-carousel", { "testimonial-carousel--static": testimonials.length <= 3 }]}>
+      <div class="testimonial-carousel__track">
+        {testimonialGroups.map((testimonialGroup, groupIndex) => {
+          const isClone = groupIndex > 0;
+
+          return (
+            <div class="testimonial-carousel__group" aria-hidden={isClone ? "true" : undefined}>
+              {testimonialGroup.map((testimonial) => (
+                <article class="testimonial-card">
+                  <div class="testimonial-card__top">
+                    {testimonial.socialUrl && (
+                      <a
+                        class="testimonial-linkedin"
+                        href={testimonial.socialUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${testimonial.name} on LinkedIn`}
+                        tabindex={isClone ? -1 : undefined}
+                      >
+                        <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                      </a>
+                    )}
+                  </div>
+
+                  <blockquote>{testimonial.quote}</blockquote>
+
+                  <footer class="testimonial-card__footer">
+                    {testimonial.image ? (
+                      <img
+                        class="testimonial-card__avatar"
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                      />
+                    ) : (
+                      <span class="testimonial-card__initials" aria-hidden="true">
+                        {getInitials(testimonial.name)}
+                      </span>
+                    )}
+                    <div>
+                      <strong>{testimonial.name}</strong>
+                      <span>{testimonial.detail}</span>
+                    </div>
+                  </footer>
+                </article>
+              ))}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>

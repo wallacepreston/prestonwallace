@@ -1,0 +1,133 @@
+---
+import Layout from '../components/Layout.astro';
+import Hero from '../components/Hero.astro';
+import StatRow from '../components/StatRow.astro';
+import CapabilityCards from '../components/CapabilityCards.astro';
+import SystemCards from '../components/SystemCards.astro';
+import ExperienceTimeline from '../components/ExperienceTimeline.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import FounderBio from '../components/FounderBio.astro';
+import Testimonials from '../components/Testimonials.astro';
+import ScheduleCall from '../components/ScheduleCall.astro';
+import {
+  capabilities,
+  founder,
+  founderPrinciples,
+  processSteps,
+  proofStats,
+  selectedWork,
+  experienceHistory,
+  testimonials,
+} from '../data/siteContent';
+---
+
+<Layout
+  title="Preston Wallace | Senior Full-Stack Software Engineer"
+  description="Preston Wallace builds production AI and SaaS systems with React, TypeScript, Node.js, GraphQL, and cloud infrastructure."
+>
+  <div class="home-container">
+    <Hero />
+
+    <section class="section-padding proof-section" aria-label="Real-world examples">
+      <div class="content-container">
+        <div class="section-heading">
+          <p class="eyebrow">Resume-backed outcomes</p>
+          <h2 class="section-title">Selected results</h2>
+          <p class="section-lead">
+            Highlights from production engineering work across AI systems, backend performance,
+            and software delivery.
+          </p>
+        </div>
+        <StatRow stats={proofStats} />
+      </div>
+    </section>
+
+    <section id="capabilities" class="section-padding">
+      <div class="content-container">
+        <div class="section-heading section-heading--split">
+          <div>
+            <p class="eyebrow">What I do</p>
+            <h2 class="section-title">Full-stack and AI engineering.</h2>
+          </div>
+          <p class="section-lead">
+            I build practical software systems end-to-end, from user-facing applications to backend
+            services, data flows, and production deployment.
+          </p>
+        </div>
+        <CapabilityCards capabilities={capabilities} />
+
+        <div class="advisory-panel section-narrow">
+          <p class="eyebrow">Personal focus</p>
+          <h3>Engineering that ships and scales</h3>
+          <p>
+            I focus on measurable outcomes, pragmatic scope, and maintainable systems that teams can
+            own and extend after launch.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="systems" class="section-padding">
+      <div class="content-container">
+        <div class="section-heading">
+          <p class="eyebrow">Selected work</p>
+          <h2 class="section-title">AI systems shipped into production.</h2>
+          <p class="section-lead">
+            Project highlights from prior engineering work. Each section corresponds to outcomes in
+            Selected results above.
+          </p>
+        </div>
+        <SystemCards systems={selectedWork} />
+      </div>
+    </section>
+
+    <section id="experience" class="section-padding experience-section">
+      <div class="content-container">
+        <div class="section-heading">
+          <p class="eyebrow">Full history</p>
+          <h2 class="section-title">Experience history</h2>
+          <p class="section-lead">
+            Full timeline from the original PrestonWallace.com Gatsby site, including engineering,
+            teaching, and early web-development roles.
+          </p>
+        </div>
+        <ExperienceTimeline entries={experienceHistory} />
+      </div>
+    </section>
+
+    <section id="process" class="section-padding">
+      <div class="content-container">
+        <div class="section-heading section-heading--split">
+          <div>
+            <p class="eyebrow">How I work</p>
+            <h2 class="section-title">From idea to production.</h2>
+          </div>
+          <p class="section-lead">
+            My approach stays practical: align on outcomes, ship value quickly, then improve
+            reliability and scale.
+          </p>
+        </div>
+        <ProcessSteps steps={processSteps} />
+      </div>
+    </section>
+
+    <section id="about" class="section-padding">
+      <div class="content-container">
+        <FounderBio founder={founder} />
+
+        <div class="principle-grid section-offset">
+          {founderPrinciples.map((principle) => (
+            <article>
+              <h3>{principle.title}</h3>
+              <p>{principle.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <Testimonials testimonials={testimonials} />
+
+    <ScheduleCall />
+  </div>
+</Layout>

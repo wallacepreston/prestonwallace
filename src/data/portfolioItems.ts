@@ -23,6 +23,12 @@ export interface PortfolioItem {
   demoUrl: string;
   demoEmbedUrl: string;
   context: string;
+  approachLead: string;
+  resultsTitle: string;
+  resultsLead: string;
+  visualsTitle: string;
+  demoTitle?: string;
+  demoLead?: string;
 }
 
 export const portfolioItems: PortfolioItem[] = [
@@ -117,21 +123,114 @@ export const portfolioItems: PortfolioItem[] = [
     demoEmbedUrl: 'https://www.youtube-nocookie.com/embed/GaPaiBukl_s',
     context:
       'Designed and built end-to-end as a full-stack AI system: product workflow, application architecture, crawler, AI orchestration, persistence, background processing, validation, and deployment.',
+    approachLead:
+      'A hybrid architecture pairs deterministic crawling and validation with selective AI reasoning, so the system stays scalable, inspectable, and grounded in source data.',
+    resultsTitle: 'A repeatable research system.',
+    resultsLead:
+      'The finished product replaces scattered manual browsing with one traceable workflow, while keeping operators in control of review and enrichment.',
+    visualsTitle: 'From search to actionable results.',
+    demoTitle: 'See the workflow in action.',
+    demoLead:
+      'Follow the full journey from a university query to discovered, reviewable contacts.',
   },
   {
-    isPlaceholder: true,
-    slug: 'next-project',
-    title: 'Next Portfolio Item',
-    eyebrow: 'Coming soon',
-    summary: 'This space is reserved for the next portfolio case study.',
-    challenge: [],
-    approach: [],
-    results: [],
-    screenshots: [],
-    techStack: [],
+    slug: 'ai-instructor-validation',
+    title: 'AI Instructor Validation',
+    eyebrow: 'Real-time identity validation & access control',
+    summary:
+      'An AI-assisted access portal that verifies academic instructors against official university sources, routes uncertain cases for human approval, and returns a clear decision in one guided flow.',
+    challenge: [
+      'Instructor access requests were a high-volume operational bottleneck. Teams had to confirm that an applicant belonged to a legitimate institution and department before granting access, turning a simple account request into repetitive research and follow-up.',
+      'The workflow needed to move quickly without letting AI make an opaque access-control decision. Strong matches could be approved automatically, but incomplete or conflicting evidence needed a safe path to manual review.',
+    ],
+    approach: [
+      {
+        title: 'Capture verified inputs',
+        detail:
+          'A focused account flow collects the instructor’s name, .edu email, institution, and department, with required-field, domain, and input validation before any external work begins.',
+      },
+      {
+        title: 'Ground the decision',
+        detail:
+          'The backend searches public faculty information and asks OpenAI to evaluate name, institution, department, and email alignment. Validation is constrained to official school sources and returned as structured confidence and reasoning.',
+      },
+      {
+        title: 'Route by confidence',
+        detail:
+          'High-confidence matches are activated automatically. Missing university or department evidence is denied, while ambiguous matches remain pending and are routed to a department head for approval.',
+      },
+      {
+        title: 'Close the operational loop',
+        detail:
+          'The system persists every request, records status changes in an audit log, sends outcome notifications, and gives internal teams search, filtering, reporting, and manual override controls.',
+      },
+    ],
+    results: [
+      {
+        value: '85%',
+        label: 'less validation time',
+        detail:
+          'Automated research and decision routing remove most of the repetitive work from instructor access reviews.',
+      },
+      {
+        value: '≈5,000',
+        label: 'hours saved per year',
+        detail:
+          'The production workflow turns a recurring manual process into a scalable, real-time service.',
+      },
+      {
+        value: '3',
+        label: 'confidence-based paths',
+        detail:
+          'Requests resolve to automated approval, manual review, or denial based on grounded evidence and explicit thresholds.',
+      },
+    ],
+    screenshots: [
+      {
+        src: '/img/portfolio/ai-instructor-validation/demo-1-lets-get-started.png',
+        alt: 'Showroom welcome screen inviting an instructor to begin creating an account',
+        caption: 'A concise entry point sets expectations before the validation flow begins.',
+      },
+      {
+        src: '/img/portfolio/ai-instructor-validation/demo-2-create-account-validating.png',
+        alt: 'Create Account form validating instructor credentials',
+        caption: 'The interface keeps the applicant informed while official academic sources are checked.',
+      },
+      {
+        src: '/img/portfolio/ai-instructor-validation/demo-3-create-account-denied.png',
+        alt: 'Instructor access request denied with a manual review option',
+        caption: 'Unverified requests fail safely and provide a clear route to manual review.',
+      },
+      {
+        src: '/img/portfolio/ai-instructor-validation/demo-4-create-account-approved.png',
+        alt: 'Instructor account approved after automated validation',
+        caption: 'Strong evidence produces an immediate, unambiguous approval outcome.',
+      },
+    ],
+    techStack: [
+      'React 19',
+      'TypeScript',
+      'Node.js',
+      'Express',
+      'OpenAI API',
+      'Perplexity AI SDK',
+      'PostgreSQL',
+      'Prisma',
+      'SendGrid',
+      'Tailwind CSS',
+      'Jest',
+      'Replit',
+    ],
     demoUrl: '',
     demoEmbedUrl: '',
-    context: '',
+    context:
+      'Built as a unified full-stack application spanning the applicant experience, validation API, AI-assisted research, confidence-based decision logic, approval routing, email notifications, persistence, audit logging, and internal operations tooling.',
+    approachLead:
+      'The architecture separates evidence gathering, AI interpretation, and policy-based routing so each decision remains explainable and uncertain cases stay under human control.',
+    resultsTitle: 'Faster access without giving up control.',
+    resultsLead:
+      'The finished system automates the common path, preserves a human decision point for ambiguity, and gives every applicant a clear outcome.',
+    visualsTitle: 'One request, three transparent states.',
   },
 ];
 

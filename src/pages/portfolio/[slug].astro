@@ -62,9 +62,9 @@ const nextItem =
           <h1>{item.title}</h1>
           <p>{item.summary}</p>
           <div class="portfolio-hero__actions">
-            <a class="button button-primary" href="#demo">
-              <i class="fa fa-play" aria-hidden="true"></i>
-              Watch the demo
+            <a class="button button-primary" href={item.demoEmbedUrl ? '#demo' : '#visuals'}>
+              <i class={`fa ${item.demoEmbedUrl ? 'fa-play' : 'fa-picture-o'}`} aria-hidden="true"></i>
+              {item.demoEmbedUrl ? 'Watch the demo' : 'View the workflow'}
             </a>
             <a class="button button-ghost" href="#approach">
               Explore the build
@@ -76,7 +76,7 @@ const nextItem =
         <div class="portfolio-hero__visual">
           <div class="portfolio-browser" aria-hidden="true">
             <div class="portfolio-browser__bar"><span></span><span></span><span></span></div>
-            <img src={item.screenshots[2].src} alt="" width="1290" height="969" />
+            <img src={item.screenshots[item.screenshots.length - 1].src} alt="" />
           </div>
         </div>
       </div>
@@ -100,8 +100,7 @@ const nextItem =
           <p class="eyebrow">Technical solution</p>
           <h2 id="approach-title" class="section-title">Our approach</h2>
           <p class="section-lead">
-            A hybrid architecture pairs deterministic crawling and validation with selective AI
-            reasoning, so the system stays scalable, inspectable, and grounded in source data.
+            {item.approachLead}
           </p>
         </div>
         <ol class="portfolio-approach">
@@ -122,10 +121,9 @@ const nextItem =
       <div class="content-container">
         <div class="section-heading">
           <p class="eyebrow">Results &amp; impact</p>
-          <h2 id="results-title" class="section-title">A repeatable research system.</h2>
+          <h2 id="results-title" class="section-title">{item.resultsTitle}</h2>
           <p class="section-lead">
-            The finished product replaces scattered manual browsing with one traceable workflow,
-            while keeping operators in control of review and enrichment.
+            {item.resultsLead}
           </p>
         </div>
         <div class="portfolio-results">
@@ -140,11 +138,11 @@ const nextItem =
       </div>
     </section>
 
-    <section class="section-padding portfolio-section portfolio-section--tinted" aria-labelledby="visuals-title">
+    <section id="visuals" class="section-padding portfolio-section portfolio-section--tinted" aria-labelledby="visuals-title">
       <div class="content-container">
         <div class="section-heading">
           <p class="eyebrow">Visual assets</p>
-          <h2 id="visuals-title" class="section-title">From search to actionable results.</h2>
+          <h2 id="visuals-title" class="section-title">{item.visualsTitle}</h2>
         </div>
         <div class="portfolio-gallery">
           {item.screenshots.map((screenshot, index) => (
@@ -163,13 +161,14 @@ const nextItem =
       </div>
     </section>
 
+    {item.demoEmbedUrl && (
     <section id="demo" class="section-padding portfolio-section" aria-labelledby="demo-title">
       <div class="content-container portfolio-two-column portfolio-two-column--top">
         <div>
           <p class="eyebrow">Product demo</p>
-          <h2 id="demo-title" class="section-title">See the workflow in action.</h2>
+          <h2 id="demo-title" class="section-title">{item.demoTitle}</h2>
           <p class="section-lead">
-            Follow the full journey from a university query to discovered, reviewable contacts.
+            {item.demoLead}
           </p>
           <a class="portfolio-text-link" href={item.demoUrl} target="_blank" rel="noreferrer">
             Open on YouTube
@@ -187,6 +186,7 @@ const nextItem =
         </div>
       </div>
     </section>
+    )}
 
     <section class="section-padding portfolio-section portfolio-section--tinted" aria-labelledby="stack-title">
       <div class="content-container portfolio-two-column portfolio-two-column--top">

@@ -134,6 +134,9 @@ export const selectedWork = [
   {
     id: "ai-instructor-validation",
     title: "AI instructor validation",
+    href: "/portfolio/ai-instructor-validation",
+    image: "/img/portfolio/ai-instructor-validation/demo-4-create-account-approved.png",
+    imageAlt: "AI Instructor Validation automated approval result",
     problem:
       "Manual instructor validation and access checks created delays and repetitive operational work.",
     architecture:

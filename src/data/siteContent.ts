@@ -168,6 +168,9 @@ export const selectedWork = [
   {
     id: "production-document-chat",
     title: "Production document chat",
+    href: "/portfolio/production-document-chat",
+    image: "/img/portfolio/production-document-chat/prod-doc-chat-6-chat-sales-summary-graph-generation.png",
+    imageAlt: "ChatDTC generating a winery sales summary from customer data",
     problem:
       "Users needed a reliable way to ask questions across data and documents in a production environment.",
     architecture:

@@ -238,6 +238,127 @@ export const portfolioItems: PortfolioItem[] = [
     visualsTitle: 'One request, three transparent states.',
   },
   {
+    slug: 'production-document-chat',
+    title: 'Production Document Chat',
+    eyebrow: 'Conversational analytics & customer activation',
+    summary:
+      'A multi-tenant AI assistant that gave winery teams a natural-language interface to their customer, club, order, and sales data—then let them turn answers into charts, exports, tags, and customer messages without leaving the conversation.',
+    challenge: [
+      'A winery SaaS company held valuable customer and commerce data, but its customers still needed reports, technical queries, or operational help to use it. The information was available, yet answering everyday questions about sales, club members, tasting-room activity, and customer segments remained slow and inaccessible.',
+      'A useful chatbot needed more than generic document search. It had to keep every winery’s data isolated and current, preserve conversational context, generate trustworthy analysis, and safely connect recommendations to real actions in external customer systems.',
+    ],
+    approach: [
+      {
+        title: 'Refresh each winery’s data nightly',
+        detail:
+          'A scheduled pipeline compiled current customer, club membership, order header, and order-line data for every tenant. The latest datasets were attached to that winery’s dedicated assistant so answers reflected a consistent, recently synchronized snapshot.',
+      },
+      {
+        title: 'Create a tenant-aware chat experience',
+        detail:
+          'Authenticated users were scoped to authorized wineries and could switch context explicitly. Persistent threads, chat history, sync timestamps, prompt validation, and suggested questions made the assistant approachable while keeping conversations tied to the correct business.',
+      },
+      {
+        title: 'Turn data into answers and artifacts',
+        detail:
+          'OpenAI Assistants and Code Interpreter analyzed the winery datasets to answer natural-language questions, calculate segments and summaries, create charts, and produce downloadable customer lists directly inside the chat workflow.',
+      },
+      {
+        title: 'Connect insight to action',
+        detail:
+          'Guarded function calls integrated with Commerce7 and RedChirp, allowing users to look up or create tags, apply tags to customers or orders, and send targeted customer messages. Validation and queued processing kept consequential actions controlled and observable.',
+      },
+    ],
+    results: [
+      {
+        value: '$24K',
+        label: 'annual recurring revenue',
+        detail:
+          'The production assistant became a paid SaaS capability that made customer data directly useful to winery operators.',
+      },
+      {
+        value: 'Nightly',
+        label: 'tenant data refresh',
+        detail:
+          'Each winery’s assistant received a consistent, up-to-date view of customers, memberships, orders, and sales activity.',
+      },
+      {
+        value: '3-in-1',
+        label: 'analytics workflow',
+        detail:
+          'One conversational interface combined business Q&A, visual and downloadable analysis, and operational customer actions.',
+      },
+    ],
+    screenshots: [
+      {
+        src: '/img/portfolio/production-document-chat/prod-doc-chat-1-welcome-login.png',
+        alt: 'ChatDTC secure welcome screen with account login',
+        caption:
+          'Secure authentication opens a tenant-aware assistant for authorized winery users.',
+      },
+      {
+        src: '/img/portfolio/production-document-chat/prod-doc-chat-2-chat-suggestions-list.png',
+        alt: 'ChatDTC home screen with synced date, chat history, and suggested winery data questions',
+        caption:
+          'Suggested questions make customer, club, order, and sales analysis approachable from the first conversation.',
+      },
+      {
+        src: '/img/portfolio/production-document-chat/prod-doc-chat-3-validation-switch-wineries.png',
+        alt: 'Winery selection and validation interface for switching the active business context',
+        caption:
+          'Explicit winery selection keeps every question and action scoped to the correct tenant.',
+      },
+      {
+        src: '/img/portfolio/production-document-chat/prod-doc-chat-4-chat-customer-list-request.png',
+        alt: 'Chat conversation requesting a targeted customer list from winery data',
+        caption:
+          'Operators describe a segment in plain language instead of building a report or database query.',
+      },
+      {
+        src: '/img/portfolio/production-document-chat/prod-doc-chat-5-chat-customer-list-download.png',
+        alt: 'ChatDTC response providing a generated customer list for download',
+        caption:
+          'The assistant converts an analysis into a downloadable artifact ready for operational use.',
+      },
+      {
+        src: '/img/portfolio/production-document-chat/prod-doc-chat-6-chat-sales-summary-graph-generation.png',
+        alt: 'ChatDTC generating a February sales summary visualization',
+        caption:
+          'Code-assisted analysis turns a natural-language sales request into an on-demand visual summary.',
+      },
+    ],
+    techStack: [
+      'React 18',
+      'TypeScript',
+      'Material UI',
+      'Node.js',
+      'Express',
+      'OpenAI Assistants API',
+      'Code Interpreter',
+      'Socket.IO',
+      'Sequelize',
+      'MySQL',
+      'Microsoft SQL Server',
+      'Commerce7 API',
+      'RedChirp',
+      'SendGrid',
+      'LDAP',
+      'JWT',
+      'AWS EC2',
+      'PM2',
+    ],
+    demoUrl: '',
+    demoEmbedUrl: '',
+    context:
+      'Built and operated as a production, multi-tenant AI product across two applications: a responsive React chat client and a Node/Express service responsible for authentication, tenant authorization, assistant orchestration, conversation persistence, streaming updates, data access, tool execution, and third-party integrations.',
+    approachLead:
+      'The architecture joined a predictable nightly data pipeline with tenant-specific AI assistants and guarded operational tools, giving users fresh answers without exposing cross-winery data or treating every prompt as permission to act.',
+    resultsTitle: 'From stored data to a working conversation.',
+    resultsLead:
+      'The product made winery data self-service: users could explore performance, build an audience, and activate that audience from the same interface.',
+    visualsTitle: 'Ask, analyze, download, and act.',
+  },
+  {
     slug: 'predictive-budget-spend-system',
     title: 'Predictive Budget Spend System',
     eyebrow: 'Predictive campaign planning & decision support',

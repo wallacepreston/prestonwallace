@@ -15,9 +15,9 @@ interface Props {
 
 const { item } = Astro.props;
 const currentIndex = portfolioItems.findIndex((entry) => entry.slug === item.slug);
-const previousItem = currentIndex > 0 ? portfolioItems[currentIndex - 1] : undefined;
-const nextItem =
-  currentIndex < portfolioItems.length - 1 ? portfolioItems[currentIndex + 1] : undefined;
+const previousItem =
+  portfolioItems[(currentIndex - 1 + portfolioItems.length) % portfolioItems.length];
+const nextItem = portfolioItems[(currentIndex + 1) % portfolioItems.length];
 ---
 
 <Layout
@@ -45,16 +45,25 @@ const nextItem =
     <header class="portfolio-hero">
       <div class="content-container portfolio-hero__inner">
         <nav class="portfolio-hero__nav" aria-label="Portfolio navigation">
-          <a class="portfolio-back" href="/#systems">
+          <a
+            class="portfolio-previous"
+            href={`/portfolio/${previousItem.slug}`}
+            aria-label={`Previous project: ${previousItem.title}`}
+          >
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            Previous project
+          </a>
+          <a class="portfolio-back" href="/#systems">
             Portfolio
           </a>
-          {nextItem && (
-            <a class="portfolio-next" href={`/portfolio/${nextItem.slug}`}>
-              Next project
-              <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            </a>
-          )}
+          <a
+            class="portfolio-next"
+            href={`/portfolio/${nextItem.slug}`}
+            aria-label={`Next project: ${nextItem.title}`}
+          >
+            Next project
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </a>
         </nav>
 
         <div class="portfolio-hero__copy">
@@ -74,10 +83,16 @@ const nextItem =
         </div>
 
         <div class="portfolio-hero__visual">
-          <div class="portfolio-browser" aria-hidden="true">
-            <div class="portfolio-browser__bar"><span></span><span></span><span></span></div>
-            <img src={item.screenshots[item.screenshots.length - 1].src} alt="" />
-          </div>
+          {item.diagrams?.length ? (
+            <div class="portfolio-diagram portfolio-diagram--hero" aria-hidden="true">
+              <pre class="mermaid">{item.diagrams[0].source}</pre>
+            </div>
+          ) : (
+            <div class="portfolio-browser" aria-hidden="true">
+              <div class="portfolio-browser__bar"><span></span><span></span><span></span></div>
+              <img src={item.screenshots[item.screenshots.length - 1].src} alt="" />
+            </div>
+          )}
         </div>
       </div>
     </header>
@@ -144,20 +159,37 @@ const nextItem =
           <p class="eyebrow">Visual assets</p>
           <h2 id="visuals-title" class="section-title">{item.visualsTitle}</h2>
         </div>
-        <div class="portfolio-gallery">
-          {item.screenshots.map((screenshot, index) => (
-            <figure class={index === 0 ? 'portfolio-gallery__wide' : ''}>
-              <div class="portfolio-browser">
-                <div class="portfolio-browser__bar" aria-hidden="true"><span></span><span></span><span></span></div>
-                <img src={screenshot.src} alt={screenshot.alt} loading="lazy" />
-              </div>
-              <figcaption>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                {screenshot.caption}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+        {item.diagrams?.length ? (
+          <div class="portfolio-diagram-grid">
+            {item.diagrams.map((diagram, index) => (
+              <figure class={index === 0 ? 'portfolio-diagram-card portfolio-diagram-card--wide' : 'portfolio-diagram-card'}>
+                <div class="portfolio-diagram">
+                  <p>{diagram.title}</p>
+                  <pre class="mermaid">{diagram.source}</pre>
+                </div>
+                <figcaption>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  {diagram.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        ) : (
+          <div class="portfolio-gallery">
+            {item.screenshots.map((screenshot, index) => (
+              <figure class={index === 0 ? 'portfolio-gallery__wide' : ''}>
+                <div class="portfolio-browser">
+                  <div class="portfolio-browser__bar" aria-hidden="true"><span></span><span></span><span></span></div>
+                  <img src={screenshot.src} alt={screenshot.alt} loading="lazy" />
+                </div>
+                <figcaption>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  {screenshot.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
       </div>
     </section>
 
@@ -203,32 +235,61 @@ const nextItem =
 
     <nav class="portfolio-pagination" aria-label="Portfolio items">
       <div class="content-container portfolio-pagination__inner">
-        {previousItem ? (
-          <a href={`/portfolio/${previousItem.slug}`}>
-            <span>Previous project</span>
-            <strong>{previousItem.title}</strong>
-          </a>
-        ) : (
-          <a href="/#systems">
-            <span>Back to</span>
-            <strong>Portfolio</strong>
-          </a>
-        )}
+        <a href={`/portfolio/${previousItem.slug}`}>
+          <span><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous project</span>
+          <strong>{previousItem.title}</strong>
+        </a>
         <p>{String(currentIndex + 1).padStart(2, '0')} / {String(portfolioItems.length).padStart(2, '0')}</p>
-        {nextItem ? (
-          <a class="portfolio-pagination__next" href={`/portfolio/${nextItem.slug}`}>
-            <span>Next project</span>
-            <strong>{nextItem.title}</strong>
-          </a>
-        ) : (
-          <a class="portfolio-pagination__next" href="/#contact">
-            <span>Have a project?</span>
-            <strong>Let’s talk</strong>
-          </a>
-        )}
+        <a class="portfolio-pagination__next" href={`/portfolio/${nextItem.slug}`}>
+          <span>Next project <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+          <strong>{nextItem.title}</strong>
+        </a>
       </div>
     </nav>
       </>
     )}
   </article>
+  {item.diagrams?.length && (
+    <script is:inline type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+
+      mermaid.initialize({
+        startOnLoad: true,
+        securityLevel: 'strict',
+        theme: 'base',
+        flowchart: { curve: 'basis', htmlLabels: true },
+        themeVariables: {
+          background: '#10121b',
+          primaryColor: '#10282d',
+          primaryTextColor: '#f5f6fb',
+          primaryBorderColor: '#1df9f8',
+          secondaryColor: '#151825',
+          secondaryTextColor: '#f5f6fb',
+          secondaryBorderColor: '#1f6f73',
+          tertiaryColor: '#090a10',
+          tertiaryTextColor: '#f5f6fb',
+          tertiaryBorderColor: '#202437',
+          lineColor: '#19c4bd',
+          textColor: '#f5f6fb',
+          mainBkg: '#10282d',
+          nodeBorder: '#1df9f8',
+          clusterBkg: '#090f16',
+          clusterBorder: '#1f6f73',
+          actorBkg: '#10282d',
+          actorBorder: '#1df9f8',
+          actorTextColor: '#f5f6fb',
+          signalColor: '#19c4bd',
+          signalTextColor: '#f5f6fb',
+          labelBoxBkgColor: '#151825',
+          labelBoxBorderColor: '#1f6f73',
+          labelTextColor: '#f5f6fb',
+          loopTextColor: '#f5f6fb',
+          noteBkgColor: '#151825',
+          noteBorderColor: '#f1c36d',
+          noteTextColor: '#f5f6fb',
+          fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif',
+        },
+      });
+    </script>
+  )}
 </Layout>

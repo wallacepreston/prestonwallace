@@ -1590,12 +1590,13 @@ h1 span {
 
 .portfolio-hero__nav {
   grid-column: 1 / -1;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 24px;
 }
 
+.portfolio-previous,
 .portfolio-back,
 .portfolio-next {
   width: fit-content;
@@ -1606,6 +1607,24 @@ h1 span {
   font-weight: 800;
 }
 
+.portfolio-previous {
+  justify-self: start;
+}
+
+.portfolio-back {
+  justify-self: center;
+  border: 1px solid rgba(29, 249, 248, 0.3);
+  border-radius: 999px;
+  padding: 8px 16px;
+  background: rgba(29, 249, 248, 0.06);
+}
+
+.portfolio-next {
+  justify-self: end;
+}
+
+.portfolio-previous:hover,
+.portfolio-previous:focus-visible,
 .portfolio-back:hover,
 .portfolio-back:focus-visible,
 .portfolio-next:hover,
@@ -1830,6 +1849,85 @@ h1 span {
   font-weight: 900;
 }
 
+.portfolio-diagram-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px 24px;
+}
+
+.portfolio-diagram-card {
+  min-width: 0;
+  margin: 0;
+}
+
+.portfolio-diagram-card--wide {
+  grid-column: 1 / -1;
+}
+
+.portfolio-diagram {
+  min-width: 0;
+  overflow-x: auto;
+  border: 1px solid rgba(29, 249, 248, 0.28);
+  border-radius: 12px;
+  padding: 24px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    rgba(9, 10, 16, 0.96);
+  background-size: 38px 38px;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.35);
+}
+
+.portfolio-diagram > p {
+  margin-bottom: 20px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.portfolio-diagram .mermaid {
+  min-width: 580px;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: var(--muted-strong);
+  font-family: var(--font-sans);
+}
+
+.portfolio-diagram .mermaid svg {
+  width: 100%;
+  height: auto;
+  max-height: 620px;
+}
+
+.portfolio-diagram--hero {
+  position: relative;
+  z-index: 1;
+  padding: 18px;
+}
+
+.portfolio-diagram--hero .mermaid {
+  min-width: 720px;
+}
+
+.portfolio-diagram--hero .mermaid svg {
+  max-height: 470px;
+}
+
+.portfolio-diagram-card figcaption {
+  display: flex;
+  gap: 14px;
+  margin-top: 16px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.portfolio-diagram-card figcaption span {
+  color: var(--accent);
+  font-weight: 900;
+}
+
 .portfolio-video {
   position: relative;
   overflow: hidden;
@@ -1886,6 +1984,12 @@ h1 span {
   font-size: 0.78rem;
   font-weight: 850;
   text-transform: uppercase;
+}
+
+.portfolio-pagination span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
 }
 
 .portfolio-pagination strong {
@@ -2865,12 +2969,23 @@ h1 span {
 
   .portfolio-approach,
   .portfolio-results,
-  .portfolio-gallery {
+  .portfolio-gallery,
+  .portfolio-diagram-grid {
     grid-template-columns: 1fr;
   }
 
-  .portfolio-gallery__wide {
+  .portfolio-gallery__wide,
+  .portfolio-diagram-card--wide {
     grid-column: auto;
+  }
+
+  .portfolio-diagram {
+    padding: 18px;
+  }
+
+  .portfolio-diagram .mermaid,
+  .portfolio-diagram--hero .mermaid {
+    min-width: 620px;
   }
 
   .portfolio-pagination__inner {
@@ -2959,7 +3074,20 @@ h1 span {
   }
 
   .portfolio-hero__nav {
+    grid-template-columns: 1fr 1fr;
     align-items: flex-start;
+    gap: 20px;
+  }
+
+  .portfolio-back {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .portfolio-previous,
+  .portfolio-next {
+    grid-row: 2;
+    font-size: 0.9rem;
   }
 
   .portfolio-placeholder__actions {

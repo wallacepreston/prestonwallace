@@ -19,6 +19,11 @@ export interface PortfolioItem {
     alt: string;
     caption: string;
   }[];
+  diagrams?: {
+    title: string;
+    caption: string;
+    source: string;
+  }[];
   techStack: string[];
   demoUrl: string;
   demoEmbedUrl: string;
@@ -231,6 +236,158 @@ export const portfolioItems: PortfolioItem[] = [
     resultsLead:
       'The finished system automates the common path, preserves a human decision point for ambiguity, and gives every applicant a clear outcome.',
     visualsTitle: 'One request, three transparent states.',
+  },
+  {
+    slug: 'predictive-budget-spend-system',
+    title: 'Predictive Budget Spend System',
+    eyebrow: 'Predictive campaign planning & decision support',
+    summary:
+      'A two-phase machine-learning system that learns from historical campaign outcomes, then gives users an immediate High, Medium, or Low budget-spend prediction while they configure a campaign.',
+    challenge: [
+      'Campaign teams had to choose budgets, time frames, audiences, network blocklists, and delivery settings before they knew whether those parameters were likely to spend the full budget. Poorly balanced configurations could limit delivery and leave revenue unrealized.',
+      'The opportunity was to turn historical spend behavior into practical, pre-launch guidance. The prediction needed to arrive inside the existing campaign workflow and translate a model score into language a user could act on immediately.',
+    ],
+    approach: [
+      {
+        title: 'Build the historical dataset',
+        detail:
+          'Combine past campaign configurations—budget, time frame, audience size, network blocklists, targeting, and delivery parameters—with the observed outcome of whether each campaign spent its full budget on time.',
+      },
+      {
+        title: 'Train and validate the model',
+        detail:
+          'Use those labeled outcomes to identify delivery patterns, train the predictive model, evaluate its performance, and derive validated thresholds for High, Medium, and Low likelihood classifications.',
+      },
+      {
+        title: 'Serve predictions through an API',
+        detail:
+          'Deploy the trained model behind a REST endpoint that accepts a current campaign configuration, applies the same feature preparation used in training, and returns a spend-likelihood score and classification.',
+      },
+      {
+        title: 'Put guidance in the workflow',
+        detail:
+          'Request a prediction as campaign parameters change and display the result in the UI before launch, giving the user time to adjust the configuration while the decision is still reversible.',
+      },
+    ],
+    results: [
+      {
+        value: '40%',
+        label: 'revenue increase',
+        detail:
+          'Predictive budget-spend guidance helped teams recognize and act on campaign configurations with stronger delivery potential.',
+      },
+      {
+        value: '3',
+        label: 'clear classifications',
+        detail:
+          'High, Medium, and Low translate a raw model prediction into concise guidance that campaign users can understand.',
+      },
+      {
+        value: 'Pre-launch',
+        label: 'decision feedback',
+        detail:
+          'The prediction appears while a campaign is being configured, when budget, timing, audience, and delivery inputs can still be changed.',
+      },
+    ],
+    screenshots: [],
+    diagrams: [
+      {
+        title: 'Model training and threshold validation',
+        caption:
+          'The offline training pipeline connects each campaign configuration to its observed spend outcome, then validates both the model and the user-facing classification boundaries.',
+        source: `flowchart TD
+  subgraph INPUTS["HISTORICAL CAMPAIGN INPUTS"]
+    B["Budget amount"]
+    T["Campaign time frame"]
+    A["Audience size"]
+    N["Network blocklists"]
+    P["Targeting & delivery parameters"]
+  end
+
+  B --> J["Join configuration with outcome"]
+  T --> J
+  A --> J
+  N --> J
+  P --> J
+  S["Label: full budget spent<br/>within time frame?"] --> J
+  J --> Q["Clean, encode & prepare features"]
+  Q --> R["Training dataset"]
+  R --> M["Train predictive model"]
+  M --> V["Validate on historical holdout data"]
+  V --> TH["Derive High / Medium / Low thresholds"]
+  TH --> G{"Meets performance criteria?"}
+  G -->|"No"| Q
+  G -->|"Yes"| D[("Deploy model + thresholds")]`,
+      },
+      {
+        title: 'Two-phase system architecture',
+        caption:
+          'Historical outcomes produce a validated model; the full-stack application then uses that model for real-time campaign guidance.',
+        source: `flowchart LR
+  subgraph TRAIN["1 · TRAINING PHASE"]
+    A["Historical campaign<br/>configurations"] --> B["Feature preparation"]
+    O["Actual spend outcomes"] --> B
+    B --> C["Train predictive model"]
+    C --> D["Validate model &<br/>classification thresholds"]
+    D --> E[("Versioned model")]
+  end
+
+  subgraph APP["2 · FULL-STACK PREDICTION PHASE"]
+    U["Campaign UI"] -->|"Current configuration"| API["Prediction REST API"]
+    API --> F["Apply feature preparation"]
+    F --> M["Model inference"]
+    E -.->|"Deploy"| M
+    M --> K{"Classification"}
+    K --> H["High"]
+    K --> MD["Medium"]
+    K --> L["Low"]
+    H --> U
+    MD --> U
+    L --> U
+  end`,
+      },
+      {
+        title: 'Real-time classification request',
+        caption:
+          'The online path keeps model complexity behind a REST API and returns a simple classification to the campaign-planning interface.',
+        source: `sequenceDiagram
+  actor User
+  participant UI as Campaign UI
+  participant API as Prediction REST API
+  participant Prep as Feature Preparation
+  participant Model as Predictive Model
+
+  User->>UI: Configure budget, timing,<br/>audience and delivery settings
+  UI->>API: POST current campaign configuration
+  API->>Prep: Validate and transform inputs
+  Prep->>Model: Send model-ready features
+  Model-->>API: Return spend-likelihood score
+  API->>API: Apply validated thresholds
+  API-->>UI: Return High, Medium, or Low
+  UI-->>User: Display pre-launch guidance`,
+      },
+    ],
+    techStack: [
+      'Historical campaign data',
+      'Feature engineering',
+      'Supervised machine learning',
+      'Predictive classification',
+      'Model validation',
+      'Classification thresholds',
+      'REST API',
+      'Full-stack application integration',
+      'Campaign configuration UI',
+    ],
+    demoUrl: '',
+    demoEmbedUrl: '',
+    context:
+      'The portfolio visuals document the system at the architecture level because source code and product screenshots are not available. The work spans offline model training, threshold validation, model deployment, REST inference, and pre-launch UI feedback.',
+    approachLead:
+      'The design separates offline learning from online inference: training can evolve independently while the product consumes a stable, explainable prediction contract.',
+    resultsTitle: 'Prediction at the point of decision.',
+    resultsLead:
+      'Instead of reviewing underdelivery after launch, the system gives campaign teams an actionable signal while configuration choices can still be improved.',
+    visualsTitle: 'From historical outcomes to a live classification.',
   },
 ];
 

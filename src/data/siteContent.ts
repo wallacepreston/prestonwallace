@@ -101,6 +101,7 @@ export const selectedWork = [
   {
     id: "predictive-budget-spend-system",
     title: "Predictive budget-spend system",
+    href: "/portfolio/predictive-budget-spend-system",
     problem:
       "Campaign and revenue signals were spread across systems, making it harder to spot spend opportunities quickly.",
     architecture:

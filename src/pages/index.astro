@@ -9,6 +9,7 @@ import ProcessSteps from '../components/ProcessSteps.astro';
 import FounderBio from '../components/FounderBio.astro';
 import Testimonials from '../components/Testimonials.astro';
 import ScheduleCall from '../components/ScheduleCall.astro';
+import { portfolioItems } from '../data/portfolioItems';
 import {
   capabilities,
   founder,
@@ -21,6 +22,12 @@ import {
   experienceHistory,
   testimonials,
 } from '../data/siteContent';
+
+const portfolioBySlug = new Map(portfolioItems.map((item) => [item.slug, item]));
+const portfolioSystems = selectedWork.map((system) => ({
+  ...system,
+  diagram: system.id ? portfolioBySlug.get(system.id)?.diagrams?.[0]?.source : undefined,
+}));
 ---
 
 <Layout
@@ -79,7 +86,7 @@ import {
             the results above.
           </p>
         </div>
-        <SystemCards systems={selectedWork} />
+        <SystemCards systems={portfolioSystems} />
       </div>
     </section>
 

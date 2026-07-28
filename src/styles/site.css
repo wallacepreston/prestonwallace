@@ -1534,6 +1534,39 @@ h1 span {
   transition: transform 220ms ease;
 }
 
+.system-accordion__diagram {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 10px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    rgba(9, 10, 16, 0.96);
+  background-size: 24px 24px;
+}
+
+.system-accordion__diagram .mermaid {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.system-accordion__diagram .mermaid svg {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: block;
+  margin: auto;
+}
+
 .system-accordion__preview span {
   position: absolute;
   right: 10px;

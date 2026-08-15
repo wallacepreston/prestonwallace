@@ -4,12 +4,18 @@ import '../styles/site.css';
 interface Props {
   title?: string;
   description?: string;
+  keywords?: string[];
+  ogType?: 'website' | 'article';
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
 }
 
 const {
   title = 'Preston Wallace | Senior Full-Stack Software Engineer',
   description = 'Preston Wallace builds production AI and SaaS systems with React, TypeScript, Node.js, GraphQL, and cloud infrastructure.',
+  keywords = [],
+  ogType = 'website',
+  structuredData,
   noindex = false,
 } = Astro.props;
 
@@ -23,16 +29,18 @@ const gaAdditionalIds = ['4656063220', 'UA-134507377-1'];
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
+    {keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
     {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="canonical" href={canonicalUrl} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
     <link rel="icon" type="image/gif" href="/img/about/favicon-headshot-avatar.gif" />
     <link rel="shortcut icon" type="image/gif" href="/img/about/favicon-headshot-avatar.gif" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

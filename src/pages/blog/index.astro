@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../components/Layout.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(date);
+
+const title = 'AI Engineering Blog: GenAI, RAG & Full-Stack AI | Preston Wallace';
+const description =
+  'Practical AI engineering articles on generative AI, full-stack AI applications, LLMs, RAG, AI agents, SaaS, React, TypeScript, Node.js, GraphQL, and cloud architecture.';
+const keywords = [
+  'AI engineering',
+  'generative AI',
+  'GenAI',
+  'full-stack AI',
+  'LLM applications',
+  'RAG',
+  'AI agents',
+  'AI workflows',
+  'SaaS development',
+  'React',
+  'TypeScript',
+  'Node.js',
+  'GraphQL',
+  'cloud architecture',
+];
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Preston Wallace AI Engineering Blog',
+  url: 'https://prestonwallace.com/blog/',
+  description,
+  author: {
+    '@type': 'Person',
+    name: 'Preston Wallace',
+    url: 'https://prestonwallace.com/',
+    jobTitle: 'Full-Stack AI Software Engineer',
+  },
+  keywords,
+};
+---
+
+<Layout
+  title={title}
+  description={description}
+  keywords={keywords}
+  structuredData={structuredData}
+>
+  <section class="blog-index">
+    <div class="blog-container">
+      <header class="blog-index__header">
+        <p class="eyebrow">AI Engineering Blog</p>
+        <h1>Building AI that works in production.</h1>
+        <p>
+          Practical notes on generative AI, full-stack AI applications, LLMs, RAG, agents, and the
+          React, TypeScript, Node.js, GraphQL, and cloud systems that bring them to life.
+        </p>
+      </header>
+
+      <div class="post-list">
+        {posts.map((post) => (
+          <article class="post-card">
+            <a href={`/blog/${post.id}/`} aria-label={`Read ${post.data.title}`}>
+              <div>
+                <time datetime={post.data.publishedAt.toISOString()}>{formatDate(post.data.publishedAt)}</time>
+                <h2>{post.data.title}</h2>
+                <p>{post.data.description}</p>
+              </div>
+              <span aria-hidden="true">Read post&nbsp; →</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,80 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../components/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+}).format(post.data.publishedAt);
+const keywords = [
+  'AI engineering',
+  'generative AI',
+  'GenAI',
+  'full-stack AI',
+  'LLM applications',
+  'RAG',
+  'AI agents',
+  'React',
+  'TypeScript',
+  'Node.js',
+  'GraphQL',
+  'cloud architecture',
+];
+const postUrl = new URL(`/blog/${post.id}/`, Astro.site ?? Astro.url.origin).toString();
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.publishedAt.toISOString(),
+  mainEntityOfPage: postUrl,
+  author: {
+    '@type': 'Person',
+    name: 'Preston Wallace',
+    url: 'https://prestonwallace.com/',
+    jobTitle: 'Full-Stack AI Software Engineer',
+  },
+  publisher: {
+    '@type': 'Person',
+    name: 'Preston Wallace',
+  },
+  keywords,
+};
+---
+
+<Layout
+  title={`${post.data.title} | Preston Wallace`}
+  description={post.data.description}
+  keywords={keywords}
+  ogType="article"
+  structuredData={structuredData}
+>
+  <article class="blog-post">
+    <div class="blog-container">
+      <a class="blog-back" href="/blog/">← All posts</a>
+
+      <header class="blog-post__header">
+        <p class="eyebrow">Blog</p>
+        <h1>{post.data.title}</h1>
+        <p>{post.data.description}</p>
+        <time datetime={post.data.publishedAt.toISOString()}>{formattedDate}</time>
+      </header>
+
+      <div class="blog-post__body">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Layout>

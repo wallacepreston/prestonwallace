@@ -6,12 +6,21 @@ import Footer from './Footer.astro';
 interface Props {
   title?: string;
   description?: string;
+  keywords?: string[];
+  ogType?: 'website' | 'article';
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, keywords, ogType, structuredData } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  ogType={ogType}
+  structuredData={structuredData}
+>
   <Nav />
   <main>
     <slot />

@@ -69,6 +69,7 @@ const structuredData = {
         {posts.map((post) => (
           <article class="post-card">
             <a href={`/blog/${post.id}/`} aria-label={`Read ${post.data.title}`}>
+              <img src={post.data.image} alt={post.data.imageAlt} width="1200" height="630" loading="lazy" />
               <div>
                 <time datetime={post.data.publishedAt.toISOString()}>{formatDate(post.data.publishedAt)}</time>
                 <h2>{post.data.title}</h2>

@@ -3279,6 +3279,37 @@ h1 span {
   margin-top: 1.5em;
 }
 
+.blog-post__body ul,
+.blog-post__body ol {
+  padding-left: 1.45em;
+}
+
+.blog-post__body ul {
+  list-style: disc;
+}
+
+.blog-post__body ol {
+  list-style: decimal;
+}
+
+.blog-post__body li {
+  padding-left: 0.3em;
+}
+
+.blog-post__body li + li {
+  margin-top: 0.35em;
+}
+
+.blog-post__body li::marker {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.blog-post__body li > ul,
+.blog-post__body li > ol {
+  margin-top: 0.35em;
+}
+
 .blog-post__body h2 {
   margin: 2.35em 0 0.8em;
   padding-left: 18px;
@@ -3371,6 +3402,12 @@ h1 span {
 .blog-post__body .mermaid svg {
   width: 100%;
   max-width: 100%;
+  height: auto;
+}
+
+.blog-post__body .article-diagram {
+  display: block;
+  width: 100%;
   height: auto;
 }
 

@@ -17,6 +17,7 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
   month: 'long',
   day: 'numeric',
   year: 'numeric',
+  timeZone: 'UTC',
 }).format(post.data.publishedAt);
 const keywords = [
   'AI engineering',
@@ -153,7 +154,13 @@ const structuredData = {
       startOnLoad: true,
       securityLevel: 'strict',
       theme: 'base',
-      flowchart: { curve: 'basis', htmlLabels: true },
+      flowchart: {
+        curve: 'basis',
+        htmlLabels: true,
+        nodeSpacing: 60,
+        rankSpacing: 60,
+        padding: 28,
+      },
       themeVariables: {
         background: '#10121b',
         primaryColor: '#10282d',

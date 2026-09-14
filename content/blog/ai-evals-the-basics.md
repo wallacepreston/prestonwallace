@@ -1,7 +1,7 @@
 ---
 title: "AI Evals: The Basics"
 description: A concise guide to using AI evals in CI, sampled production traffic, and high-security systems.
-publishedAt: 2026-09-01
+publishedAt: 2026-08-17
 image: /images/blog/ai-evals-the-basics.png
 imageAlt: Agent response, golden dataset, evals, and system improvements arranged in a continuous AI evaluation loop.
 ---

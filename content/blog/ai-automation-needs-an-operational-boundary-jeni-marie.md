@@ -10,7 +10,7 @@ An automation can save time and still make operations harder.
 
 The usual failure starts before the model call. A team buys a new tool for a real pain point, connects it to several existing systems, and discovers that every change adds another fragile handoff.
 
-I recently spoke with [Jeni Marie](https://www.linkedin.com/in/jenimarie/), founder of [Jeni Marie Coaching](https://www.linkedin.com/company/jeni-marie-coaching/home/) and an operations leader at Kimberly Services, about the practical work of connecting tools, routing work, and protecting sensitive data.
+I recently spoke with [Jeni Marie](https://www.linkedin.com/in/jenimarie/), founder of [Jeni Marie Coaching](https://www.jenimariecoaching.com/) and an operations leader at Kimberly Services, about the practical work of connecting tools, routing work, and protecting sensitive data.
 
 Her experience with ClickUp and accounting workflows points to a simple principle: useful AI automation needs an operational boundary.
 

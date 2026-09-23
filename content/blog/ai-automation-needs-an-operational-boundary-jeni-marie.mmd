@@ -1,0 +1,12 @@
+flowchart TD
+  A[Inbound email]
+
+  subgraph BOUNDARY[Limited data boundary]
+    B[Read required fields<br/>Apply routing rules] --> C{Known case?}
+  end
+
+  A --> B
+  C -->|Yes| D[Create ClickUp task<br/>Assign owner and due date]
+  C -->|No| E[Human review]
+  D --> F[Complete and log]
+  E --> F

@@ -5,6 +5,10 @@ description: Write or revise concise AI engineering posts for the Preston Wallac
 
 # Blog Post Writer
 
+## Model and reasoning effort
+
+When using this skill, use GPT-6 Sol with Medium effort.
+
 Create publish-ready posts in `content/blog/` that sound like a working engineer explaining something clearly.
 
 ## Voice

@@ -3,6 +3,7 @@ title: Why RESTful APIs are Holding You Back
 description: Embrace the Future with GraphQL
 youTubeVideo: https://www.youtube.com/embed/WrbEJ3cpKK4?&controls=0
 type: exclusive
+status: draft
 ---
 
 **RESTful APIs have been the standard for building APIs for a long time**, but they have their limitations. As APIs become more complex and dynamic, RESTful APIs can become difficult to maintain and optimize. That's where GraphQL comes in.

@@ -4,6 +4,7 @@ description: A practical guide to chunk size, overlap, document structure, metad
 publishedAt: 2026-08-31
 image: /images/blog/chunking-in-rag.png
 imageAlt: A source document moves through meaningful chunks and a vector index to produce relevant context for a RAG system.
+status: published
 ---
 
 Retrieval quality starts before the search request. It starts when the source document is split into chunks.

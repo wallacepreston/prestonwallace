@@ -1,0 +1,9 @@
+flowchart LR
+  A[Discover documents] --> B[Deduplicate and classify]
+  B --> C[Assess risk and priority]
+  C --> D[Repair source document]
+  D --> E{Complex structure?}
+  E -->|Yes| F[Human review]
+  E -->|No| G[Accessibility checks]
+  F --> G
+  G --> H[Publish accessible PDF]

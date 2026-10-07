@@ -4,6 +4,7 @@ description: Practical lessons on SEO, AEO, GEO, local authority, technical craw
 publishedAt: 2026-09-14
 image: /images/blog/seo-for-ai-search-geoff-kenyon.png
 imageAlt: SEO expert Geoff Kenyon standing among desert rock formations in Joshua Tree.
+status: published
 ---
 
 I recently spoke with SEO expert [Geoff Kenyon](https://geoffkenyon.com/) about how search is changing as people use ChatGPT, Claude, Gemini, and Perplexity to find companies and experts.

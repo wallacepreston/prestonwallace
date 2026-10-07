@@ -72,3 +72,5 @@ yarn-error.log
 # Editor settings
 .vscode
 .idea
+
+content/blog/conversations/*

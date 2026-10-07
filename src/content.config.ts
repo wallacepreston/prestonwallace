@@ -9,6 +9,7 @@ const blog = defineCollection({
     publishedAt: z.coerce.date(),
     image: z.string(),
     imageAlt: z.string(),
+    status: z.enum(['draft', 'published']).default('published'),
   }),
 });
 

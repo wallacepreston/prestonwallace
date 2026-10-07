@@ -4,6 +4,7 @@ description: A concise guide to using AI evals in CI, sampled production traffic
 publishedAt: 2026-08-17
 image: /images/blog/ai-evals-the-basics.png
 imageAlt: Agent response, golden dataset, evals, and system improvements arranged in a continuous AI evaluation loop.
+status: published
 ---
 
 AI evals are tests for AI systems. They measure whether an LLM’s output is correct, useful, safe, and consistent enough for a specific task.

@@ -9,6 +9,7 @@ interface Props {
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
   image?: string;
   noindex?: boolean;
+  nofollow?: boolean;
 }
 
 const {
@@ -19,12 +20,14 @@ const {
   structuredData,
   image,
   noindex = false,
+  nofollow = false,
 } = Astro.props;
 
 const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url.toString();
 const socialImageUrl = image ? new URL(image, Astro.site ?? Astro.url.origin).toString() : undefined;
 const gaPrimaryId = 'G-QVB7R5W66F';
 const gaAdditionalIds = ['4656063220', 'UA-134507377-1'];
+const robotsContent = noindex ? `noindex, ${nofollow ? 'nofollow' : 'follow'}` : undefined;
 ---
 
 <!doctype html>
@@ -33,7 +36,7 @@ const gaAdditionalIds = ['4656063220', 'UA-134507377-1'];
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     {keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
-    {noindex && <meta name="robots" content="noindex, follow" />}
+    {robotsContent && <meta name="robots" content={robotsContent} />}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:type" content={ogType} />

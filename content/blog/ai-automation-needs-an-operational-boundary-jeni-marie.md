@@ -4,6 +4,7 @@ description: Lessons from Jeni Marie on resilient workflow automation, data boun
 publishedAt: 2026-09-21
 image: /images/blog/jeni-marie-cover.png
 imageAlt: Portrait of Jeni Marie, founder and operations strategist.
+status: published
 ---
 
 An automation can save time and still make operations harder.

@@ -3,6 +3,7 @@ title: 7 Common Mistakes Junior Developers Make
 description: ...and How to Avoid Them
 youTubeVideo: https://www.youtube.com/embed/3bqohVu_zmw?&controls=0
 type: exclusive
+status: draft
 ---
 
 As a junior developer, you're bound to make mistakes. But don't worry, we've got your back. Here are 7 common mistakes that junior developers make and how to avoid them.

@@ -3,6 +3,7 @@ title: Harnessing the Power of TypeScript Interfaces - A Guide for Developers
 date: "2023-03-10T20:00:00.000Z"
 description: "Empowering Your Code with Type Safety and Organization"
 featuredImage: header.jpg
+status: draft
 ---
 
 As a TypeScript developer, I have come to appreciate the power of interfaces in ensuring the type safety of my code. Interfaces allow us to define the shape of an object and enforce that shape in our code.

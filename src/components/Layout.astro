@@ -10,9 +10,11 @@ interface Props {
   ogType?: 'website' | 'article';
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
   image?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
 }
 
-const { title, description, keywords, ogType, structuredData, image } = Astro.props;
+const { title, description, keywords, ogType, structuredData, image, noindex, nofollow } = Astro.props;
 ---
 
 <BaseLayout
@@ -22,6 +24,8 @@ const { title, description, keywords, ogType, structuredData, image } = Astro.pr
   ogType={ogType}
   structuredData={structuredData}
   image={image}
+  noindex={noindex}
+  nofollow={nofollow}
 >
   <Nav />
   <main>

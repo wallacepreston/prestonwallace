@@ -3,6 +3,7 @@ title: The Ultimate Terminal Cheatsheet - Your Key to Command Line Productivity
 description: Master the Terminal and Rule the Command Line Kingdom!
 featuredImage: man-in-front-of-castle.jpg
 type: exclusive
+status: draft
 ---
 
 Welcome to the Ultimate Terminal Cheatsheet! We know the command line can be intimidating, like trying to navigate a maze blindfolded. But fear not, for this cheatsheet will be your trusty guide, like a GPS for your terminal. From manipulating files to networking to version control, we've got you covered. Let's power up our keyboards and get ready to conquer the command line!

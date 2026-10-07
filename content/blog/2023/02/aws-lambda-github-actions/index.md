@@ -3,6 +3,7 @@ title: Deploy Your First AWS Lambda Function with GitHub Actions
 date: "2023-02-26T20:00:00.000Z"
 description: "A Step-by-Step Guide to deploying to AWS Lambda - with Code Samples!"
 featuredImage: header.png
+status: draft
 ---
 
 Writing your first AWS Lambda function is a great way to get started with serverless computing. However, deploying your function can be a bit tricky. In this article, we'll walk through the process of deploying your first Lambda function using GitHub Actions.

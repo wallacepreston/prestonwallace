@@ -3,6 +3,7 @@ title: TypeScript - Unleashing the Power of JavaScript
 date: "2023-02-16T20:00:00.000Z"
 description: "A Practical Example of Improved Code Scalability and Maintainability"
 featuredImage: header.jpg
+status: draft
 ---
 
 TypeScript is a powerful superset of JavaScript that provides optional static typing, class-based object-oriented programming, and other features that can help developers write more maintainable and scalable code. By using TypeScript, developers can catch errors at compile time rather than at runtime, which can lead to fewer bugs and easier debugging. Additionally, TypeScript's enhanced typing system can help make code more self-documenting and improve developer productivity. Overall, TypeScript is a great choice for any project that is looking for a more robust and scalable codebase.

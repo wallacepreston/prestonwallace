@@ -1,0 +1,14 @@
+%% Main article visual: practical agent eval stack
+flowchart BT
+  D["01<br/>Deterministic checks<br/><small>Schema · tools · budgets</small>"] --> T["02<br/>Trajectory match<br/><small>Calls · order · arguments</small>"]
+  T --> J["03<br/>LLM judge<br/><small>Coherence · groundedness</small>"]
+  J --> H["04<br/>Human calibration<br/><small>Review · refine rubrics</small>"]
+
+  classDef base fill:#082d32,stroke:#1df9f8,color:#f5f7ff,stroke-width:2px;
+  classDef trajectory fill:#0b2531,stroke:#22d3d2,color:#f5f7ff,stroke-width:2px;
+  classDef judge fill:#10192b,stroke:#22a9b8,color:#f5f7ff,stroke-width:2px;
+  classDef human fill:#121523,stroke:#5f7c91,color:#f5f7ff,stroke-width:2px;
+  class D base;
+  class T trajectory;
+  class J judge;
+  class H human;

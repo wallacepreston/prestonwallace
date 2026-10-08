@@ -1,110 +1,46 @@
 ---
-title: "From Long Documents to Defensible Procurement Decisions"
-description: Lessons from David Sojka on AI procurement workflows, document review, authenticated portals, data security, and human approval.
+title: "Finding the Next Procurement Opportunity with AI"
+description: David Sojka on finding contract opportunities with AI, protecting company data, and helping teams put AI to work.
 publishedAt: 2026-10-19
-image: /images/blog/ai-procurement-workflows-david-sojka.png
-imageAlt: A five-step AI procurement workflow from opportunity discovery through human approval.
+image: /images/blog/david-sojka-cover.png
+imageAlt: David Sojka smiling in a dark jacket and white shirt.
 status: draft
 ---
 
-Procurement teams work through long documents, scattered portals, firm deadlines, and requirements that must be traced back to the source. AI can reduce the reading and drafting load when the workflow preserves that traceability.
+Finding contracts means keeping up with listings across procurement portals. Each has its own search tools and alerts, so checking for new work can take a lot of time.
 
-I recently spoke with [David Sojka](https://www.linkedin.com/in/davidsojka/), Director of Procurement and Contracts at [SkillOps](https://www.linkedin.com/company/trainwithskillops/home/), about how he uses AI in procurement and where he wants the workflow to go next.
+[David Sojka](https://www.linkedin.com/in/davidsojka/), Director of Procurement and Contracts at [SkillOps](https://www.linkedin.com/company/trainwithskillops/home/), sees a useful job for AI here. His approach ties together finding work, protecting company data, and teaching people how to use the tools.
 
-David uses AI to review procurement packages that may span several documents and 40 to 60 pages. He is also exploring agents that could monitor authenticated procurement portals for relevant opportunities.
+## Find the right opportunities sooner
 
-Here are the ideas that stayed with me.
+SkillOps provides professional development and training. David checks procurement portals for work that fits those services, using alerts and direct searches to cover more ground.
 
-## Document summarization is a useful starting point
+He is exploring an agent that checks the portals regularly and flags relevant listings quickly. Access through the portals' logins is one part he is working through.
 
-David described AI as indispensable in his current role. SkillOps has a small team, and a single request for quote can include many pages of legal language, submission rules, training requirements, and deadlines.
+The idea has a clear job: look in specific places for specific work, then tell the person who can act on it. Other teams can use that same approach for partner listings or customer notices. Start with something people already check often and decide which updates deserve their attention.
 
-His current workflow starts by giving the documents to Claude or another AI tool and asking for the important details. He then reviews the condensed output against the original package.
+## Keep company information in company tools
 
-This is a strong early use case for AI in procurement because the task has a clear boundary. The system is helping someone inspect a known set of documents. The source material remains available for verification.
+SkillOps has an AI policy and provides tools for different work tasks. David keeps sensitive company information in that work environment, even when his personal subscription has features he would like to use.
 
-A useful extraction should identify details such as:
+He brings the same care to his agent plans. The automation needs to work within the company's rules for data and access.
 
-- Buyer and agency
-- Scope of work
-- Eligibility requirements
-- Required forms and attachments
-- Questions and submission deadlines
-- Evaluation criteria
-- Contract terms that need closer review
+That gives other teams a useful starting point: decide what information an agent needs and where it can go before choosing the tools.
 
-The result should include page or section references. That gives the reviewer a direct path back to each requirement.
+## Make AI guidance easy to reuse
 
-## Source grounding protects the proposal
+David has seen businesses that need help with AI policies and employee training. SkillOps recently introduced AI courses, drawing on its team's experience designing courses and preparing instructors to teach them.
 
-A polished summary can hide an omission. Procurement workflows need visible evidence for every important field.
+That experience matters. People need material they can understand and use in their work.
 
-The system should store the source document, extracted passage, page number, and normalized requirement together. If the model identifies a due date, the reviewer should be able to open the exact section that contains it.
+Inside SkillOps, the director of technology has also shared reusable skills: saved instructions employees can add to their AI tools. These give the model context and things to check before answering.
 
-Confidence labels can help route attention. A clearly stated deadline may need a quick confirmation. An ambiguous insurance clause may need legal review. Missing attachments should create an explicit exception.
+Other teams can do something similar by turning useful task instructions into a shared starting point. People can build on what colleagues have already worked out.
 
-The review path could look like this:
+## Give the team a way to act
 
-<figure class="mermaid-frame">
-  <img class="article-diagram" src="/images/blog/ai-procurement-workflows-david-sojka.png" alt="A five-step AI procurement workflow from portal monitoring to human approval." />
-</figure>
+David and his colleagues are also improving SkillOps' CRM and how people work together as the company grows.
 
-Each step should keep the opportunity ID and source references attached. That lineage makes the workflow easier to inspect and test.
+That connects directly to his agent idea. Finding a potential contract starts a chain of work: someone checks the fit, the team decides whether to pursue it, and a proposal takes shape.
 
-## Opportunity discovery is the harder retrieval problem
-
-David wants an agent that checks procurement portals regularly and surfaces opportunities that match SkillOps services.
-
-Portal alerts often miss relevant listings. Search tools can be dated. Information may sit across SAM.gov and several vendor systems, including Oracle-based portals behind authenticated sessions.
-
-This shifts the engineering problem from document analysis to reliable retrieval. The agent needs to:
-
-1. Authenticate through an approved method.
-2. Query supported APIs when they exist.
-3. Normalize records from different portal schemas.
-4. Match opportunities against SkillOps capabilities.
-5. Record why each opportunity matched.
-6. Notify the procurement owner with source links and deadlines.
-
-A browser agent may help when a portal offers no usable API. It needs careful session handling, narrow permissions, failure detection, and logs that show what the agent observed.
-
-## Authenticated systems need controlled tools
-
-David raised a practical concern about sensitive company information. SkillOps has a protected company Claude environment, while some of the agent features he wants are available elsewhere.
-
-An MCP server or another controlled integration can give an agent a limited set of procurement tools. A tool might search opportunities, fetch one listing, or download a document. Its permissions can exclude proposal submission, record deletion, and account changes.
-
-That boundary matters. An opportunity-monitoring agent needs read access and a notification channel. Proposal submission should remain behind a human approval step.
-
-The integration should also record:
-
-- Which account and tool accessed the portal
-- Which query was used
-- Which records were returned
-- Which documents were sent to a model
-- Which fields were removed or masked
-- Which person approved the next action
-
-These logs support troubleshooting, security review, and evaluation.
-
-## AI policy and training are part of the system
-
-SkillOps recently introduced AI skill development training. David said he has been surprised by how many companies lack an AI policy, approved models, and rules for protected information.
-
-The workflow design should make those policies concrete. Teams need to know which tools are approved, what data may enter them, how outputs are checked, and when a person must make the decision.
-
-Training should use the team's real tasks. A procurement exercise could ask someone to extract requirements from a sample request, verify the citations, identify missing information, and document the final review. That practice builds judgment around the tool.
-
-## Start with one narrow procurement workflow
-
-The most practical first version is a small pipeline with a measurable result:
-
-1. Monitor one portal or saved search.
-2. Collect listings from one category.
-3. Score them against a short capability profile.
-4. Send a daily review list with links and match reasons.
-5. Track useful matches, missed opportunities, and false positives.
-
-Once retrieval is dependable, the system can fetch attachments and prepare a requirement matrix. Drafting can follow after the source-grounding and approval steps are working well.
-
-My biggest takeaway from David was that procurement AI depends on trustworthy access to the underlying records. Summaries create immediate value. Reliable retrieval, citations, controlled tools, and human approval turn that value into a repeatable workflow.
+Pick one thing your team checks repeatedly. Define what matters, who should hear about it, and what happens next. That is the kind of focused task behind David's approach.

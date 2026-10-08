@@ -1,7 +1,7 @@
 ---
 title: "Anthony Williams on Why AI Needs a Physical Layer"
 description: Lessons from Anthony Williams on AI in proptech, smart-home middleware, access reliability, product focus, and self-guided customer experiences.
-publishedAt: 2026-10-05
+publishedAt: 2026-10-12
 image: /images/blog/ai-needs-a-physical-layer-anthony-williams.png
 imageAlt: Professional portrait of Anthony Williams.
 status: draft

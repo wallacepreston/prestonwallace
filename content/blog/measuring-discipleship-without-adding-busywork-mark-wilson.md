@@ -1,7 +1,7 @@
 ---
 title: "Measuring Discipleship Without Adding Busywork"
 description: "Mark Wilson's church discipleship dashboard raises practical questions about small group metrics, leader input, permissions, and field testing."
-publishedAt: 2026-11-23
+publishedAt: 2026-11-16
 status: draft
 image: /images/blog/measuring-discipleship-without-adding-busywork-mark-wilson.png
 imageAlt: Portrait of Mark Wilson beside the title Measuring discipleship without busywork.

@@ -1,7 +1,7 @@
 ---
 title: "How AI Can Give HR More Time for Human Judgment"
 description: Lessons from Dr. Amaziah Dominic on AI in HR, skills-based hiring, bias checks, onboarding, translation, and employee experience.
-publishedAt: 2026-11-09
+publishedAt: 2026-11-16
 image: /images/blog/ai-in-hr-human-judgment-amaziah-dominic.png
 imageAlt: Portrait of Dr. Amaziah Dominic beside a diagram of an AI-assisted hiring workflow.
 status: draft

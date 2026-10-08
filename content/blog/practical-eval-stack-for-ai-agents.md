@@ -1,7 +1,7 @@
 ---
 title: "A Practical Eval Stack for AI Agents"
 description: A concise guide to deterministic checks, trajectory matching, AgentEvals, LLM judges, CI gates, and production feedback for AI agents.
-publishedAt: 2026-12-07
+publishedAt: 2026-12-14
 image: /images/blog/practical-eval-stack-for-ai-agents.png
 imageAlt: A four-layer AI agent evaluation stack covering deterministic checks, trajectory matching, LLM judges, and human calibration.
 status: draft

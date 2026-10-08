@@ -1,7 +1,7 @@
 ---
 title: "School Transportation Starts With the Family Trip"
 description: "Kimberly Moore of Go Together explains how school verified carpools can help districts plan around the trips families already make."
-publishedAt: 2026-11-23
+publishedAt: 2026-11-30
 status: draft
 image: /images/blog/school-transportation-starts-with-the-family-trip.png
 imageAlt: Portrait of Kimberly Y. Moore on a dark blue background.

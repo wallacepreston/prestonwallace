@@ -1,7 +1,7 @@
 ---
 title: "The Next Refinance Deal Is Hidden in the Data"
 description: Lessons from Ryan Granito on mortgage maturity data, title records, AI-supported refinance sourcing, and real-estate finance.
-publishedAt: 2026-11-02
+publishedAt: 2026-11-09
 image: /images/blog/ryan-granito-cover.png
 imageAlt: Portrait of Ryan Granito, Managing Director at Concord Summit Capital.
 status: draft

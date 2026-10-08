@@ -1,7 +1,7 @@
 ---
 title: "Meeting People Where They Are: AI and the Church's Mission"
 description: "Matthew Banther shares his heart for life change, using AI to connect people seeking Christ with community, and helping churches embrace digital ministry now."
-publishedAt: 2026-11-30
+publishedAt: 2026-12-07
 status: draft
 image: /images/blog/when-ai-moves-a-ministry-conversation-to-a-person.png
 imageAlt: Portrait of Matthew Banther on a dark blue background.

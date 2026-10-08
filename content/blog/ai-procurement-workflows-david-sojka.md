@@ -1,10 +1,10 @@
 ---
 title: "Finding the Next Procurement Opportunity with AI"
 description: David Sojka on finding contract opportunities with AI, protecting company data, and helping teams put AI to work.
-publishedAt: 2026-10-19
+publishedAt: 2026-09-28
 image: /images/blog/david-sojka-cover.png
 imageAlt: David Sojka smiling in a dark jacket and white shirt.
-status: draft
+status: published
 ---
 
 Finding contracts means keeping up with listings across procurement portals. Each has its own search tools and alerts, so checking for new work can take a lot of time.

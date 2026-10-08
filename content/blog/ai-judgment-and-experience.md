@@ -1,7 +1,7 @@
 ---
 title: "The Part of AI That Still Needs Experience"
 description: Lessons from Richard Munro on AI automation, professional judgment, board leadership, and building a durable advisory career.
-publishedAt: 2026-10-05
+publishedAt: 2026-10-12
 image: /images/blog/richard-munro-cover.png
 imageAlt: Portrait of Richard Munro, advisor and board leader.
 status: draft

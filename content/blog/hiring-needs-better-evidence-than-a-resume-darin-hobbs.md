@@ -1,7 +1,7 @@
 ---
 title: "Hiring Needs Better Evidence Than a Resume"
 description: Lessons from Darin Hobbs on Learning and Employment Records, digital credential wallets, skills data, and AI-supported hiring.
-publishedAt: 2026-10-26
+publishedAt: 2026-11-02
 image: /images/blog/darin-hobbs-cover.png
 imageAlt: Portrait of Darin Hobbs, learning and employment records consultant.
 status: draft

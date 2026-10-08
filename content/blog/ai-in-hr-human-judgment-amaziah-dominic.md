@@ -81,6 +81,8 @@ A practical selection process begins with four questions:
 
 These questions are especially important when the source material includes confidential employee, applicant, insurance, or benefits information.
 
+That review step has a close parallel in my [AI Instructor Validation project](/portfolio/ai-instructor-validation/). It checks instructor access requests against official university sources and sends ambiguous cases to a person for approval. The useful connection to Dom's point is making the evidence and next step clear. Hiring adds its own requirements for fairness and judgment.
+
 ## Make employee experience a success metric
 
 An HR automation can save time and still create confusion. A candidate may receive faster messages with less useful information. An employee may get an immediate answer that misstates policy. A recruiter may receive a ranked list without enough context to challenge it.

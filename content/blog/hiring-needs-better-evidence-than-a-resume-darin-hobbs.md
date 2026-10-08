@@ -9,9 +9,9 @@ status: draft
 
 A job title tells you very little about what someone can do. A candidate might have the right experience and still struggle to describe it in the language an employer uses.
 
-[Darin Hobbs](https://www.linkedin.com/in/darinhobbs/) has spent years working on that problem. At Western Governors University, he helped develop its digital achievement wallet. Through his consulting firm, [Covered Bridge Collective](https://coveredbridgecollective.com/), he works with iQ4 on Learning and Employment Records and credential wallets.
+[Darin Hobbs](https://www.linkedin.com/in/darinhobbs/) has spent years working on that problem. At Western Governors University, he helped develop its digital achievement wallet. Through his consulting firm, [Covered Bridge Collective](https://coveredbridgecollective.com/), he works with iQ4 on Learning and Employment Records and the iQ4 credential wallet.
 
-His vision gives employers a way to find people through evidence of their skills, while giving individuals control over how that evidence is shared.
+The Learning and Employment Record vision, as described in the American Workforce Policy Advisory Board white paper [Learning and Employment Records: Progress and the path forward](https://www.commerce.gov/sites/default/files/2020-09/LERwhitepaper09222020.pdf), gives employers a way to find people through evidence of their skills, while giving individuals control over how that evidence is shared.
 
 ## Help employers find the skills they need
 
@@ -54,7 +54,7 @@ Darin places individual ownership at the center of a credential wallet. A person
 
 That ownership matters as someone changes jobs, takes courses, or earns certifications through different providers. Their record needs to travel with them.
 
-WGU's [Achievement Wallet](https://www.wgu.edu/achievement-wallet.html) offers a concrete example. It connects coursework and experience to skills, helps learners explore career paths, and lets them share a full or tailored wallet with employers.
+WGU's [Achievement Wallet](https://www.wgu.edu/achievement-wallet.html), powered by iQ4, offers a concrete example. It connects coursework and experience to skills, helps learners explore career paths, and lets them share a full or tailored wallet with employers.
 
 Darin also described time-limited sharing as a direction the ecosystem is moving toward. He sees connecting wallets with employers' hiring systems as another important step in making these records useful at a larger scale.
 
@@ -66,4 +66,4 @@ He also sees potential for an agent that helps people plan what to learn next. I
 
 That is a future capability he would like to see. The useful idea is advice connected to a person's existing skills and the work available to them.
 
-Darin's approach gives hiring teams a practical place to start: take one role and spell out the skills used in its day-to-day work. That clarity makes it easier to recognize relevant credentials, ask useful interview questions, and help people see where their experience fits.
+Darin's approach is inspired by the many colleagues and subject-matter experts he has worked with, and gives hiring teams a practical place to start: take one role and spell out the skills used in its day-to-day work. That clarity makes it easier to recognize relevant credentials, ask useful interview questions, and help people see where their experience fits.

@@ -37,6 +37,8 @@ That makes search design important. Teams need parameters that narrow a large da
 
 A practical system should also keep source provenance. If a deal is prioritized because a mortgage matures next year, the user needs to see the title or recorded document that supports the claim.
 
+My [LLM Contact Discovery](/portfolio/llm-contact-discovery/) work came up in the conversation. That project turns scattered university pages into contact records with source links and review controls. The connection to his sourcing idea is the research workflow: narrow the search, gather evidence, and give the person making the call a list they can check.
+
 ## Close the loop with outcomes
 
 The useful metric is not how many records the system found. It is whether the prioritized queue leads to qualified conversations, credible underwriting, and completed transactions.

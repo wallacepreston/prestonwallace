@@ -31,6 +31,8 @@ Districts generally pay for access per user, while private and charter schools o
 
 Verification and adoption are connected. A family needs to know who is allowed into the system before a matching feature matters. A school needs to explain the process clearly enough that families actually use it.
 
+School approval has a useful parallel in my [AI Instructor Validation project](/portfolio/ai-instructor-validation/). It checks instructor access requests against official school sources and gives uncertain cases a human review path. Go Together's family checks serve a different purpose, but the shared lesson is clear: make verification part of joining the service and give people a way to resolve uncertainty.
+
 ## Plan beyond the bus route
 
 Kimberly described the national bus driver shortage as a reason to revisit the full set of travel options available to a district. Combining routes can leave a child on a bus longer or shift pickup to an inconvenient time. Some students need designated transportation. Others may be able to use a carpool, transit, a hub, or another route that fits their family.

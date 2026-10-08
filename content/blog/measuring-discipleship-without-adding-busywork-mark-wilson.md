@@ -49,6 +49,8 @@ The prototype does not yet have logins or user roles. Mark described a future se
 
 Those choices shape the product. Authentication, role permissions, data ownership, and retention need to be designed before real personal stories enter the system. An AI feature that summarizes group activity would have to follow the same boundaries and allow staff to check its output.
 
+I handled a similar access concern in [Production Document Chat](/portfolio/production-document-chat/), an assistant I built for winery teams. Users can select a winery they are authorized to work with, and their questions stay tied to that business's data. That is a useful example for Mark's planned staff and group-leader views: access should follow the person's responsibility.
+
 ## Test the work before building more
 
 Mark built the sample application quickly with Google tools. It makes the concept tangible, which gives church leaders something concrete to react to. His next step is to share an empty version with a handful of churches and ask them to try their own data.

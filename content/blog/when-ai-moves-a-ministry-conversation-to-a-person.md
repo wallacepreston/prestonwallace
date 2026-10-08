@@ -39,4 +39,6 @@ At Calvary, that learning is underway. The church has released initial ethical g
 
 Matthew also uses sermons, commentaries, and seminary library material to support his own study. AI helps him work through long missiology papers and make the ideas easier to teach.
 
+Matthew's emphasis on helping staff use information reminds me of [Production Document Chat](/portfolio/production-document-chat/), which I built for winery teams. It lets staff ask questions about their business data and get charts or downloadable lists. Suggested questions help people get started. For church staff exploring shared resources, that is a useful design idea: make the assistant's purpose and available information easy to understand.
+
 I appreciated Matthew's perspective on AI's place in ministry. He sees a strong role for it as an assistant and research tool. He also pointed out how AI should not write a sermon or counsel a person. Those are human jobs, requiring care, theological judgment, and responsibility for the people being served.

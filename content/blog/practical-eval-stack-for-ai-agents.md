@@ -30,6 +30,8 @@ Run cheap, repeatable checks on every pull request. Validate schemas, allowed to
 
 These checks produce a clear failure reason and keep CI fast. OpenAI’s [graders documentation](https://developers.openai.com/api/docs/guides/graders) includes string checks and text-similarity graders alongside model-based graders.
 
+My [AI Instructor Validation project](/portfolio/ai-instructor-validation/) gives a concrete example of behaviors worth testing. It checks official faculty sources, returns structured evidence, and routes uncertain requests for human approval. An eval case could check whether missing evidence takes the correct path and whether the applicant gets a clear next step. Those are observable outcomes you can build a test around.
+
 ## Add trajectory matching for tool use
 
 A final answer can look correct even when the agent took a risky path. Trajectory evals inspect the intermediate messages and tool calls that produced it.

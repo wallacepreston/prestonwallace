@@ -13,16 +13,6 @@ I recently discussed that question with [Richard Munro](https://www.linkedin.com
 
 His answer was practical: AI will absorb more mechanical work. The harder work still depends on experience, judgment, and accountability.
 
-## Trust is built one assignment at a time
-
-Richard studied accounting in New Zealand and became a licensed accountant. He worked in controller and CFO roles, then became self-employed in consulting in 1998.
-
-His first receivership came roughly 30 years ago, when a bank and court asked him to take control of a troubled business. He stabilized it, sold it successfully, and helped the bank recover its position.
-
-That result led to the next opportunity. Today, attorneys and courts bring him into disputes involving threatened assets, distressed companies, and ownership deadlocks. In a 50/50 ownership dispute, for example, a court may appoint an independent director to break the tie and move the company forward.
-
-The broader lesson applies to consulting: credibility compounds through difficult work completed well.
-
 ## AI raises the value of judgment
 
 Richard expects AI to handle more repetitive accounting, testing, document review, and information processing. He also believes a young accountant should spend serious time learning LLMs and finding ways to work more effectively with them.

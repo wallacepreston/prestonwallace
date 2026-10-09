@@ -46,6 +46,8 @@ An accessibility feature that helps someone navigate a web page may not make a d
 
 That leads to a stronger standard for document remediation: repair the source-level document and produce a file that can stand on its own with assistive technology.
 
+For teams facing a backlog of inaccessible PDFs, Foresera’s tool brings together document discovery, risk assessment, and source-level repair, with complex material routed for human review. To learn how that workflow could fit your document collection, visit [Foresera.com](https://foresera.com/) or reach out to [Kacy directly](https://www.linkedin.com/in/kacy-irby/).
+
 For public agencies, this shows up in everyday interactions. A building permit, meeting agenda, benefit form, or public record can be the real service a resident needs. The web page is only the route to that service.
 
 ## Reading order is a correctness problem

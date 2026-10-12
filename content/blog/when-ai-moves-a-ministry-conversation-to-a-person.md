@@ -35,7 +35,7 @@ His encouragement to churches is to start learning now. Understand how people us
 
 ## Helping staff serve people
 
-At Calvary, that learning is underway. The church has released initial ethical guidance, and a team of staff members with experience using AI are helping colleagues learn. Pastors across eight campuses are exploring ways to share sermon archives and resources.
+At Calvary, that learning is underway. The church has released initial ethical guidance, and a team of staff members with experience using AI are helping colleagues learn. Pastors across six campuses are exploring ways to share sermon archives and resources.
 
 Matthew also uses sermons, commentaries, and seminary library material to support his own study. AI helps him work through long missiology papers and make the ideas easier to teach.
 

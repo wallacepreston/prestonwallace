@@ -1,0 +1,2192 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+
+const lauren = "https://x.com/poteto/status/2102050467505430555?s=20"
+const dhh =
+  "https://www.linkedin.com/posts/st-scottsun-inireland_dhh-writing-code-by-hand-is-over-its-no-ugcPost-7509166495810138112-oR9R/"
+const sources = {
+  projects: "https://cursor.com/blog/projects",
+  release: "https://cursor.com/blog/rollouts-and-security-reviewer",
+  remote: "https://cursor.com/changelog/remote-control-local-agents",
+  grok: "https://docs.x.ai/grok-bot/overview",
+  engineering: "https://x.ai/bot/guides/grok-bot-for-engineering",
+  dots: "https://learn.chatgpt.com/docs/dots/computers-and-apps",
+  review: "https://cursor.com/docs/bugbot",
+}
+const visuals: Record<string, { file: string; alt: string; credit: string }> = {
+  fence: {
+    file: "ai-fence-1.jpeg",
+    alt: "Three-panel cartoon: a person leaves an unpainted patch on a fence, hands the brush to AI, and AI repeats the patch on every board",
+    credit: "Fence cartoon supplied by Preston; creator not identified",
+  },
+  companies: {
+    file: "ai-companies.png",
+    alt: "Meme of a company loudly pushing unwanted AI at a reluctant customer",
+    credit: "AI-company meme supplied by Preston",
+  },
+  opportunity: {
+    file: "all-companies-tech-company.png",
+    alt: "Dr. Evil making air quotes around the words Tech Company",
+    credit: "Tech-company meme supplied by Preston",
+  },
+  programmers: {
+    file: "ai-programmers.png",
+    alt: "Four-panel Gru meme: AI can write code, but clear requirements and reading and debugging AI code are still needed",
+    credit: "Programmer meme supplied by Preston · imgflip.com",
+  },
+  dario: {
+    file: "dario-amodei-software-6-12-mo.png",
+    alt: "Dario Amodei beside a headline predicting AI could take over most software engineering tasks within six to twelve months",
+    credit: "Wccftech headline image supplied by Preston",
+  },
+  factory: {
+    file: "kitchen.jpg",
+    alt: "Chefs coordinating their work in Guy Savoy’s restaurant kitchen",
+    credit: "Guy Savoy / Laurence Mouton · Le Dauphiné",
+  },
+  steps: {
+    file: "supplied-animation.gif",
+    alt: "Animated coding workflow with an editor and AI conversation",
+    credit: "Workflow animation · supplied Medium image",
+  },
+  review: {
+    file: "cloud-agent-review.jpg",
+    alt: "Grok Bot PR handoff with changed files and CI results",
+    credit: "Official xAI engineering workflow example",
+  },
+  bots: {
+    file: "engineer-bots.jpg",
+    alt: "A collection of specialized engineering bots",
+    credit: "Official xAI engineering workflow example",
+  },
+  confidence: {
+    file: "dunning-kruger-confidence.png",
+    alt: "Illustrative confidence-versus-knowledge curve: early confidence, disillusionment, and gradual understanding",
+    credit: "Confidence curve illustration supplied by Preston",
+  },
+  lauren: {
+    file: "lauren.jpg",
+    alt: "Lauren Tan presenting her talk on delegating software work",
+    credit: "Lauren Tan (@poteto) · original talk thumbnail",
+  },
+  dhh: {
+    file: "dhh-video-thumbnail.png",
+    alt: "David Heinemeier Hansson speaking on stage",
+    credit: "DHH video preview supplied by Preston",
+  },
+}
+const visualFor = (slide: { kind: string; link?: string }) =>
+  visuals[
+    slide.kind === "video"
+      ? slide.link === lauren
+        ? "lauren"
+        : "dhh"
+      : slide.kind
+  ]
+const slides = [
+  {
+    title: "Building software with AI",
+    time: "00:00–00:30",
+    kind: "cover",
+    theme: "dark",
+    intro: "Beyond vibe coding",
+    notes: {
+      lead: "I build with AI and own the result.",
+      bullets: ["Introduce myself briefly."],
+      audience: "Who has used AI to generate code?",
+    },
+  },
+  {
+    title: "Delegating at scale",
+    time: "00:30–02:00",
+    kind: "video",
+    theme: "dark",
+    intro: "What evidence would make you trust an agent’s work?",
+    points: [
+      "Watch for the feedback loop.",
+      "Name one check you would require.",
+    ],
+    link: lauren,
+    linkLabel: "Watch Lauren (@poteto)",
+    notes: {
+      lead: "Lauren delegates implementation and retains responsibility.",
+      cue: "Play 00:00–02:02 · 2 minutes · normal speed.",
+      bullets: [
+        "PR volume is her reported example.",
+        "The kitchen analogy comes next.",
+      ],
+      prep: "Original X talk. Caption-checked; preview audio. Alternative: 05:59–06:42, on trust before scaling.",
+    },
+    refs: [{ label: "Engineering example", url: sources.engineering }],
+  },
+  {
+    title: "Software factories: the Michelin kitchen",
+    time: "02:00–03:00",
+    kind: "factory",
+    theme: "dark",
+    intro:
+      "Lauren’s Michelin-star kitchen analogy: coordinate specialists, inspect every plate.",
+    points: [
+      "Order → clear specification",
+      "Stations → specialized agents",
+      "Pass → review and verification",
+      "Service → release and observe",
+    ],
+    notes: {
+      lead: "My read: software factories are popular and likely taking over.",
+      bullets: [
+        "Less control over granular implementation.",
+        "More investment in skills and verification.",
+        "I still want to understand every PR.",
+      ],
+    },
+    refs: [
+      { label: "Lauren’s talk", url: lauren },
+      {
+        label: "Kitchen photo credit",
+        url: "https://www.ledauphine.com/magazine-cuisine-et-vins/2021/12/14/guy-savoy-nous-ouvre-les-portes-du-meilleur-restaurant-au-monde",
+      },
+    ],
+  },
+  {
+    title: "Is software engineering going away?",
+    time: "03:00–03:30",
+    kind: "dario",
+    theme: "dark",
+    intro: "A question about the future of our work.",
+    notes: {
+      lead: "Is software engineering going away? No, I don’t think it’s going away.",
+      bullets: [
+        "Higher output per person.",
+        "Some tasks or roles displaced.",
+        "Harder problems become affordable.",
+        "More on this later.",
+      ],
+      prep: "The headline presents a forecast, not a measured result.",
+    },
+  },
+  {
+    title: "We still need software engineers",
+    time: "03:30–04:00",
+    kind: "programmers",
+    theme: "dark",
+    intro: "The work extends beyond generating code.",
+    notes: {
+      lead: "My near-term view: software engineering jobs aren’t going away.",
+      bullets: [
+        "Fewer engineers may handle each task.",
+        "AI lowers the bar; more features get requested.",
+        "Someone must translate requirements into features.",
+        "Debugging, testing, and deployment still need an owner.",
+      ],
+    },
+  },
+  {
+    title: "Every company is an AI company now",
+    time: "04:00–04:10",
+    kind: "companies",
+    theme: "dark",
+    intro: "A brief pause for the joke.",
+    notes: {
+      lead: "Apparently, every company needs AI now.",
+      cue: "10 seconds. Let the joke land.",
+      bullets: ["Pause for laughs.", "Then: no, but truthfully…"],
+    },
+  },
+  {
+    title: "Every company becomes a software company",
+    time: "04:10–04:50",
+    kind: "opportunity",
+    theme: "dark",
+    intro:
+      "My prediction: more demand for people who can deliver and govern software.",
+    notes: {
+      lead: "No, but truthfully: I see a huge software opportunity.",
+      bullets: [
+        "If AI replaces jobs, companies will need AI.",
+        "AI is software. Companies will need software.",
+        "My prediction: companies become software companies.",
+        "We’ll need many people working in tech.",
+        "The exact jobs? No one knows.",
+        "People must govern what gets implemented.",
+      ],
+    },
+  },
+  {
+    title: "AI copies what you leave behind",
+    time: "04:50–05:20",
+    kind: "fence",
+    theme: "dark",
+    intro: "The codebase is part of the prompt.",
+    notes: {
+      lead: "The agent copies the gap in the example.",
+      bullets: [
+        "Repair patterns before scaling.",
+        "Remove debt and stale workaround comments.",
+        "Enforce good paths with lint and tests.",
+      ],
+      prep: "Lauren: patterns around 21:00; comments 23:44–24:22. Her framework’s comment ban was context-specific.",
+    },
+    refs: [
+      {
+        label: "Lauren timestamps",
+        url: lauren,
+      },
+    ],
+  },
+  {
+    title: "The software development life cycle",
+    time: "05:20–07:20",
+    kind: "sdlc",
+    theme: "dark",
+    intro: "One feature: sign up for an event without duplicate registrations.",
+    points: [
+      "Requirements",
+      "Design",
+      "Implementation",
+      "Testing",
+      "Deployment",
+      "Operation & maintenance",
+    ],
+    notes: {
+      lead: "Trace one signup feature through the life cycle.",
+      bullets: [
+        "Define behavior; choose the design.",
+        "Build, test, release, and observe.",
+        "Feed results into the next iteration.",
+      ],
+    },
+  },
+  {
+    title: "One request across the stack",
+    time: "07:20–09:50",
+    kind: "stack",
+    theme: "dark",
+    intro: "Follow the data. Check every boundary.",
+    points: [
+      "Browser: collect input",
+      "API: receive the request",
+      "Function: validate and decide",
+      "Database: save and enforce uniqueness",
+    ],
+    notes: {
+      lead: "Trace browser → API → function → database → response.",
+      bullets: [
+        "Functions take inputs and produce results.",
+        "Branches use AND, OR, and NOT.",
+        "Concurrent requests can defeat duplicate prechecks.",
+      ],
+      audience: "Where must uniqueness be enforced?",
+    },
+  },
+  {
+    title: "Turn a request into a task",
+    time: "09:50–11:20",
+    kind: "prompt",
+    theme: "dark",
+    intro: "Give Cursor the same context a teammate would need.",
+    points: [
+      "Goal: prevent duplicate event signups",
+      "Context: form, API, schema, tests",
+      "Constraints: follow patterns; keep scope small",
+      "Done: success, invalid input, duplicates, reload",
+    ],
+    notes: {
+      lead: "Give Cursor the context a teammate needs.",
+      bullets: [
+        "Show files and AGENTS.md.",
+        "Specify email normalization and uniqueness.",
+        "Define checks; review the plan first.",
+      ],
+    },
+  },
+  {
+    title: "Context engineering",
+    time: "11:20–13:20",
+    kind: "context",
+    theme: "dark",
+    intro:
+      "Develop the instructions and reusable skills your agents work from.",
+    notes: {
+      lead: "Develop reusable instructions from real work.",
+      bullets: [
+        "AGENTS.md: commands, conventions, boundaries.",
+        "Skills: steps, examples, verification; revise through use.",
+        "Rules: .cursor/rules and .claude/rules.",
+        "Shared .agents/rules needs tool adapters.",
+        "Cursor supports shared .agents/skills.",
+      ],
+    },
+    refs: [
+      {
+        label: "Cursor rules",
+        url: "https://cursor.com/docs/rules",
+      },
+      { label: "Cursor skills", url: "https://cursor.com/docs/skills" },
+      {
+        label: "Claude rules",
+        url: "https://code.claude.com/docs/en/memory",
+      },
+    ],
+  },
+  {
+    title: "Inspect, plan, implement",
+    time: "13:20–17:00",
+    kind: "steps",
+    theme: "dark",
+    intro: "Make each change small enough to understand.",
+    points: [
+      "Read the existing request path",
+      "Review the plan and resolve ambiguity",
+      "Implement one bounded step",
+      "Inspect the diff before continuing",
+    ],
+    notes: {
+      lead: "Show the workflow on one bounded change.",
+      bullets: [
+        "Inspect code; review the plan.",
+        "Implement; inspect the diff.",
+        "Demonstrate UI-only validation missing the API.",
+        "Label prepared defects as examples.",
+      ],
+    },
+  },
+  {
+    title: "Check the first result",
+    time: "17:00–19:00",
+    kind: "checks",
+    theme: "dark",
+    intro: "Expected behavior → observed behavior → evidence → correction",
+    points: [
+      "Submit a valid email",
+      "Repeat with different capitalization",
+      "Reload and verify persistence",
+    ],
+    notes: {
+      lead: "Run the app and compare expected behavior.",
+      bullets: [
+        "Try valid input and duplicates.",
+        "Reload; check persistence.",
+        "Correct narrowly; rerun the check.",
+      ],
+      audience: "What would convince you this survives reload?",
+    },
+  },
+  {
+    title: "Confidence is not understanding",
+    time: "19:00–20:00",
+    kind: "confidence",
+    theme: "dark",
+    intro: "Calibrate confidence with evidence.",
+    notes: {
+      lead: "A convincing demo can precede understanding.",
+      bullets: [
+        "Use the curve as a learning metaphor.",
+        "Calibrate confidence through evidence.",
+      ],
+      prep: "Illustration, not a measured scientific trajectory.",
+    },
+    refs: [
+      {
+        label: "Kruger & Dunning",
+        url: "https://pubmed.ncbi.nlm.nih.gov/10626367/",
+      },
+    ],
+  },
+  {
+    title: "Direct and verify one feature",
+    time: "20:00–30:00",
+    kind: "activity",
+    theme: "dark",
+    intro: "Work in pairs: one person directs, one checks.",
+    points: [
+      "0–2 min: choose a slice and acceptance criteria",
+      "2–4 min: give context and review a plan",
+      "4–7 min: build form → API → demo datastore",
+      "7–9 min: test success, invalid input, reload",
+      "9–10 min: write one correction or uncertainty",
+    ],
+    notes: {
+      lead: "Pairs: one directs; one checks. Stop after ten minutes.",
+      bullets: [
+        "Build form → API → demo datastore.",
+        "Check valid input, errors, and reload.",
+        "Record one correction or uncertainty.",
+      ],
+      prep: "Preflight starter and tool access. Fallback: supplied diff and test transcript.",
+    },
+  },
+  {
+    title: "Compare the evidence",
+    time: "30:00–32:00",
+    kind: "questions",
+    theme: "dark",
+    intro: "What did your pair learn?",
+    points: [
+      "What context changed the output?",
+      "What check revealed a problem?",
+      "What remains unverified?",
+    ],
+    notes: {
+      lead: "Take two brief reports; draw one shared lesson.",
+      bullets: ["Allow 30 seconds per pair.", "Use their actual results."],
+      audience: "Which check changed your mind?",
+    },
+  },
+  {
+    title: "Understand every PR",
+    time: "32:00–36:00",
+    kind: "review",
+    theme: "dark",
+    intro: "Investigate the reviewer’s claims.",
+    points: [
+      "Read the diff and surrounding code",
+      "Ask for input, consequence, and reproduction",
+      "Confirm or reject each finding with evidence",
+      "Fix, rerun checks, and decide whether to release",
+    ],
+    notes: {
+      lead: "My opinion: understand every PR without reading every line.",
+      bullets: [
+        "Explain behavior, data flow, risks, and evidence.",
+        "Reproduce one AI review finding.",
+        "I own release, rollback, and follow-up.",
+      ],
+    },
+    refs: [{ label: "Cursor Bugbot", url: sources.review }],
+  },
+  {
+    title: "AI-assisted coding, October 2026",
+    time: "36:00–40:00",
+    kind: "industry",
+    theme: "dark",
+    intro: "Research snapshot: October 9. Refresh before the lecture.",
+    points: [
+      "Sep 10 · Projects: coordination and shared context",
+      "Sep 23 · Rollouts and Security Reviewer",
+      "Oct 6 · Remote control for local agents",
+    ],
+    notes: {
+      lead: "The unit of delegated work keeps growing.",
+      bullets: [
+        "Projects coordinate work and context.",
+        "Review tools help assess releases.",
+        "Remote local agents need an online computer.",
+      ],
+      prep: "October 9 snapshot. Refresh before class.",
+    },
+    refs: [
+      { label: "Projects", url: sources.projects },
+      { label: "Rollouts & Security Reviewer", url: sources.release },
+      { label: "Remote control", url: sources.remote },
+    ],
+  },
+  {
+    title: "Bots that keep working",
+    time: "40:00–43:00",
+    kind: "bots",
+    theme: "dark",
+    intro: "Persistent context, connected tools, and a clear finish line.",
+    points: [
+      "Grok Bot: cloud computer and coding-agent supervision",
+      "dots: cloud work, connected apps, Codex coordination",
+    ],
+    notes: {
+      lead: "Persistent bots coordinate coding agents across sessions.",
+      bullets: [
+        "Grok Bot and dots are examples.",
+        "Define access and approval boundaries.",
+        "Handoff: one fix, diff, and evidence.",
+      ],
+    },
+    refs: [
+      { label: "Grok Bot", url: sources.grok },
+      { label: "Engineering example", url: sources.engineering },
+      { label: "dots", url: sources.dots },
+    ],
+  },
+  {
+    title: "Several futures remain possible",
+    time: "43:00–46:00",
+    kind: "future",
+    theme: "dark",
+    intro: "Scenarios to examine, with evidence to watch.",
+    points: [
+      "More output expected per person",
+      "Substantial displacement of tasks or roles",
+      "More complex problems become affordable",
+    ],
+    notes: {
+      lead: "No one knows the long-term job count.",
+      bullets: [
+        "More output expected per person.",
+        "Some tasks or roles displaced.",
+        "More complex work becomes affordable.",
+      ],
+      audience:
+        "If implementation took one-tenth the time, what becomes hardest?",
+    },
+  },
+  {
+    title: "DHH on handwriting code",
+    time: "46:00–47:00",
+    kind: "video",
+    theme: "dark",
+    intro: "What does this argument change about how you learn and build?",
+    points: [
+      "Watch the argument.",
+      "Connect it to the feature you just directed and checked.",
+    ],
+    link: dhh,
+    linkLabel: "Watch DHH’s argument",
+    notes: {
+      lead: "DHH’s argument is an invitation to build now.",
+      cue: "Play video (2:50 long)",
+      bullets: [
+        "Connect it to the feature students built.",
+        "Keep learning programming and the stack.",
+      ],
+      prep: "Select timestamps and test playback. This is DHH’s opinion, via a repost.",
+    },
+  },
+  {
+    title: "Your next project",
+    time: "47:00–48:00",
+    kind: "closing",
+    theme: "dark",
+    intro: "Pick one problem you care about.",
+    points: [
+      "Build one feature with an agent",
+      "Trace one function and request path",
+      "Test one failure case",
+      "Explain one decision you made",
+    ],
+    notes: {
+      lead: "Choose one problem you care about.",
+      bullets: [
+        "Build one feature with an agent.",
+        "Trace it; test one failure.",
+        "Explain one decision you made.",
+      ],
+    },
+  },
+  {
+    title: "Questions and stay in touch",
+    time: "48:00–50:00",
+    kind: "resources",
+    theme: "dark",
+    intro: "prestonwallace.com/lectures/cp-csc-3100/",
+    notes: {
+      lead: "Leave contact details and QR codes visible.",
+      bullets: ["Songs are optional after-class watching."],
+      audience: "Open Q&A.",
+      prep: "Verify the published URL before class.",
+    },
+  },
+]
+---
+
+<BaseLayout title="Building Software with AI | Preston Wallace" description="Guest lecture for CSC 3100: Software Engineering: AI-assisted development, fundamentals, verification, and the future of software work." noindex>
+  <nav class="deck-controls" aria-label="Presentation controls">
+    <a href="#slide-01" class="deck-name">Preston Wallace · October 19, 2026</a>
+    <div class="control-actions">
+      <button type="button" data-prev aria-label="Previous slide">←</button>
+      <span data-progress aria-live="polite">1 / {slides.length}</span>
+      <button type="button" data-next aria-label="Next slide">→</button>
+      <button type="button" data-present aria-pressed="false">Present</button>
+      <button type="button" data-presenter>Presenter view</button>
+      <button type="button" data-open-slides hidden>Open slides</button>
+      <button type="button" data-print-notes hidden>Print notes / PDF</button>
+      <button type="button" data-notes aria-pressed="false">Notes</button>
+      <button type="button" data-fullscreen>Fullscreen</button>
+      <button type="button" data-print>Print / PDF</button>
+    </div>
+  </nav>
+  <div class="presenter-info" hidden><p>Keep this window on your laptop. Move the audience slides to the projector and click Fullscreen. Slide navigation syncs between windows.</p><p data-up-next></p></div>
+  <main class="lecture-deck" aria-label="Lecture slides" tabindex="-1">
+    {slides.map((slide, index) => (
+      <article class="slide-frame" id={`slide-${String(index + 1).padStart(2, '0')}`} data-slide={index}>
+        <section class:list={['sheet', `sheet--${slide.theme}`, `sheet--${slide.kind}`, { 'sheet--visual': Boolean(visualFor(slide)) }]} aria-labelledby={`title-${index}`}>
+          {slide.kind === 'cover' ? (
+            <>
+              <div class="orbit orbit--one" aria-hidden="true"></div>
+              <div class="orbit orbit--two" aria-hidden="true"></div>
+              <div class="cover-copy">
+                <p class="eyebrow">{slide.intro}</p>
+                <h1 id={`title-${index}`}>Building software<br />with <em>AI</em></h1>
+                <p class="cover-subtitle">Preston Wallace · CSC 3100: Software Engineering</p>
+                <p class="cover-date">October 19, 2026</p>
+              </div>
+            </>
+          ) : (
+            <>
+              <header class="sheet-header">
+                <span>CSC 3100 · Software Engineering</span>
+              </header>
+              <div class="slide-copy">
+                <h2 id={`title-${index}`}>{slide.title}</h2>
+                {!visualFor(slide) && ['activity', 'resources'].includes(slide.kind) && <p class="intro">{slide.intro}</p>}
+                {slide.kind === 'sdlc' ? (
+                  <ol class="lifecycle">{slide.points?.map((point, step) => <li><span>{String(step + 1).padStart(2, '0')}</span>{point}</li>)}</ol>
+                  <p class="annotation">Observe the result. Revise the requirements. Repeat.</p>
+                ) : slide.kind === 'stack' ? (
+                  <ol class="stack-path">{slide.points?.map(point => <li>{point}</li>)}</ol>
+                  <div class="logic"><code>validEmail AND NOT alreadyRegistered</code><p>Validate on the server. Enforce uniqueness in the database.</p></div>
+                ) : slide.kind === 'activity' ? (
+                  <div class="activity-layout">
+                    <ol class="activity-steps">{slide.points?.map(point => <li>{point}</li>)}</ol>
+                    <div class="activity-clock">
+                      <output data-timer aria-label="Activity time remaining">10:00</output>
+                      <div><button type="button" data-timer-start>Start timer</button><button type="button" data-timer-reset>Reset</button></div>
+                      <p data-timer-status role="status">Ready for pair work</p>
+                    </div>
+                  </div>
+                ) : slide.kind === 'resources' ? (
+                  <div class="resource-links">
+                    <a href={lauren} target="_blank" rel="noopener noreferrer">Lauren · agent trust and scale ↗</a>
+                    <a href={dhh} target="_blank" rel="noopener noreferrer">DHH · handwriting code ↗</a>
+                    <a href="https://www.youtube.com/watch?v=3TNpOD6bov8" target="_blank" rel="noopener noreferrer">After class · LGTM song ↗</a>
+                    <a href="https://x.com/_brightmirror/status/2104078568137675107?s=20" target="_blank" rel="noopener noreferrer">After class · Nothing went FOOM ↗</a>
+                    <div class="lecture-contact">
+                      <address class="contact-details">
+                        <strong>Preston Wallace</strong>
+                        <a href="tel:+18052860588">805-286-0588</a>
+                        <a href="https://prestonwallace.com">prestonwallace.com</a>
+                        <a href="https://devrocket.com">devrocket.com</a>
+                      </address>
+                      <figure class="contact-qr">
+                        <a class="linkedin-profile-card" href="https://www.linkedin.com/in/prestonwallace" aria-label="Connect with Preston Wallace on LinkedIn"><img src="/img/lectures/lara-nichols/linkedin-prestonwallace.jpeg" alt="Preston Wallace’s LinkedIn card with headshot, professional title, and QR code" /></a>
+                        <figcaption>Connect on LinkedIn</figcaption>
+                      </figure>
+                      <figure class="contact-qr">
+                        <a class="qr-code" href="https://prestonwallace.com/lectures/cp-csc-3100" aria-label="Open this slide deck"><img src="/img/lectures/lara-nichols/cp-csc-3100-qr.svg" alt="QR code for prestonwallace.com/lectures/cp-csc-3100" width="156" height="156" /></a>
+                        <figcaption>Get these slides</figcaption>
+                      </figure>
+                    </div>
+                  </div>
+                ) : slide.kind === 'context' ? (
+                  <div class="context-map">
+                    <div class="context-files"><strong>Repository context</strong><code>AGENTS.md</code><span>Architecture · commands · boundaries</span><code>.agents/skills/&lt;workflow&gt;/SKILL.md</code><span>Reusable steps · examples · checks</span><code>.agents/rules/</code><span>Shared source, with tool adapters ↓</span><div class="tool-rules"><code>.cursor/rules/*.mdc</code><code>.claude/rules/*.md</code></div></div>
+                    <div class="skill-loop"><strong>Develop a skill</strong><ol>{['Find a recurring task', 'Write a workflow', 'Try real examples', 'Inspect evidence', 'Revise and repeat'].map(item => <li>{item}</li>)}</ol><p>Prompt = this task<br />Rules = constraints<br />Skill = repeatable method</p></div>
+                  </div>
+                ) : visualFor(slide) ? (
+                  <div class="visual-layout">
+                    <figure class="slide-visual">
+                      {slide.kind === 'fence' ? (
+                        <div class="fence-panels">
+                          <img src="/img/lectures/lara-nichols/ai-fence-1.jpeg" alt="A person paints a fence, leaving an unpainted patch, while AI watches" loading="lazy" />
+                          <img src="/img/lectures/lara-nichols/ai-fence-2.jpeg" alt="The person hands the paintbrush to AI and points down the fence" loading="lazy" />
+                          <img src="/img/lectures/lara-nichols/ai-fence-3.jpeg" alt="AI repeats the same unpainted patch on every fence board" loading="lazy" />
+                        </div>
+                      ) : <img src={`/img/lectures/lara-nichols/${visualFor(slide).file}`} alt={visualFor(slide).alt} loading="lazy" />}
+                      {slide.kind === 'steps' && <button type="button" class="animation-toggle" data-animation aria-pressed="false">Pause animation</button>}
+                    </figure>
+                  </div>
+                ) : (
+                  <ul class:list={['points', { 'points--large': slide.kind === 'future' || slide.kind === 'questions' }]}>{slide.points?.map(point => <li>{point}</li>)}</ul>
+                )}
+                {slide.link && <a class="video-link" href={slide.link} target="_blank" rel="noopener noreferrer">{slide.linkLabel} <span aria-hidden="true">↗</span></a>}
+              </div>
+            </>
+          )}
+          <footer class="folio"><span>Building Software with AI</span><span>{String(index + 1).padStart(2, '0')} / {slides.length}</span></footer>
+        </section>
+        <aside class="speaker-notes" aria-label={`Speaker notes for slide ${index + 1}`} hidden>
+          <h3>Speaker notes · {slide.time}</h3>
+          {slide.notes.cue && <p class="note-cue">{slide.notes.cue}</p>}
+          <p class="note-lead">{slide.notes.lead}</p>
+          <ul class="note-bullets">{slide.notes.bullets.map(point => <li>{point}</li>)}</ul>
+          {slide.notes.audience && <p class="audience-cue"><strong>Audience</strong> {slide.notes.audience}</p>}
+          {(slide.notes.prep || slide.refs || visualFor(slide)) && <details class="note-reference">
+            <summary>Reference</summary>
+            {slide.notes.prep && <p>{slide.notes.prep}</p>}
+            {visualFor(slide) && <p class="media-credit">Visual: {visualFor(slide).credit}</p>}
+            {slide.refs && <p class="sources">{slide.refs.map(ref => <a href={ref.url} target="_blank" rel="noopener noreferrer">{ref.label}</a>)}</p>}
+          </details>}
+        </aside>
+      </article>
+    ))}
+  </main>
+  <p class="deck-help">Working draft · Use ← / → to navigate, P to present, N for notes, Esc to exit. Video excerpts and activity starter need preparation before class.</p>
+  <p class="deck-message" role="status" data-message></p>
+  <script>
+    const frames = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-slide]")
+    )
+    const progress = document.querySelector<HTMLElement>("[data-progress]")
+    const presentButton =
+      document.querySelector<HTMLButtonElement>("[data-present]")
+    const notesButton = document.querySelector<HTMLButtonElement>("[data-notes]")
+    const previousButton = document.querySelector<HTMLButtonElement>("[data-prev]")
+    const nextButton = document.querySelector<HTMLButtonElement>("[data-next]")
+    const fullscreenButton =
+      document.querySelector<HTMLButtonElement>("[data-fullscreen]")
+    const presenter = new URLSearchParams(location.search).has("presenter")
+    const sessionUrl = new URL(location.href)
+    const session = sessionUrl.searchParams.get("session") ?? crypto.randomUUID()
+    sessionUrl.searchParams.set("session", session)
+    history.replaceState(null, "", sessionUrl)
+    const channel =
+      typeof BroadcastChannel === "undefined"
+        ? null
+        : new BroadcastChannel(`lara-nichols-${session}`)
+    document.body.classList.toggle("presenter-view", presenter)
+    document
+      .querySelectorAll<HTMLElement>(
+        ".presenter-info, [data-open-slides], [data-print-notes]"
+      )
+      .forEach(element => (element.hidden = !presenter))
+    const announce = () => channel?.postMessage({ type: "slide", index: current })
+    let current = 0
+    let presenting = false
+    let showNotes = false
+    const update = () => {
+      frames.forEach((frame, index) =>
+        frame.classList.toggle("is-current", index === current)
+      )
+      const upNext = document.querySelector("[data-up-next]")
+      if (upNext)
+        upNext.textContent = `Up next: ${
+          frames[current + 1]?.querySelector("h1, h2")?.textContent ??
+          "End of lecture"
+        }`
+      if (progress) progress.textContent = `${current + 1} / ${frames.length}`
+      if (previousButton) previousButton.disabled = current === 0
+      if (nextButton) nextButton.disabled = current === frames.length - 1
+    }
+    const navigate = (index: number, broadcast = true) => {
+      current = Math.max(0, Math.min(frames.length - 1, index))
+      update()
+      history.replaceState(null, "", `#${frames[current].id}`)
+      frames[current].scrollIntoView({ behavior: "instant", block: "start" })
+      if (broadcast) announce()
+    }
+    const readHash = () => {
+      const index = frames.findIndex(frame => `#${frame.id}` === location.hash)
+      if (index >= 0) {
+        current = index
+        update()
+      }
+    }
+    const setPresenting = (enabled: boolean) => {
+      if (!enabled && document.fullscreenElement) void document.exitFullscreen()
+      presenting = enabled
+      document.body.classList.toggle("presenting", enabled)
+      presentButton?.setAttribute("aria-pressed", String(enabled))
+      if (presentButton)
+        presentButton.textContent = enabled ? "All slides" : "Present"
+      navigate(current, false)
+    }
+    const toggleNotes = () => {
+      showNotes = !showNotes
+      document.querySelectorAll<HTMLElement>(".speaker-notes").forEach(note => {
+        note.hidden = !showNotes
+      })
+      notesButton?.setAttribute("aria-pressed", String(showNotes))
+    }
+    if (channel) {
+      channel.onmessage = event => {
+        const message = event.data
+        if (message?.type === "ready" && !presenter) announce()
+        if (
+          message?.type === "slide" &&
+          Number.isInteger(message.index) &&
+          message.index >= 0 &&
+          message.index < frames.length
+        )
+          navigate(message.index, false)
+      }
+    }
+    const openView = (speaker: boolean) => {
+      const url = new URL(location.href)
+      url.searchParams.delete("presenter")
+      url.searchParams.delete("present")
+      url.searchParams.set(speaker ? "presenter" : "present", "1")
+      url.hash = frames[current].id
+      window.open(url, `lara-${session}-${speaker ? "presenter" : "audience"}`)
+    }
+    document
+      .querySelector("[data-presenter]")
+      ?.addEventListener("click", () => openView(true))
+    document
+      .querySelector("[data-open-slides]")
+      ?.addEventListener("click", () => openView(false))
+    document.querySelector("[data-print-notes]")?.addEventListener("click", () => {
+      document.body.classList.add("printing-notes")
+      window.print()
+    })
+    window.addEventListener("afterprint", () =>
+      document.body.classList.remove("printing-notes")
+    )
+    previousButton?.addEventListener("click", () => navigate(current - 1))
+    nextButton?.addEventListener("click", () => navigate(current + 1))
+    presentButton?.addEventListener("click", () => setPresenting(!presenting))
+    notesButton?.addEventListener("click", toggleNotes)
+    document
+      .querySelector("[data-print]")
+      ?.addEventListener("click", () => window.print())
+    document
+      .querySelector("[data-fullscreen]")
+      ?.addEventListener("click", async () => {
+        try {
+          if (document.fullscreenElement) await document.exitFullscreen()
+          else {
+            setPresenting(true)
+            await document.documentElement.requestFullscreen()
+          }
+        } catch {
+          const message = document.querySelector("[data-message]")
+          if (message)
+            message.textContent =
+              "Fullscreen is unavailable here. Presentation mode is still available."
+        }
+      })
+    document.addEventListener("fullscreenchange", () => {
+      const fullscreen = Boolean(document.fullscreenElement)
+      document.body.classList.toggle("deck-fullscreen", fullscreen)
+      if (fullscreen) {
+        document
+          .querySelector<HTMLElement>(".lecture-deck")
+          ?.focus({ preventScroll: true })
+        const message = document.querySelector("[data-message]")
+        if (message) message.textContent = ""
+      }
+      if (fullscreenButton) {
+        fullscreenButton.textContent = fullscreen ? "Exit fullscreen" : "Fullscreen"
+        fullscreenButton.setAttribute("aria-pressed", String(fullscreen))
+      }
+      navigate(current)
+    })
+    window.addEventListener("hashchange", readHash)
+    document.addEventListener("keydown", event => {
+      if (
+        event.target instanceof Element &&
+        event.target.closest("input, textarea, select, [contenteditable]")
+      )
+        return
+      if (
+        ["ArrowRight", "PageDown", "ArrowLeft", "PageUp", "Home", "End"].includes(
+          event.key
+        )
+      )
+        event.preventDefault()
+      if (["ArrowRight", "PageDown"].includes(event.key)) navigate(current + 1)
+      if (["ArrowLeft", "PageUp"].includes(event.key)) navigate(current - 1)
+      if (event.key === "Home") navigate(0)
+      if (event.key === "End") navigate(frames.length - 1)
+      if (event.key.toLowerCase() === "p") setPresenting(!presenting)
+      if (event.key.toLowerCase() === "n") toggleNotes()
+      if (event.key === "Escape") setPresenting(false)
+    })
+    const observer = new IntersectionObserver(
+      entries => {
+        if (presenting || presenter) return
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+        if (visible) {
+          current = frames.indexOf(visible.target as HTMLElement)
+          update()
+          announce()
+        }
+      },
+      { threshold: [0.5, 0.75] }
+    )
+    frames.forEach(frame => observer.observe(frame))
+    readHash()
+    if (presenter) toggleNotes()
+    if (presenter || new URLSearchParams(location.search).has("present"))
+      setPresenting(true)
+    update()
+    if (presenter) channel?.postMessage({ type: "ready" })
+    const animationButton =
+      document.querySelector<HTMLButtonElement>("[data-animation]")
+    const animation = animationButton?.closest("figure")?.querySelector("img")
+    let animationPaused = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches
+    const paintAnimation = () => {
+      if (animation)
+        animation.src = `/img/lectures/lara-nichols/${
+          animationPaused ? "workflow-still.png" : "supplied-animation.gif"
+        }`
+      if (animationButton) {
+        animationButton.textContent = animationPaused
+          ? "Play animation"
+          : "Pause animation"
+        animationButton.setAttribute("aria-pressed", String(animationPaused))
+      }
+    }
+    animationButton?.addEventListener("click", () => {
+      animationPaused = !animationPaused
+      paintAnimation()
+    })
+    paintAnimation()
+    let remaining = 600
+    let deadline = 0
+    let ticker: ReturnType<typeof setInterval> | undefined
+    const timer = document.querySelector<HTMLOutputElement>("[data-timer]")
+    const start = document.querySelector<HTMLButtonElement>("[data-timer-start]")
+    const status = document.querySelector<HTMLElement>("[data-timer-status]")
+    const paintTimer = () => {
+      if (timer)
+        timer.textContent = `${Math.floor(remaining / 60)}:${String(
+          remaining % 60
+        ).padStart(2, "0")}`
+    }
+    const pause = () => {
+      if (ticker !== undefined) clearInterval(ticker)
+      ticker = undefined
+      if (start)
+        start.textContent = remaining === 0 ? "Restart timer" : "Resume timer"
+    }
+    start?.addEventListener("click", () => {
+      if (ticker !== undefined) {
+        remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000))
+        pause()
+        paintTimer()
+        if (status) status.textContent = "Paused"
+        return
+      }
+      if (remaining === 0) remaining = 600
+      deadline = Date.now() + remaining * 1000
+      start.textContent = "Pause timer"
+      if (status) status.textContent = "Pair work in progress"
+      ticker = setInterval(() => {
+        remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000))
+        paintTimer()
+        if (remaining === 0) {
+          pause()
+          if (status) status.textContent = "Time to compare your evidence"
+        }
+      }, 250)
+    })
+    document.querySelector("[data-timer-reset]")?.addEventListener("click", () => {
+      pause()
+      remaining = 600
+      paintTimer()
+      if (start) start.textContent = "Start timer"
+      if (status) status.textContent = "Ready for pair work"
+    })
+  </script>
+</BaseLayout>
+
+<style is:global>
+  html {
+    scroll-padding-top: 90px;
+  }
+  body {
+    background: #080a0f;
+  }
+  .deck-controls {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 24px;
+    background: #080a0f;
+    color: #c6cad8;
+  }
+  .deck-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #c6cad8;
+    text-decoration: none;
+  }
+  .control-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .deck-controls button,
+  .activity-clock button {
+    border: 1px solid #19c4bd;
+    border-radius: 6px;
+    background: transparent;
+    color: #1df9f8;
+    padding: 7px 12px;
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .deck-controls button[aria-pressed="true"],
+  .deck-controls button:hover {
+    background: #1df9f8;
+    color: #05060a;
+  }
+  .deck-controls button:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+  button:focus-visible,
+  a:focus-visible {
+    outline: 3px solid #f1c36d;
+    outline-offset: 4px;
+  }
+  [data-progress] {
+    min-width: 48px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .lecture-deck {
+    display: grid;
+    gap: 28px;
+    padding: 12px 16px 32px;
+  }
+  .slide-frame {
+    width: min(100%, 1280px);
+    margin: 0 auto;
+    scroll-margin-top: 12px;
+  }
+  .sheet {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    padding: 7% 6% 6%;
+    overflow: hidden;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.4);
+  }
+  .sheet--dark {
+    isolation: isolate;
+    background: radial-gradient(
+        circle at 18% 18%,
+        rgba(29, 249, 248, 0.14),
+        transparent 40%
+      ),
+      radial-gradient(
+        circle at 82% 22%,
+        rgba(241, 195, 109, 0.045),
+        transparent 34%
+      ),
+      linear-gradient(180deg, #071c1d, #050c10 48%, #05060a);
+    color: #f5f6fb;
+  }
+  .sheet::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    pointer-events: none;
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(29, 249, 248, 0.14) 1px,
+      transparent 1.7px
+    );
+    background-size: 28px 28px;
+    mask-image: linear-gradient(
+      135deg,
+      transparent 4%,
+      black 40%,
+      transparent 90%
+    );
+  }
+  .slide-frame:nth-child(3n + 2) .sheet {
+    background: radial-gradient(
+        ellipse at 90% 100%,
+        rgba(29, 249, 248, 0.12),
+        transparent 55%
+      ),
+      linear-gradient(145deg, #0e1019, #0d121a);
+  }
+  .slide-frame:nth-child(3n + 2) .sheet::before {
+    inset: 55% -8% -20%;
+    background: linear-gradient(
+        100deg,
+        transparent,
+        rgba(29, 249, 248, 0.07),
+        rgba(241, 195, 109, 0.025)
+      ),
+      repeating-linear-gradient(
+        170deg,
+        transparent 0 20px,
+        rgba(29, 249, 248, 0.07) 21px,
+        transparent 22px
+      );
+    mask-image: linear-gradient(transparent, black);
+  }
+  .slide-frame:nth-child(3n) .sheet {
+    background: radial-gradient(
+        ellipse at 50% 110%,
+        rgba(29, 249, 248, 0.15),
+        transparent 55%
+      ),
+      linear-gradient(180deg, #090d14, #050e10);
+  }
+  .slide-frame:nth-child(3n) .sheet::before {
+    inset: auto -15% -52%;
+    height: 70%;
+    border: 1px solid rgba(29, 249, 248, 0.25);
+    border-radius: 50%;
+    background: radial-gradient(
+      ellipse,
+      rgba(29, 249, 248, 0.06),
+      transparent 65%
+    );
+    mask-image: none;
+  }
+  .sheet--cover {
+    background: radial-gradient(
+        circle at 82% 15%,
+        rgba(29, 249, 248, 0.11),
+        transparent 26%
+      ),
+      linear-gradient(145deg, #05060a, #0d101a);
+  }
+  .sheet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3%;
+    font-size: clamp(12px, 1.2vw, 16px);
+    color: #1df9f8;
+  }
+  .sheet--dark .sheet-header {
+    color: #19c4bd;
+  }
+  .sheet-header img {
+    width: 150px;
+    max-width: 20%;
+  }
+  .slide-copy h2 {
+    margin: 0 0 2%;
+    font-size: clamp(28px, 3.9vw, 52px);
+    letter-spacing: -0.045em;
+    line-height: 1.07;
+    font-weight: 400;
+    color: inherit;
+  }
+  .intro {
+    margin: 0 0 3%;
+    font-size: clamp(16px, 1.9vw, 26px);
+    line-height: 1.35;
+    color: #a0a5b8;
+  }
+  .sheet--dark .intro {
+    color: #a0a5b8;
+  }
+  .points {
+    display: grid;
+    gap: 16px;
+    padding-left: 24px;
+    margin: 0;
+    font-size: clamp(17px, 2vw, 27px);
+    line-height: 1.35;
+  }
+  .points li::marker {
+    color: #19c4bd;
+  }
+  .points--large {
+    font-size: clamp(20px, 2.5vw, 34px);
+    gap: 22px;
+  }
+  .folio {
+    position: absolute;
+    bottom: 4%;
+    left: 6%;
+    right: 6%;
+    display: flex;
+    justify-content: space-between;
+    color: #7b8296;
+    font-size: clamp(10px, 1vw, 13px);
+  }
+  .cover-logo {
+    position: absolute;
+    top: 8%;
+    left: 6%;
+    width: 20%;
+  }
+  .cover-copy {
+    position: relative;
+    margin: 16% 0 0 8%;
+  }
+  .eyebrow {
+    color: #19c4bd;
+    text-transform: uppercase;
+    font-size: clamp(12px, 1.3vw, 18px);
+    letter-spacing: 0.2em;
+    margin: 0 0 20px;
+  }
+  .cover-copy h1 {
+    margin: 0;
+    color: #f5f6fb;
+    font-size: clamp(40px, 6.1vw, 80px);
+    font-weight: 400;
+    letter-spacing: -0.055em;
+    line-height: 1;
+  }
+  .cover-copy em {
+    font-style: normal;
+    color: #1df9f8;
+  }
+  .cover-subtitle {
+    font-size: clamp(14px, 1.7vw, 23px);
+    margin: 24px 0 0;
+    color: #a0a5b8;
+  }
+  .cover-date {
+    color: #f1c36d;
+    font-size: clamp(14px, 1.7vw, 23px);
+    margin: 8px 0 0;
+  }
+  .orbit {
+    position: absolute;
+    border: 1px solid rgba(29, 249, 248, 0.4);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .orbit--one {
+    width: 57%;
+    aspect-ratio: 1;
+    top: -50%;
+    right: -15%;
+  }
+  .orbit--two {
+    width: 42%;
+    aspect-ratio: 1;
+    right: 5%;
+    bottom: -50%;
+    border-color: rgba(25, 196, 189, 0.25);
+  }
+  .sheet--cover::after {
+    position: absolute;
+    right: 18%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    content: "";
+    background: linear-gradient(transparent, #1df9f8, transparent);
+    transform: rotate(24deg);
+    opacity: 0.45;
+    pointer-events: none;
+  }
+  .lifecycle {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px 36px;
+    padding: 0;
+    margin: 24px 0;
+    list-style: none;
+    font-size: clamp(17px, 2vw, 26px);
+  }
+  .lifecycle li {
+    border-top: 2px solid #19c4bd;
+    padding-top: 10px;
+  }
+  .lifecycle span {
+    display: block;
+    color: #19c4bd;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .annotation {
+    color: #f1c36d;
+    font-size: clamp(15px, 1.7vw, 22px);
+    margin: 20px 0 0;
+  }
+  .stack-path {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+    font-size: clamp(17px, 1.9vw, 25px);
+    line-height: 1.3;
+  }
+  .stack-path li {
+    border-top: 4px solid #19c4bd;
+    padding-top: 16px;
+  }
+  .logic {
+    border-left: 4px solid #f1c36d;
+    padding: 14px 20px;
+    background: rgba(16, 18, 27, 0.8);
+    font-size: clamp(15px, 1.6vw, 21px);
+  }
+  .logic code {
+    color: #1df9f8;
+  }
+  .logic p {
+    margin: 8px 0 0;
+  }
+  .video-link {
+    display: inline-flex;
+    gap: 24px;
+    align-items: center;
+    margin-top: 30px;
+    padding: 14px 24px;
+    background: #10121b;
+    color: #1df9f8;
+    font-size: clamp(17px, 2vw, 27px);
+    text-decoration: none;
+    border-bottom: 3px solid #19c4bd;
+  }
+  .activity-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+  .activity-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 13px;
+    font-size: clamp(15px, 1.6vw, 22px);
+    line-height: 1.3;
+  }
+  .activity-clock {
+    padding: 20px;
+    border-left: 3px solid #f1c36d;
+    background: #10121b;
+    color: #f5f6fb;
+    text-align: center;
+  }
+  [data-timer] {
+    display: block;
+    font-size: clamp(45px, 6vw, 78px);
+    font-variant-numeric: tabular-nums;
+    color: #1df9f8;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .activity-clock > p {
+    font-size: 13px;
+    margin: 12px 0 0;
+    color: #c6cad8;
+  }
+  .resource-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 32px;
+  }
+  .resource-links > a {
+    border-top: 1px solid #c6cad8;
+    padding-top: 12px;
+    color: #1df9f8;
+    font-size: clamp(16px, 1.8vw, 24px);
+    line-height: 1.35;
+  }
+  .speaker-notes {
+    padding: 24px;
+    border-left: 3px solid #19c4bd;
+    background: #10121b;
+    color: #c6cad8;
+  }
+  .speaker-notes h3 {
+    color: #1df9f8;
+    margin: 0;
+    font-size: 16px;
+  }
+  .speaker-notes p {
+    margin-bottom: 0;
+  }
+  .sources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    font-size: 14px;
+  }
+  .sources a {
+    color: #1df9f8;
+  }
+  .deck-help,
+  .deck-message {
+    width: min(100% - 32px, 1280px);
+    margin: 0 auto 24px;
+    font-size: 13px;
+    color: #a0a5b8;
+  }
+  .deck-message:empty {
+    display: none;
+  }
+  .presenting .slide-frame:not(.is-current),
+  .presenting .deck-help {
+    display: none;
+  }
+  .presenting .lecture-deck {
+    min-height: calc(100vh - 70px);
+    align-content: center;
+  }
+  .presenting .slide-frame {
+    width: min(100%, 1280px, calc((100vh - 110px) * 16 / 9));
+  }
+  .presenting:has(.speaker-notes:not([hidden])) .slide-frame {
+    width: min(100%, 1280px);
+  }
+  @media (max-width: 760px) {
+    .deck-controls {
+      padding: 12px;
+    }
+    .lecture-deck {
+      padding-inline: 8px;
+      gap: 16px;
+    }
+    .sheet {
+      aspect-ratio: auto;
+      min-height: 520px;
+      padding: 28px 24px 60px;
+    }
+    .sheet-header {
+      margin-bottom: 24px;
+    }
+    .sheet-header img {
+      max-width: 110px;
+      width: 110px;
+    }
+    .slide-copy h2 {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    .intro {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+    .points,
+    .points--large {
+      font-size: 20px;
+      gap: 16px;
+    }
+    .cover-copy {
+      margin: 160px 0 60px;
+    }
+    .cover-logo {
+      width: 160px;
+      top: 36px;
+    }
+    .cover-copy h1 {
+      font-size: 48px;
+    }
+    .lifecycle,
+    .stack-path,
+    .resource-links {
+      grid-template-columns: 1fr 1fr;
+    }
+    .activity-layout {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .activity-steps {
+      font-size: 17px;
+    }
+    .activity-clock {
+      padding: 16px;
+    }
+    .video-link {
+      margin-top: 24px;
+      font-size: 20px;
+    }
+    .presenting .slide-frame {
+      width: 100%;
+    }
+  }
+  @media screen {
+    .deck-fullscreen {
+      overflow: hidden;
+    }
+    .deck-fullscreen .deck-controls {
+      position: fixed;
+      inset: 0 0 auto;
+      opacity: 0;
+      background: rgba(5, 6, 10, 0.95);
+      transition: opacity 160ms ease;
+    }
+    .deck-fullscreen .deck-controls:hover,
+    .deck-fullscreen .deck-controls:focus-within {
+      opacity: 1;
+    }
+    .deck-fullscreen .lecture-deck {
+      display: block;
+      padding: 0;
+      min-height: 100dvh;
+    }
+    .deck-fullscreen .slide-frame,
+    .deck-fullscreen:has(.speaker-notes:not([hidden])) .slide-frame {
+      width: 100vw;
+      margin: 0;
+    }
+    .deck-fullscreen .sheet {
+      width: 100vw;
+      height: 100dvh;
+      min-height: 0;
+      aspect-ratio: auto;
+      padding: 8vh 6vw 7vh;
+      box-shadow: none;
+    }
+    .deck-fullscreen .slide-copy h2 {
+      font-size: clamp(32px, min(4vw, 7vh), 84px);
+    }
+    .deck-fullscreen .intro {
+      font-size: clamp(18px, min(2vw, 3.6vh), 38px);
+    }
+    .deck-fullscreen .points,
+    .deck-fullscreen .lifecycle,
+    .deck-fullscreen .stack-path {
+      font-size: clamp(20px, min(2.1vw, 3.8vh), 40px);
+    }
+    .deck-fullscreen .activity-steps,
+    .deck-fullscreen .resource-links > a {
+      font-size: clamp(18px, min(1.8vw, 3.3vh), 34px);
+    }
+    .deck-fullscreen .sheet-header img {
+      width: 12vw;
+    }
+    .deck-fullscreen .sheet-header,
+    .deck-fullscreen .folio {
+      font-size: clamp(12px, 1vw, 20px);
+    }
+    .deck-fullscreen .speaker-notes {
+      position: fixed;
+      inset: auto 0 0;
+      z-index: 5;
+      max-height: 30vh;
+      overflow: auto;
+    }
+    .deck-fullscreen .deck-message {
+      position: fixed;
+      bottom: 0;
+      z-index: 20;
+    }
+    .deck-fullscreen .cover-copy {
+      margin-top: 18vh;
+    }
+    .deck-fullscreen .cover-copy h1 {
+      font-size: clamp(48px, min(6vw, 10vh), 120px);
+    }
+    .deck-fullscreen .cover-subtitle,
+    .deck-fullscreen .cover-date {
+      font-size: clamp(20px, min(2vw, 4vh), 38px);
+    }
+    .deck-fullscreen astro-dev-toolbar {
+      display: none;
+    }
+  }
+  @media print {
+    @page {
+      size: 13.333in 7.5in;
+      margin: 0;
+    }
+    html,
+    body {
+      background: #fff;
+      margin: 0;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+    .deck-controls,
+    .deck-help,
+    .deck-message,
+    .speaker-notes,
+    .activity-clock button,
+    [data-timer-status] {
+      display: none !important;
+    }
+    .lecture-deck {
+      display: block;
+      padding: 0;
+      min-height: 0 !important;
+    }
+    .slide-frame,
+    .presenting .slide-frame,
+    .presenting .slide-frame:not(.is-current) {
+      display: block;
+      width: 13.333in;
+      margin: 0;
+      break-after: page;
+      page-break-after: always;
+    }
+    .slide-frame:last-child {
+      break-after: auto;
+      page-break-after: auto;
+    }
+    .sheet {
+      width: 13.333in;
+      height: 7.5in;
+      min-height: 0;
+      aspect-ratio: auto;
+      box-shadow: none;
+    }
+  }
+  
+  .visual-layout {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 30px;
+    align-items: center;
+  }
+  .slide-visual {
+    margin: 0;
+    min-width: 0;
+  }
+  .slide-visual img {
+    width: 100%;
+    height: clamp(150px, 22vw, 285px);
+    object-fit: contain;
+    border: 1px solid #253c46;
+    border-radius: 10px;
+    background: #10121b;
+  }
+  .slide-visual figcaption {
+    color: #a0a5b8;
+    font-size: 11px;
+    margin-top: 7px;
+  }
+  .visual-layout .points {
+    font-size: clamp(16px, 1.65vw, 23px);
+    gap: 14px;
+  }
+  .sheet--video:has(.slide-visual) .video-link {
+    margin-top: 16px;
+    padding: 10px 18px;
+    font-size: 20px;
+  }
+  .context-map {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    font-size: clamp(13px, 1.4vw, 19px);
+  }
+  .context-files,
+  .skill-loop {
+    border: 1px solid #254c50;
+    border-radius: 12px;
+    padding: 20px;
+    background: rgba(10, 18, 27, 0.85);
+  }
+  .context-files {
+    display: grid;
+    gap: 8px;
+  }
+  .context-files code {
+    color: #1df9f8;
+  }
+  .context-files span {
+    font-size: 0.85em;
+    color: #a0a5b8;
+    margin-bottom: 8px;
+  }
+  .tool-rules {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-top: 1px solid #254c50;
+    padding-top: 10px;
+    font-size: 0.8em;
+  }
+  .skill-loop ol {
+    padding-left: 24px;
+    line-height: 1.7;
+    margin: 12px 0;
+  }
+  .skill-loop p {
+    color: #f1c36d;
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  .presenter-info {
+    max-width: 1280px;
+    margin: 12px auto;
+    padding: 0 24px;
+    color: #c6cad8;
+  }
+  .presenter-info p {
+    margin: 8px 0;
+  }
+  .presenter-view .lecture-deck {
+    min-height: 0;
+    align-content: start;
+  }
+  .presenter-view .slide-frame {
+    width: min(100%, 1280px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .presenter-view .sheet {
+    padding: 36px 36px 60px;
+    aspect-ratio: auto;
+    min-height: 360px;
+  }
+  .presenter-view .sheet .video-link {
+    font-size: 12px;
+    padding: 8px 12px;
+    margin-top: 12px;
+  }
+  .presenter-view .sheet h1,
+  .presenter-view .sheet h2 {
+    font-size: 28px;
+  }
+  .presenter-view .sheet .intro,
+  .presenter-view .sheet .points,
+  .presenter-view .sheet .lifecycle,
+  .presenter-view .sheet .stack-path {
+    font-size: 12px;
+  }
+  .presenter-view .sheet .visual-layout,
+  .presenter-view .sheet .context-map {
+    gap: 12px;
+    font-size: 10px;
+  }
+  .presenter-view .sheet .slide-visual img {
+    height: 120px;
+  }
+  .presenter-view .sheet .context-files,
+  .presenter-view .sheet .skill-loop {
+    padding: 8px;
+  }
+  .presenter-view .speaker-notes {
+    font-size: 19px;
+    line-height: 1.6;
+  }
+  .presenter-view [data-presenter],
+  .presenter-view [data-present],
+  .presenter-view [data-fullscreen],
+  .presenter-view [data-notes],
+  .presenter-view [data-print] {
+    display: none;
+  }
+  @media (max-width: 760px) {
+    .visual-layout,
+    .context-map,
+    .presenter-view .slide-frame {
+      grid-template-columns: 1fr;
+    }
+    .slide-visual img {
+      height: 220px;
+    }
+  }
+  @media screen {
+    .deck-fullscreen .slide-visual img {
+      height: 32vh;
+    }
+  }
+  @media print {
+    .presenter-info {
+      display: none !important;
+    }
+    .printing-notes .sheet {
+      display: none !important;
+    }
+    .printing-notes .speaker-notes {
+      display: block !important;
+      border: none;
+      background: #fff;
+      color: #111;
+      font-size: 20px;
+      line-height: 1.6;
+      padding: 0.5in;
+    }
+    .printing-notes .speaker-notes h3,
+    .printing-notes .speaker-notes a {
+      color: #154f54;
+    }
+    .printing-notes .slide-frame {
+      display: block !important;
+    }
+  }
+  
+  .sheet--video .slide-visual img {
+    height: clamp(150px, 18vw, 230px);
+  }
+  .animation-toggle {
+    border: none;
+    background: transparent;
+    color: #1df9f8;
+    padding: 5px 0;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .sheet--prompt .points,
+  .sheet--checks .points,
+  .sheet--questions .points,
+  .sheet--future .points,
+  .sheet--closing .points {
+    grid-template-columns: repeat(2, 1fr);
+    list-style: none;
+    padding: 0;
+    gap: 20px;
+  }
+  .sheet--checks .points,
+  .sheet--questions .points,
+  .sheet--future .points {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .sheet--prompt .points li,
+  .sheet--checks .points li,
+  .sheet--questions .points li,
+  .sheet--future .points li,
+  .sheet--closing .points li {
+    border: 1px solid #254c50;
+    border-top: 3px solid #19c4bd;
+    border-radius: 10px;
+    background: rgba(10, 18, 27, 0.75);
+    padding: 24px;
+    min-height: 110px;
+  }
+  .sheet--industry .points {
+    list-style: none;
+    padding: 0;
+    border-left: 2px solid #19c4bd;
+  }
+  .sheet--industry .points li {
+    padding: 12px 24px;
+    background: rgba(10, 18, 27, 0.75);
+    border-radius: 0 10px 10px 0;
+  }
+  .presenter-view .sheet .points li {
+    padding: 8px;
+    min-height: 0;
+  }
+  @media (max-width: 760px) {
+    .sheet--prompt .points,
+    .sheet--checks .points,
+    .sheet--questions .points,
+    .sheet--future .points,
+    .sheet--closing .points {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media screen {
+    .deck-fullscreen .sheet--video .slide-visual img {
+      height: 29vh;
+    }
+  }
+  @media print {
+    .animation-toggle {
+      display: none;
+    }
+  }
+  
+  .sheet--visual {
+    display: flex;
+    flex-direction: column;
+    padding: 3% 4% 4%;
+  }
+  .sheet--visual .sheet-header {
+    display: none;
+  }
+  .sheet--visual .slide-copy {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    gap: 12px;
+  }
+  .sheet--visual .slide-copy h2 {
+    font-size: clamp(28px, 3vw, 42px);
+    margin: 0;
+  }
+  .sheet--visual .visual-layout {
+    display: block;
+    flex: 1;
+    min-height: 0;
+  }
+  .sheet--visual .slide-visual {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .sheet--visual .slide-visual img {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    min-height: 0;
+    object-fit: contain;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .sheet--visual.sheet--video .video-link {
+    position: absolute;
+    top: 3%;
+    right: 4%;
+    font-size: 17px;
+    padding: 8px 14px;
+    margin: 0;
+  }
+  .sheet--visual.sheet--video h2 {
+    max-width: 65%;
+  }
+  .sheet--visual .animation-toggle {
+    align-self: flex-end;
+  }
+  .sheet--visual .folio {
+    bottom: 3%;
+  }
+  .speaker-notes ul {
+    padding-left: 24px;
+  }
+  .note-cue,
+  .media-credit {
+    color: #a0a5b8;
+    font-size: 14px;
+  }
+  .context-files span {
+    display: none;
+  }
+  .context-files {
+    align-content: center;
+    gap: 20px;
+  }
+  .skill-loop p {
+    display: none;
+  }
+  .presenter-view .sheet--visual {
+    height: 360px;
+    min-height: 0;
+    padding: 24px 24px 42px;
+  }
+  .presenter-view .sheet--visual .slide-copy h2 {
+    font-size: 24px;
+  }
+  .presenter-view .sheet--visual .slide-visual img {
+    height: 100%;
+  }
+  .presenter-view .sheet--visual .video-link {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+  @media screen {
+    .deck-fullscreen .sheet--visual {
+      padding: 4vh 4vw 6vh;
+    }
+    .deck-fullscreen .sheet--visual .slide-copy h2 {
+      font-size: clamp(32px, min(3.5vw, 6vh), 64px);
+    }
+    .deck-fullscreen .sheet--visual .slide-visual img {
+      height: 100%;
+    }
+  }
+  @media (max-width: 760px) {
+    .sheet--visual {
+      height: 540px;
+      min-height: 0;
+      padding: 24px 24px 50px;
+    }
+    .sheet--visual .slide-copy h2 {
+      font-size: 28px;
+    }
+  }
+  .fence-panels {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1.25fr);
+    gap: 12px;
+    flex: 1;
+    min-height: 0;
+  }
+  .sheet--fence .fence-panels img {
+    grid-column: span 2;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: contain;
+  }
+  .sheet--fence .fence-panels img:last-child {
+    grid-column: 2 / span 2;
+  }
+  .speaker-notes .note-lead {
+    margin: 14px 0;
+  }
+  .speaker-notes .note-bullets {
+    list-style: disc;
+    display: grid;
+    gap: 8px;
+    margin: 14px 0;
+    padding-left: 22px;
+  }
+  .speaker-notes .note-bullets li::marker {
+    color: #19c4bd;
+  }
+  .speaker-notes .note-cue {
+    color: #f1c36d;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .audience-cue {
+    border-left: 3px solid #19c4bd;
+    padding: 10px 14px;
+    background: rgba(29, 249, 248, 0.05);
+  }
+  .audience-cue strong {
+    display: block;
+    color: #1df9f8;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .note-reference {
+    margin-top: 20px;
+    color: #a0a5b8;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .note-reference summary {
+    cursor: pointer;
+  }
+  .sheet--resources {
+    display: flex;
+    flex-direction: column;
+    padding: 3% 5% 5%;
+  }
+  .sheet--resources .sheet-header,
+  .sheet--resources .intro {
+    display: none;
+  }
+  .sheet--resources .slide-copy {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+  .sheet--resources .slide-copy h2 {
+    margin-bottom: 18px;
+  }
+  .sheet--resources .resource-links {
+    flex: 1;
+    min-height: 0;
+    grid-template-rows: auto auto minmax(0, 1fr);
+    gap: 12px 28px;
+  }
+  .sheet--resources .resource-links > a {
+    font-size: clamp(15px, 1.5vw, 20px);
+    padding-top: 8px;
+  }
+  .lecture-contact {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 14px 40px;
+    min-height: 0;
+    padding-top: 12px;
+    border-top: 1px solid #254c50;
+  }
+  .contact-details {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 6px 24px;
+    margin: 0;
+    font-style: normal;
+    line-height: 1.25;
+  }
+  .contact-details strong {
+    font-size: clamp(19px, 1.8vw, 25px);
+    color: #f5f6fb;
+  }
+  .contact-details a {
+    color: #1df9f8;
+    text-decoration: none;
+    font-size: clamp(15px, 1.4vw, 20px);
+  }
+  .contact-qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    margin: 0;
+  }
+  .qr-code,
+  .linkedin-profile-card {
+    display: block;
+    height: calc(100% - 28px);
+    max-width: 100%;
+    min-height: 0;
+    width: auto;
+  }
+  .qr-code {
+    aspect-ratio: 1;
+    padding: 12px;
+    background: white;
+    border-radius: 10px;
+  }
+  .linkedin-profile-card {
+    aspect-ratio: 1074 / 968;
+  }
+  .qr-code img,
+  .linkedin-profile-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  .contact-qr figcaption {
+    margin-top: 8px;
+    line-height: 20px;
+    text-align: center;
+    color: #c6cad8;
+    font-size: 15px;
+  }
+  .presenter-view .sheet--resources {
+    height: 430px;
+    min-height: 0;
+  }
+  .presenter-view .sheet--resources .slide-copy h2 {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+  .presenter-view .sheet--resources .resource-links {
+    gap: 8px 12px;
+  }
+  .presenter-view .sheet--resources .resource-links > a {
+    font-size: 11px;
+    padding-top: 5px;
+  }
+  .presenter-view .lecture-contact {
+    gap: 8px 16px;
+    padding-top: 8px;
+  }
+  .presenter-view .contact-details {
+    gap: 4px 12px;
+  }
+  .presenter-view .contact-details strong {
+    font-size: 15px;
+  }
+  .presenter-view .contact-details a {
+    font-size: 11px;
+  }
+  .presenter-view .qr-code {
+    padding: 6px;
+  }
+  .presenter-view .contact-qr figcaption {
+    font-size: 10px;
+  }
+  @media screen {
+    .deck-fullscreen .sheet--resources {
+      padding: 4vh 5vw 6vh;
+    }
+  }
+  @media (max-width: 760px) {
+    .sheet--resources {
+      height: auto;
+      min-height: 820px;
+      padding: 28px 24px 60px;
+    }
+    .sheet--resources .resource-links {
+      grid-template-rows: auto auto auto;
+    }
+    .lecture-contact {
+      grid-template-rows: auto 230px;
+      gap: 18px;
+    }
+    .contact-details {
+      gap: 8px 14px;
+    }
+    .contact-qr figcaption {
+      font-size: 12px;
+    }
+  }
+</style>

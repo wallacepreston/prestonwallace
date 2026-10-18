@@ -407,6 +407,7 @@ const slides = [
       "Operation & maintenance",
     ],
     notes: {
+      activation: "Think of planning a dinner: choose the menu, cook, taste, serve, and improve. Map those steps to building software.",
       lead: "Gromit is building while the train keeps moving. Software also keeps changing after release.",
       cue: "Play the three-second loop briefly, then pause.",
       bullets: [
@@ -437,6 +438,7 @@ const slides = [
       "Database: save and enforce uniqueness",
     ],
     notes: {
+      activation: "Picture booking a table: you ask the host, they check the reservation book, then confirm. Follow that request and response.",
       lead: "Little Bobby Tables is an input that reaches the database unchecked.",
       bullets: [
         "Browser collects input; API receives it.",
@@ -484,12 +486,13 @@ const slides = [
   },
   {
     title: "Context engineering",
-    time: "17:00–19:00",
+    time: "17:00–20:00",
     kind: "context",
     theme: "dark",
     intro:
       "Develop the instructions and reusable skills your agents work from.",
     notes: {
+      activation: "Recall joining a group project halfway through. You need the goal, house rules, checklists, and past decisions before you can help.",
       lead: "‘Fix it’ gives the agent no context. Like this dog at a keyboard, it can look busy without knowing the job.",
       bullets: [
         "AGENTS.md maps commands, structure, and boundaries.",
@@ -513,27 +516,6 @@ const slides = [
       {
         label: "Claude rules",
         url: "https://code.claude.com/docs/en/memory",
-      },
-    ],
-  },
-  {
-    title: "Confidence is not understanding",
-    time: "19:00–20:00",
-    kind: "confidence",
-    theme: "dark",
-    intro: "Calibrate confidence with evidence.",
-    notes: {
-      lead: "A convincing demo can precede understanding.",
-      bullets: [
-        "Use the curve as a learning metaphor.",
-        "Calibrate confidence through evidence.",
-      ],
-      prep: "Illustration, not a measured scientific trajectory.",
-    },
-    refs: [
-      {
-        label: "Kruger & Dunning",
-        url: "https://pubmed.ncbi.nlm.nih.gov/10626367/",
       },
     ],
   },
@@ -620,7 +602,7 @@ const slides = [
   },
   {
     title: "AI-assisted coding, October 2026",
-    time: "35:00–38:00",
+    time: "35:00–37:00",
     kind: "industry",
     theme: "dark",
     intro: "Research snapshot: October 14. Refresh before the lecture.",
@@ -651,7 +633,7 @@ const slides = [
   },
   {
     title: "Bots that keep working",
-    time: "38:00–40:00",
+    time: "37:00–39:00",
     kind: "bots",
     theme: "dark",
     intro: "Persistent context, connected tools, and a clear finish line.",
@@ -660,6 +642,7 @@ const slides = [
       "dots: cloud work, connected apps, Codex coordination",
     ],
     notes: {
+      activation: "Think of delegating a recurring task to an assistant. They need access, instructions, a deadline, and a point to check back.",
       lead: "Persistent bots coordinate coding agents across sessions.",
       bullets: [
         "Grok Bot and dots are examples.",
@@ -671,6 +654,29 @@ const slides = [
       { label: "Grok Bot", url: sources.grok },
       { label: "Engineering example", url: sources.engineering },
       { label: "dots", url: sources.dots },
+    ],
+  },
+  {
+    title: "Confidence is not understanding",
+    time: "39:00–40:00",
+    kind: "confidence",
+    theme: "dark",
+    intro: "Calibrate confidence with evidence.",
+    notes: {
+      lead: "This is the Dunning–Kruger effect: early confidence can outrun the ability to judge your own work.",
+      bullets: [
+        "It can show up while learning new skills.",
+        "AI-assisted coding makes misplaced confidence especially tempting.",
+        "A convincing demo can precede understanding.",
+        "Calibrate confidence with tests and explanations.",
+      ],
+      prep: "Use the curve as a learning metaphor. It is not a universal learning trajectory or a measured AI-specific result.",
+    },
+    refs: [
+      {
+        label: "Kruger & Dunning",
+        url: "https://pubmed.ncbi.nlm.nih.gov/10626367/",
+      },
     ],
   },
   {
@@ -730,6 +736,7 @@ const slides = [
     kind: "fundamentals",
     theme: "dark",
     notes: {
+      activation: "Think of learning to drive: steering and pedals are the basics. Junctions, road rules, and traffic connect them into a larger system.",
       lead: "I am not telling you to stop learning to program. Understanding the code is essential.",
       bullets: [
         "Variables hold state; input and output cross boundaries.",
@@ -945,6 +952,7 @@ const slides = [
         </section>
         {showPresenterNotes && <aside class="speaker-notes" aria-label={`Speaker notes for slide ${index + 1}`} hidden>
           <h3>Speaker notes · {slide.time}</h3>
+          {slide.notes.activation && <section class="activation-cue" aria-label="Activate prior knowledge"><strong>Activate prior knowledge</strong><p>{slide.notes.activation}</p></section>}
           {slide.notes.cue && <p class="note-cue">{slide.notes.cue}</p>}
           <p class="note-lead">{slide.notes.lead}</p>
           <ul class="note-bullets">{slide.notes.bullets.map(point => <li>{point}</li>)}</ul>
@@ -2319,17 +2327,29 @@ const slides = [
     font-weight: 700;
     font-size: 17px;
   }
-  .audience-cue {
+  .audience-cue,
+  .activation-cue {
     border-left: 3px solid #19c4bd;
     padding: 10px 14px;
     background: rgba(29, 249, 248, 0.05);
   }
-  .audience-cue strong {
+  .audience-cue strong,
+  .activation-cue strong {
     display: block;
     color: #1df9f8;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
+  }
+  .activation-cue {
+    border-color: #f1c36d;
+    background: rgba(241, 195, 109, 0.08);
+  }
+  .activation-cue strong {
+    color: #f1c36d;
+  }
+  .activation-cue p {
+    margin: 6px 0 0;
   }
   .note-reference {
     margin-top: 20px;

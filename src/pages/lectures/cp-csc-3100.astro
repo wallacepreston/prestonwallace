@@ -130,6 +130,23 @@ const visuals: Record<
     credit: "xkcd #353, Python · CC BY-NC 2.5",
     light: true,
   },
+  organization: {
+    file: "agent-software-company.jpeg",
+    alt: "MetaGPT’s software-company diagram connects product managers, architects, project managers, engineers, and QA",
+    credit:
+      "MetaGPT contributors · official software-company diagram · MIT license",
+    light: true,
+  },
+  fundamentals: {
+    file: "understand-the-code.png",
+    alt: "The Matrix hallway becomes visible as streams of green code",
+    credit: "The Matrix (1999) · film still via Infobae",
+  },
+  motivation: {
+    file: "why-build-things.jpg",
+    alt: "Tony Stark building the first Iron Man suit in his improvised workshop",
+    credit: "Iron Man (2008) · Marvel Studios · film still via Looper",
+  },
 }
 const visualFor = (slide: { kind: string; link?: string }) =>
   visuals[
@@ -154,7 +171,7 @@ const slides = [
   },
   {
     title: "Delegating at scale",
-    time: "00:30–02:00",
+    time: "00:30–02:40",
     kind: "video",
     theme: "dark",
     intro: "What evidence would make you trust an agent’s work?",
@@ -177,7 +194,7 @@ const slides = [
   },
   {
     title: "Software factories: the Michelin kitchen",
-    time: "02:00–03:00",
+    time: "02:40–03:40",
     kind: "factory",
     theme: "dark",
     intro:
@@ -205,8 +222,48 @@ const slides = [
     ],
   },
   {
+    title: "Development organizations, in a repo",
+    time: "03:40–04:40",
+    kind: "organization",
+    theme: "dark",
+    explore: [
+      {
+        label: "Game Studios · 49 roles",
+        url: "https://github.com/Donchitos/Claude-Code-Game-Studios",
+      },
+      { label: "MetaGPT", url: "https://github.com/FoundationAgents/MetaGPT" },
+      { label: "ChatDev", url: "https://github.com/OpenBMB/ChatDev" },
+    ],
+    notes: {
+      lead: "These repos package a development organization as agent roles, instructions, and handoffs.",
+      bullets: [
+        "Game Studios: 49 roles, including creative director, technical director, producer, and leads.",
+        "MetaGPT and ChatDev extend the idea beyond games.",
+        "The startup appeal: prototype a whole app quickly.",
+        "Configure model access, tools, and the workflow.",
+        "Token bills can be significant; prototype inference can still cost far less than staffing every role.",
+        "Agents take on team tasks. I still own scope, verification, and release.",
+      ],
+      prep: "October 18 snapshot: Game Studios 26.8k stars; MetaGPT 70.9k; ChatDev 34.5k. This shows substantial interest, not measured startup adoption. Game Studios defines 49 specialist roles, not 49 simultaneous workers, and describes human-directed collaboration by default. MetaGPT documents API-key setup; authentication varies by tool. Cost comparison is a prototype-level inference, not a measured replacement for 49 employees. The diagram is MetaGPT’s, not Game Studios’.",
+    },
+    refs: [
+      {
+        label: "Game Studios: hierarchy and setup",
+        url: "https://github.com/Donchitos/Claude-Code-Game-Studios",
+      },
+      {
+        label: "MetaGPT: software-company roles and API setup",
+        url: "https://github.com/FoundationAgents/MetaGPT",
+      },
+      {
+        label: "ChatDev: multi-agent application workflows",
+        url: "https://github.com/OpenBMB/ChatDev",
+      },
+    ],
+  },
+  {
     title: "Is software engineering going away?",
-    time: "03:00–03:30",
+    time: "04:40–05:10",
     kind: "dario",
     theme: "dark",
     intro: "A question about the future of our work.",
@@ -223,7 +280,7 @@ const slides = [
   },
   {
     title: "We still need software engineers",
-    time: "03:30–04:00",
+    time: "05:10–05:40",
     kind: "programmers",
     theme: "dark",
     intro: "The work extends beyond generating code.",
@@ -239,7 +296,7 @@ const slides = [
   },
   {
     title: "Every company is an AI company now",
-    time: "04:00–04:10",
+    time: "05:40–05:50",
     kind: "companies",
     theme: "dark",
     intro: "A brief pause for the joke.",
@@ -251,7 +308,7 @@ const slides = [
   },
   {
     title: "Every company becomes a software company",
-    time: "04:10–04:50",
+    time: "05:50–06:30",
     kind: "opportunity",
     theme: "dark",
     intro:
@@ -270,7 +327,7 @@ const slides = [
   },
   {
     title: "AI copies what you leave behind",
-    time: "04:50–05:20",
+    time: "06:30–07:00",
     kind: "fence",
     theme: "dark",
     intro: "The codebase is part of the prompt.",
@@ -292,7 +349,7 @@ const slides = [
   },
   {
     title: "The software development life cycle",
-    time: "05:20–07:20",
+    time: "07:00–09:00",
     kind: "sdlc",
     theme: "dark",
     intro: "One feature: sign up for an event without duplicate registrations.",
@@ -324,7 +381,7 @@ const slides = [
   },
   {
     title: "One request across the stack",
-    time: "07:20–09:50",
+    time: "09:00–11:00",
     kind: "stack",
     theme: "dark",
     intro: "Follow the data. Check every boundary.",
@@ -354,7 +411,7 @@ const slides = [
   },
   {
     title: "Turn a request into a task",
-    time: "09:50–11:20",
+    time: "11:00–12:30",
     kind: "prompt",
     theme: "dark",
     intro: "Give Cursor the same context a teammate would need.",
@@ -382,7 +439,7 @@ const slides = [
   },
   {
     title: "Context engineering",
-    time: "11:20–13:20",
+    time: "12:30–14:30",
     kind: "context",
     theme: "dark",
     intro:
@@ -416,7 +473,7 @@ const slides = [
   },
   {
     title: "Inspect, plan, implement",
-    time: "13:20–17:00",
+    time: "14:30–17:00",
     kind: "steps",
     theme: "dark",
     intro: "Make each change small enough to understand.",
@@ -541,7 +598,7 @@ const slides = [
   },
   {
     title: "Understand every PR",
-    time: "32:00–36:00",
+    time: "32:00–35:00",
     kind: "review",
     theme: "dark",
     intro: "Investigate the reviewer’s claims.",
@@ -563,7 +620,7 @@ const slides = [
   },
   {
     title: "AI-assisted coding, October 2026",
-    time: "36:00–40:00",
+    time: "35:00–38:00",
     kind: "industry",
     theme: "dark",
     intro: "Research snapshot: October 14. Refresh before the lecture.",
@@ -594,7 +651,7 @@ const slides = [
   },
   {
     title: "Bots that keep working",
-    time: "40:00–43:00",
+    time: "38:00–40:00",
     kind: "bots",
     theme: "dark",
     intro: "Persistent context, connected tools, and a clear finish line.",
@@ -618,7 +675,7 @@ const slides = [
   },
   {
     title: "Several futures remain possible",
-    time: "43:00–46:00",
+    time: "40:00–42:00",
     kind: "future",
     theme: "dark",
     intro: "Scenarios to examine, with evidence to watch.",
@@ -647,7 +704,7 @@ const slides = [
   },
   {
     title: "DHH on handwriting code",
-    time: "46:00–47:00",
+    time: "42:00–45:00",
     kind: "video",
     theme: "dark",
     intro: "What does this argument change about how you learn and build?",
@@ -668,8 +725,61 @@ const slides = [
     },
   },
   {
-    title: "Your next project",
-    time: "47:00–48:00",
+    title: "Keep learning to program",
+    time: "45:00–46:15",
+    kind: "fundamentals",
+    theme: "dark",
+    notes: {
+      lead: "I am not telling you to stop learning to program. Understanding the code is essential.",
+      bullets: [
+        "Variables hold state; input and output cross boundaries.",
+        "Control flow, loops, and functions determine behavior.",
+        "Understand clients, servers, and the request/response cycle.",
+        "Security: authentication, authorization, validation, and secrets.",
+        "Distributed systems: latency, failures, retries, and consistency.",
+        "My view: architecture and engineering judgment become even more essential.",
+      ],
+      prep: "Connect the Matrix image to seeing what is happening beneath the surface. Writing code by hand remains a useful way to learn and reason about these concepts.",
+    },
+  },
+  {
+    title: "Why did you choose CS?",
+    time: "46:15–47:30",
+    kind: "motivation",
+    theme: "dark",
+    explore: [
+      {
+        label: "CS is among the highest-return fields · FREOPP, 2024",
+        url: "https://freopp.org/newsletter/does-college-pay-off-freopps-latestr22lblz/",
+      },
+    ],
+    notes: {
+      lead: "I chose CS to build things and see the fruit of my hands and creativity. That still exists.",
+      cue: "Take two volunteer answers, about 15 seconds each. Then share my reason.",
+      bullets: [
+        "FREOPP (2024): typical CS program ROI above $500,000.",
+        "Among the highest-return fields; no universal number-one ranking.",
+        "Money can matter. So can creativity, usefulness, and impact.",
+        "AI shortens the distance between an idea and something you can use.",
+        "Bridge: programming can feel fun again.",
+      ],
+      audience: "A couple volunteers: why did you choose CS as your major?",
+      prep: "ROI is modeled lifetime earnings gain after college costs and foregone earnings, using historical data. It is not annual salary or a guarantee of future outcomes. FREOPP groups CS with engineering, nursing, and economics among the highest-return fields; do not claim CS ranks first across all degrees.",
+    },
+    refs: [
+      {
+        label: "FREOPP: 2024 ROI findings",
+        url: "https://freopp.org/newsletter/does-college-pay-off-freopps-latestr22lblz/",
+      },
+      {
+        label: "FREOPP: ROI methodology and data",
+        url: "https://freopp.org/roi-in-higher-education/",
+      },
+    ],
+  },
+  {
+    title: "Programming can feel fun again",
+    time: "47:30–48:00",
     kind: "closing",
     theme: "dark",
     intro: "Pick one problem you care about.",
@@ -826,6 +936,7 @@ const slides = [
                 ) : (
                   <ul class:list={['points', { 'points--large': slide.kind === 'future' || slide.kind === 'questions' }]}>{slide.points?.map(point => <li>{point}</li>)}</ul>
                 )}
+                {slide.explore && <div class="slide-explore">{slide.explore.map(item => <a href={item.url} target="_blank" rel="noopener noreferrer">{item.label} <span aria-hidden="true">↗</span></a>)}</div>}
                 {slide.link && <a class="video-link" href={slide.link} target="_blank" rel="noopener noreferrer">{slide.linkLabel} <span aria-hidden="true">↗</span></a>}
               </div>
             </>
@@ -1996,6 +2107,23 @@ const slides = [
     display: block;
     flex: 1;
     min-height: 0;
+  }
+  .slide-explore {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    font-size: clamp(13px, 1.2vw, 18px);
+  }
+  .slide-explore a {
+    color: #1df9f8;
+    text-decoration: none;
+  }
+  .slide-explore a:hover {
+    text-decoration: underline;
+  }
+  .presenter-view .slide-explore {
+    gap: 6px 12px;
+    font-size: 10px;
   }
   .sheet--visual .slide-visual {
     display: flex;

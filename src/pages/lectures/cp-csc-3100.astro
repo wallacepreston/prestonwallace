@@ -348,8 +348,53 @@ const slides = [
     ],
   },
   {
+    title: "My actual workflow: Inspect, plan, implement, test",
+    time: "07:00–09:30",
+    kind: "steps",
+    theme: "dark",
+    intro: "Make each change small enough to understand.",
+    points: [
+      "Read the existing request path",
+      "Review the plan and resolve ambiguity",
+      "Implement one bounded step",
+      "Inspect the diff before continuing",
+    ],
+    notes: {
+      lead: "Show the workflow on one bounded change.",
+      bullets: [
+        "Inspect code; review the plan.",
+        "Implement; inspect the diff.",
+        "Demonstrate UI-only validation missing the API.",
+        "Label prepared defects as examples.",
+      ],
+    },
+  },
+  {
+    title: "Check the first result",
+    time: "09:30–11:30",
+    kind: "checks",
+    theme: "dark",
+    intro: "Expected behavior → observed behavior → evidence → correction",
+    points: [
+      "Submit a valid email",
+      "Repeat with different capitalization",
+      "Reload and verify persistence",
+    ],
+    notes: {
+      lead: "‘This is fine’ is a claim. The burning room is the evidence. Check the behavior yourself.",
+      bullets: [
+        "Start from expected behavior.",
+        "Try success, invalid input, and duplicates.",
+        "Reload and restart to test persistence.",
+        "Correct narrowly, then rerun the evidence.",
+      ],
+      audience: "What would convince you this survives reload?",
+    },
+    refs: [{ label: "KC Green: On Fire", url: "https://gunshowcomic.com/648" }],
+  },
+  {
     title: "The software development life cycle",
-    time: "07:00–09:00",
+    time: "11:30–13:30",
     kind: "sdlc",
     theme: "dark",
     intro: "One feature: sign up for an event without duplicate registrations.",
@@ -381,7 +426,7 @@ const slides = [
   },
   {
     title: "One request across the stack",
-    time: "09:00–11:00",
+    time: "13:30–15:30",
     kind: "stack",
     theme: "dark",
     intro: "Follow the data. Check every boundary.",
@@ -411,7 +456,7 @@ const slides = [
   },
   {
     title: "Turn a request into a task",
-    time: "11:00–12:30",
+    time: "15:30–17:00",
     kind: "prompt",
     theme: "dark",
     intro: "Give Cursor the same context a teammate would need.",
@@ -439,7 +484,7 @@ const slides = [
   },
   {
     title: "Context engineering",
-    time: "12:30–14:30",
+    time: "17:00–19:00",
     kind: "context",
     theme: "dark",
     intro:
@@ -470,51 +515,6 @@ const slides = [
         url: "https://code.claude.com/docs/en/memory",
       },
     ],
-  },
-  {
-    title: "Inspect, plan, implement",
-    time: "14:30–17:00",
-    kind: "steps",
-    theme: "dark",
-    intro: "Make each change small enough to understand.",
-    points: [
-      "Read the existing request path",
-      "Review the plan and resolve ambiguity",
-      "Implement one bounded step",
-      "Inspect the diff before continuing",
-    ],
-    notes: {
-      lead: "Show the workflow on one bounded change.",
-      bullets: [
-        "Inspect code; review the plan.",
-        "Implement; inspect the diff.",
-        "Demonstrate UI-only validation missing the API.",
-        "Label prepared defects as examples.",
-      ],
-    },
-  },
-  {
-    title: "Check the first result",
-    time: "17:00–19:00",
-    kind: "checks",
-    theme: "dark",
-    intro: "Expected behavior → observed behavior → evidence → correction",
-    points: [
-      "Submit a valid email",
-      "Repeat with different capitalization",
-      "Reload and verify persistence",
-    ],
-    notes: {
-      lead: "‘This is fine’ is a claim. The burning room is the evidence. Check the behavior yourself.",
-      bullets: [
-        "Start from expected behavior.",
-        "Try success, invalid input, and duplicates.",
-        "Reload and restart to test persistence.",
-        "Correct narrowly, then rerun the evidence.",
-      ],
-      audience: "What would convince you this survives reload?",
-    },
-    refs: [{ label: "KC Green: On Fire", url: "https://gunshowcomic.com/648" }],
   },
   {
     title: "Confidence is not understanding",

@@ -1,10 +1,13 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro"
 
+const showPresenterNotes = import.meta.env.DEV
+
 const lauren = "https://x.com/poteto/status/2102050467505430555?s=20"
 const dhh =
   "https://www.linkedin.com/posts/st-scottsun-inireland_dhh-writing-code-by-hand-is-over-its-no-ugcPost-7509166495810138112-oR9R/"
 const sources = {
+  marketplace: "https://cursor.com/changelog/origin-app-marketplace",
   projects: "https://cursor.com/blog/projects",
   release: "https://cursor.com/blog/rollouts-and-security-reviewer",
   remote: "https://cursor.com/changelog/remote-control-local-agents",
@@ -13,7 +16,10 @@ const sources = {
   dots: "https://learn.chatgpt.com/docs/dots/computers-and-apps",
   review: "https://cursor.com/docs/bugbot",
 }
-const visuals: Record<string, { file: string; alt: string; credit: string }> = {
+const visuals: Record<
+  string,
+  { file: string; alt: string; credit: string; light?: boolean }
+> = {
   fence: {
     file: "ai-fence-1.jpeg",
     alt: "Three-panel cartoon: a person leaves an unpainted patch on a fence, hands the brush to AI, and AI repeats the patch on every board",
@@ -73,6 +79,56 @@ const visuals: Record<string, { file: string; alt: string; credit: string }> = {
     file: "dhh-video-thumbnail.png",
     alt: "David Heinemeier Hansson speaking on stage",
     credit: "DHH video preview supplied by Preston",
+  },
+  sdlc: {
+    file: "gromit-train.mp4",
+    alt: "Gromit laying railway track in front of a moving train",
+    credit: "The Wrong Trousers · Aardman Animations · via Imgflip",
+  },
+  stack: {
+    file: "xkcd-exploits-of-a-mom.png",
+    alt: "XKCD comic about Little Bobby Tables and a school that failed to sanitize database inputs",
+    credit: "xkcd #327, Exploits of a Mom · CC BY-NC 2.5",
+    light: true,
+  },
+  prompt: {
+    file: "draw-the-owl.png",
+    alt: "Two-step owl tutorial jumps from simple shapes to a fully detailed owl",
+    credit: "MrAlanKoh · Wikimedia Commons · CC0",
+    light: true,
+  },
+  context: {
+    file: "no-context-dog.png",
+    alt: "A dog at a computer declares I have no idea what I am doing",
+    credit: "I Have No Idea What I’m Doing dog meme · via OneDublin.org",
+  },
+  checks: {
+    file: "this-is-fine.jpg",
+    alt: "A dog sits in a burning room and declares This is fine",
+    credit: "KC Green · Gunshow: On Fire · excerpt via NPR",
+  },
+  questions: {
+    file: "skeptical-fry.jpg",
+    alt: "Fry from Futurama squinting skeptically at a claim",
+    credit: "Futurama · Skeptical Fry meme · via Imgflip",
+  },
+  industry: {
+    file: "xkcd-standards.png",
+    alt: "XKCD comic in which an attempt to replace fourteen competing standards creates a fifteenth",
+    credit: "xkcd #927, Standards · CC BY-NC 2.5",
+    light: true,
+  },
+  future: {
+    file: "xkcd-machine-learning.png",
+    alt: "XKCD comic depicting machine learning as a mysterious pile of linear algebra that produces answers",
+    credit: "xkcd #1838, Machine Learning · CC BY-NC 2.5",
+    light: true,
+  },
+  closing: {
+    file: "xkcd-python.png",
+    alt: "XKCD comic in which learning Python makes programming feel fun again",
+    credit: "xkcd #353, Python · CC BY-NC 2.5",
+    light: true,
   },
 }
 const visualFor = (slide: { kind: string; link?: string }) =>
@@ -249,13 +305,22 @@ const slides = [
       "Operation & maintenance",
     ],
     notes: {
-      lead: "Trace one signup feature through the life cycle.",
+      lead: "Gromit is building while the train keeps moving. Software also keeps changing after release.",
+      cue: "Play the three-second loop briefly, then pause.",
       bullets: [
-        "Define behavior; choose the design.",
-        "Build, test, release, and observe.",
-        "Feed results into the next iteration.",
+        "Requirements define observable behavior.",
+        "Design chooses the path through the system.",
+        "Implementation, testing, and deployment produce evidence.",
+        "Operations feed the next iteration.",
+        "AI speeds up steps; it does not remove them.",
       ],
     },
+    refs: [
+      {
+        label: "Gromit track-laying clip",
+        url: "https://imgflip.com/memetemplate/329066680/Gromit-placing-tracks",
+      },
+    ],
   },
   {
     title: "One request across the stack",
@@ -270,14 +335,22 @@ const slides = [
       "Database: save and enforce uniqueness",
     ],
     notes: {
-      lead: "Trace browser → API → function → database → response.",
+      lead: "Little Bobby Tables is an input that reaches the database unchecked.",
       bullets: [
-        "Functions take inputs and produce results.",
+        "Browser collects input; API receives it.",
+        "A function validates and branches.",
+        "The database persists and enforces uniqueness.",
         "Branches use AND, OR, and NOT.",
-        "Concurrent requests can defeat duplicate prechecks.",
+        "Return a useful response to the browser.",
       ],
       audience: "Where must uniqueness be enforced?",
     },
+    refs: [
+      {
+        label: "xkcd: Exploits of a Mom",
+        url: "https://xkcd.com/327/",
+      },
+    ],
   },
   {
     title: "Turn a request into a task",
@@ -292,13 +365,20 @@ const slides = [
       "Done: success, invalid input, duplicates, reload",
     ],
     notes: {
-      lead: "Give Cursor the context a teammate needs.",
+      lead: "‘Draw the rest of the owl’ skips every decision that matters. A feature request needs those missing steps.",
       bullets: [
-        "Show files and AGENTS.md.",
-        "Specify email normalization and uniqueness.",
-        "Define checks; review the plan first.",
+        "State the user-visible goal.",
+        "Point to the form, API, datastore, and tests.",
+        "Name constraints and keep scope small.",
+        "Define done before implementation.",
       ],
     },
+    refs: [
+      {
+        label: "Owl meme and credit",
+        url: "https://commons.wikimedia.org/wiki/File:How_to_draw_an_owl_meme.png",
+      },
+    ],
   },
   {
     title: "Context engineering",
@@ -308,16 +388,21 @@ const slides = [
     intro:
       "Develop the instructions and reusable skills your agents work from.",
     notes: {
-      lead: "Develop reusable instructions from real work.",
+      lead: "‘Fix it’ gives the agent no context. Like this dog at a keyboard, it can look busy without knowing the job.",
       bullets: [
-        "AGENTS.md: commands, conventions, boundaries.",
-        "Skills: steps, examples, verification; revise through use.",
-        "Rules: .cursor/rules and .claude/rules.",
-        "Shared .agents/rules needs tool adapters.",
-        "Cursor supports shared .agents/skills.",
+        "AGENTS.md maps commands, structure, and boundaries.",
+        ".agents/rules stores constraints that should always apply.",
+        ".agents/skills stores a repeatable workflow and its checks.",
+        ".agents/memory stores decisions worth carrying forward.",
+        "Link rules and memory from AGENTS.md; discovery varies by tool.",
       ],
+      prep: "Examples: AGENTS.md: ‘Run npm test before and after.’ Rules: ‘Normalize emails; enforce duplicates in the datastore.’ Skill: ‘Register twice, reload, record evidence.’ Memory: ‘Duplicate means normalized email; production needs database uniqueness.’ Keep shared instructions in .agents; use tool-specific adapters where needed.",
     },
     refs: [
+      {
+        label: "Dog meme source",
+        url: "https://onedublin.org/2014/06/30/graduating-from-uc-san-diego-and-landing-a-silicon-valley-software-job-in-four-years/",
+      },
       {
         label: "Cursor rules",
         url: "https://cursor.com/docs/rules",
@@ -363,14 +448,16 @@ const slides = [
       "Reload and verify persistence",
     ],
     notes: {
-      lead: "Run the app and compare expected behavior.",
+      lead: "‘This is fine’ is a claim. The burning room is the evidence. Check the behavior yourself.",
       bullets: [
-        "Try valid input and duplicates.",
-        "Reload; check persistence.",
-        "Correct narrowly; rerun the check.",
+        "Start from expected behavior.",
+        "Try success, invalid input, and duplicates.",
+        "Reload and restart to test persistence.",
+        "Correct narrowly, then rerun the evidence.",
       ],
       audience: "What would convince you this survives reload?",
     },
+    refs: [{ label: "KC Green: On Fire", url: "https://gunshowcomic.com/648" }],
   },
   {
     title: "Confidence is not understanding",
@@ -400,20 +487,28 @@ const slides = [
     theme: "dark",
     intro: "Work in pairs: one person directs, one checks.",
     points: [
-      "0–2 min: choose a slice and acceptance criteria",
-      "2–4 min: give context and review a plan",
-      "4–7 min: build form → API → demo datastore",
-      "7–9 min: test success, invalid input, reload",
-      "9–10 min: write one correction or uncertainty",
+      "Open the starter in Codex or Cursor",
+      "Create the four context files",
+      "Plan and build duplicate protection",
+      "Test, reload, and inspect the diff",
     ],
+    starterLink: "https://github.com/wallacepreston/csc-3100-ai-lab",
     notes: {
-      lead: "Pairs: one directs; one checks. Stop after ten minutes.",
+      lead: "Students open the starter repository in Codex or Cursor. Pairs can share one machine.",
       bullets: [
-        "Build form → API → demo datastore.",
-        "Check valid input, errors, and reload.",
-        "Record one correction or uncertainty.",
+        "Before timer: open the GitHub link on this slide.",
+        "Before timer: clone the repo, or use Code → Download ZIP.",
+        "Open csc-3100-ai-lab in Codex or Cursor.",
+        "Before timer: run npm test and npm run dev.",
+        "0–2: read README.md and TASK.md.",
+        "0–2: create AGENTS.md plus rules, skill, and memory files.",
+        "2–4: ask the agent to inspect and propose a short plan.",
+        "4–7: implement duplicate protection across the request path.",
+        "7–9: test case changes, reload, and server restart.",
+        "9–10: inspect the diff and write one uncertainty.",
+        "The checker must challenge the first result.",
       ],
-      prep: "Preflight starter and tool access. Fallback: supplied diff and test transcript.",
+      prep: "Repository: https://github.com/wallacepreston/csc-3100-ai-lab. Clone command: git clone https://github.com/wallacepreston/csc-3100-ai-lab.git. Offline ZIP: /downloads/csc-3100-ai-lab.zip. Preflight Node 20 and agent access.",
     },
   },
   {
@@ -428,10 +523,21 @@ const slides = [
       "What remains unverified?",
     ],
     notes: {
-      lead: "Take two brief reports; draw one shared lesson.",
-      bullets: ["Allow 30 seconds per pair.", "Use their actual results."],
+      lead: "Bring Fry’s skepticism to the debrief: what evidence actually supports the result?",
+      bullets: [
+        "Take two reports at 30 seconds each.",
+        "Ask for the context choice that changed output.",
+        "Ask which check exposed a problem.",
+        "Name one thing that remains unverified.",
+      ],
       audience: "Which check changed your mind?",
     },
+    refs: [
+      {
+        label: "Skeptical Fry source",
+        url: "https://imgflip.com/memetemplate/107492986/Futurama-Fry-Blank-HD",
+      },
+    ],
   },
   {
     title: "Understand every PR",
@@ -460,22 +566,27 @@ const slides = [
     time: "36:00–40:00",
     kind: "industry",
     theme: "dark",
-    intro: "Research snapshot: October 9. Refresh before the lecture.",
+    intro: "Research snapshot: October 14. Refresh before the lecture.",
     points: [
-      "Sep 10 · Projects: coordination and shared context",
-      "Sep 23 · Rollouts and Security Reviewer",
+      "Oct 13 · Marketplace connects the delivery stack",
       "Oct 6 · Remote control for local agents",
+      "Sep 23 · Rollouts and Security Review",
+      "Sep 10 · Projects coordinate agents and context",
     ],
     notes: {
-      lead: "The unit of delegated work keeps growing.",
+      lead: "The current edge is a coordinated system of agents and tools.",
       bullets: [
-        "Projects coordinate work and context.",
-        "Review tools help assess releases.",
-        "Remote local agents need an online computer.",
+        "Origin now connects more than 20 delivery tools.",
+        "Remote control keeps local agents available.",
+        "Rollouts and reviewers assess releases.",
+        "Projects coordinate agents and shared context.",
+        "Expect capability convergence and product churn.",
       ],
-      prep: "October 9 snapshot. Refresh before class.",
+      prep: "October 14 snapshot. Refresh before class.",
     },
     refs: [
+      { label: "xkcd: Standards", url: "https://xkcd.com/927/" },
+      { label: "Origin App Marketplace", url: sources.marketplace },
       { label: "Projects", url: sources.projects },
       { label: "Rollouts & Security Reviewer", url: sources.release },
       { label: "Remote control", url: sources.remote },
@@ -517,15 +628,22 @@ const slides = [
       "More complex problems become affordable",
     ],
     notes: {
-      lead: "No one knows the long-term job count.",
+      lead: "No one knows the long-term job count or the final shape of the work.",
       bullets: [
         "More output expected per person.",
         "Some tasks or roles displaced.",
         "More complex work becomes affordable.",
+        "People still govern what gets implemented.",
       ],
       audience:
         "If implementation took one-tenth the time, what becomes hardest?",
     },
+    refs: [
+      {
+        label: "xkcd: Machine Learning",
+        url: "https://xkcd.com/1838/",
+      },
+    ],
   },
   {
     title: "DHH on handwriting code",
@@ -562,13 +680,15 @@ const slides = [
       "Explain one decision you made",
     ],
     notes: {
-      lead: "Choose one problem you care about.",
+      lead: "Programming can feel fun again when the feedback loop gets shorter.",
       bullets: [
+        "Choose one problem you care about.",
         "Build one feature with an agent.",
-        "Trace it; test one failure.",
-        "Explain one decision you made.",
+        "Trace one request and test one failure.",
+        "Explain one decision you still own.",
       ],
     },
+    refs: [{ label: "xkcd: Python", url: "https://xkcd.com/353/" }],
   },
   {
     title: "Questions and stay in touch",
@@ -594,15 +714,17 @@ const slides = [
       <span data-progress aria-live="polite">1 / {slides.length}</span>
       <button type="button" data-next aria-label="Next slide">→</button>
       <button type="button" data-present aria-pressed="false">Present</button>
-      <button type="button" data-presenter>Presenter view</button>
-      <button type="button" data-open-slides hidden>Open slides</button>
-      <button type="button" data-print-notes hidden>Print notes / PDF</button>
-      <button type="button" data-notes aria-pressed="false">Notes</button>
+      {showPresenterNotes && <>
+        <button type="button" data-presenter>Presenter view</button>
+        <button type="button" data-open-slides hidden>Open slides</button>
+        <button type="button" data-print-notes hidden>Print notes / PDF</button>
+        <button type="button" data-notes aria-pressed="false">Notes</button>
+      </>}
       <button type="button" data-fullscreen>Fullscreen</button>
       <button type="button" data-print>Print / PDF</button>
     </div>
   </nav>
-  <div class="presenter-info" hidden><p>Keep this window on your laptop. Move the audience slides to the projector and click Fullscreen. Slide navigation syncs between windows.</p><p data-up-next></p></div>
+  {showPresenterNotes && <div class="presenter-info" hidden><p>Keep this window on your laptop. Move the audience slides to the projector and click Fullscreen. Slide navigation syncs between windows.</p><p data-up-next></p></div>}
   <main class="lecture-deck" aria-label="Lecture slides" tabindex="-1">
     {slides.map((slide, index) => (
       <article class="slide-frame" id={`slide-${String(index + 1).padStart(2, '0')}`} data-slide={index}>
@@ -626,19 +748,19 @@ const slides = [
               <div class="slide-copy">
                 <h2 id={`title-${index}`}>{slide.title}</h2>
                 {!visualFor(slide) && ['activity', 'resources'].includes(slide.kind) && <p class="intro">{slide.intro}</p>}
-                {slide.kind === 'sdlc' ? (
-                  <ol class="lifecycle">{slide.points?.map((point, step) => <li><span>{String(step + 1).padStart(2, '0')}</span>{point}</li>)}</ol>
-                  <p class="annotation">Observe the result. Revise the requirements. Repeat.</p>
-                ) : slide.kind === 'stack' ? (
-                  <ol class="stack-path">{slide.points?.map(point => <li>{point}</li>)}</ol>
-                  <div class="logic"><code>validEmail AND NOT alreadyRegistered</code><p>Validate on the server. Enforce uniqueness in the database.</p></div>
-                ) : slide.kind === 'activity' ? (
+                {slide.kind === 'activity' ? (
                   <div class="activity-layout">
-                    <ol class="activity-steps">{slide.points?.map(point => <li>{point}</li>)}</ol>
-                    <div class="activity-clock">
-                      <output data-timer aria-label="Activity time remaining">10:00</output>
-                      <div><button type="button" data-timer-start>Start timer</button><button type="button" data-timer-reset>Reset</button></div>
-                      <p data-timer-status role="status">Ready for pair work</p>
+                    <figure class="activity-preview">
+                      <img src="/img/lectures/lara-nichols/student-lab-app.png" alt="Launch Night event registration starter app" loading="eager" />
+                    </figure>
+                    <div class="activity-brief">
+                      <ol class="activity-steps">{slide.points?.map(point => <li>{point}</li>)}</ol>
+                      <a class="starter-download" href={slide.starterLink} target="_blank" rel="noopener noreferrer"><span>Open starter on GitHub<small>wallacepreston/csc-3100-ai-lab</small></span><span aria-hidden="true">↗</span></a>
+                      <div class="activity-clock">
+                        <output data-timer aria-label="Activity time remaining">10:00</output>
+                        <div><button type="button" data-timer-start>Start timer</button><button type="button" data-timer-reset>Reset</button></div>
+                        <p data-timer-status role="status">Ready for pair work</p>
+                      </div>
                     </div>
                   </div>
                 ) : slide.kind === 'resources' ? (
@@ -655,7 +777,7 @@ const slides = [
                         <a href="https://devrocket.com">devrocket.com</a>
                       </address>
                       <figure class="contact-qr">
-                        <a class="linkedin-profile-card" href="https://www.linkedin.com/in/prestonwallace" aria-label="Connect with Preston Wallace on LinkedIn"><img src="/img/lectures/lara-nichols/linkedin-prestonwallace.jpeg" alt="Preston Wallace’s LinkedIn card with headshot, professional title, and QR code" /></a>
+                        <a class="linkedin-profile-card" href="https://www.linkedin.com/in/prestonwallace" aria-label="Connect with Preston Wallace on LinkedIn"><img src="/img/lectures/lara-nichols/linkedin-prestonwallace.png" alt="Preston Wallace’s LinkedIn card with headshot, professional title, and QR code" /></a>
                         <figcaption>Connect on LinkedIn</figcaption>
                       </figure>
                       <figure class="contact-qr">
@@ -665,23 +787,42 @@ const slides = [
                     </div>
                   </div>
                 ) : slide.kind === 'context' ? (
-                  <div class="context-map">
-                    <div class="context-files"><strong>Repository context</strong><code>AGENTS.md</code><span>Architecture · commands · boundaries</span><code>.agents/skills/&lt;workflow&gt;/SKILL.md</code><span>Reusable steps · examples · checks</span><code>.agents/rules/</code><span>Shared source, with tool adapters ↓</span><div class="tool-rules"><code>.cursor/rules/*.mdc</code><code>.claude/rules/*.md</code></div></div>
-                    <div class="skill-loop"><strong>Develop a skill</strong><ol>{['Find a recurring task', 'Write a workflow', 'Try real examples', 'Inspect evidence', 'Revise and repeat'].map(item => <li>{item}</li>)}</ol><p>Prompt = this task<br />Rules = constraints<br />Skill = repeatable method</p></div>
+                  <div class="context-visual">
+                    <figure class="context-comic">
+                      <img src={`/img/lectures/lara-nichols/${visualFor(slide).file}`} alt={visualFor(slide).alt} loading="eager" />
+                      <figcaption>“Fix it.” No repo. No requirements. No context.</figcaption>
+                    </figure>
+                    <div class="context-files">
+                      <div><code>AGENTS.md</code><p>The map</p></div>
+                      <div><code>.agents/rules/</code><p>The constraints</p></div>
+                      <div><code>.agents/skills/</code><p>The playbooks</p></div>
+                      <div><code>.agents/memory/</code><p>The decisions</p></div>
+                    </div>
                   </div>
                 ) : visualFor(slide) ? (
                   <div class="visual-layout">
-                    <figure class="slide-visual">
+                    <figure class:list={['slide-visual', { 'slide-visual--light': visualFor(slide).light }]}>
                       {slide.kind === 'fence' ? (
                         <div class="fence-panels">
-                          <img src="/img/lectures/lara-nichols/ai-fence-1.jpeg" alt="A person paints a fence, leaving an unpainted patch, while AI watches" loading="lazy" />
-                          <img src="/img/lectures/lara-nichols/ai-fence-2.jpeg" alt="The person hands the paintbrush to AI and points down the fence" loading="lazy" />
-                          <img src="/img/lectures/lara-nichols/ai-fence-3.jpeg" alt="AI repeats the same unpainted patch on every fence board" loading="lazy" />
+                          <img src="/img/lectures/lara-nichols/ai-fence-1.jpeg" alt="A person paints a fence, leaving an unpainted patch, while AI watches" loading="eager" />
+                          <img src="/img/lectures/lara-nichols/ai-fence-2.jpeg" alt="The person hands the paintbrush to AI and points down the fence" loading="eager" />
+                          <img src="/img/lectures/lara-nichols/ai-fence-3.jpeg" alt="AI repeats the same unpainted patch on every fence board" loading="eager" />
                         </div>
-                      ) : <img src={`/img/lectures/lara-nichols/${visualFor(slide).file}`} alt={visualFor(slide).alt} loading="lazy" />}
+                      ) : slide.kind === 'sdlc' ? (
+                        <video controls loop muted playsinline preload="metadata" poster="/img/lectures/lara-nichols/gromit-train-poster.png" aria-label={visualFor(slide).alt}>
+                          <source src={`/img/lectures/lara-nichols/${visualFor(slide).file}`} type="video/mp4" />
+                        </video>
+                      ) : <img src={`/img/lectures/lara-nichols/${visualFor(slide).file}`} alt={visualFor(slide).alt} loading="eager" />}
                       {slide.kind === 'steps' && <button type="button" class="animation-toggle" data-animation aria-pressed="false">Pause animation</button>}
+                      <figcaption class="sr-only">{visualFor(slide).credit}</figcaption>
                     </figure>
                   </div>
+                ) : slide.kind === 'sdlc' ? (
+                  <ol class="lifecycle">{slide.points?.map((point, step) => <li><span>{String(step + 1).padStart(2, '0')}</span>{point}</li>)}</ol>
+                  <p class="annotation">Observe the result. Revise the requirements. Repeat.</p>
+                ) : slide.kind === 'stack' ? (
+                  <ol class="stack-path">{slide.points?.map(point => <li>{point}</li>)}</ol>
+                  <div class="logic"><code>validEmail AND NOT alreadyRegistered</code><p>Validate on the server. Enforce uniqueness in the database.</p></div>
                 ) : (
                   <ul class:list={['points', { 'points--large': slide.kind === 'future' || slide.kind === 'questions' }]}>{slide.points?.map(point => <li>{point}</li>)}</ul>
                 )}
@@ -691,7 +832,7 @@ const slides = [
           )}
           <footer class="folio"><span>Building Software with AI</span><span>{String(index + 1).padStart(2, '0')} / {slides.length}</span></footer>
         </section>
-        <aside class="speaker-notes" aria-label={`Speaker notes for slide ${index + 1}`} hidden>
+        {showPresenterNotes && <aside class="speaker-notes" aria-label={`Speaker notes for slide ${index + 1}`} hidden>
           <h3>Speaker notes · {slide.time}</h3>
           {slide.notes.cue && <p class="note-cue">{slide.notes.cue}</p>}
           <p class="note-lead">{slide.notes.lead}</p>
@@ -703,11 +844,11 @@ const slides = [
             {visualFor(slide) && <p class="media-credit">Visual: {visualFor(slide).credit}</p>}
             {slide.refs && <p class="sources">{slide.refs.map(ref => <a href={ref.url} target="_blank" rel="noopener noreferrer">{ref.label}</a>)}</p>}
           </details>}
-        </aside>
+        </aside>}
       </article>
     ))}
   </main>
-  <p class="deck-help">Working draft · Use ← / → to navigate, P to present, N for notes, Esc to exit. Video excerpts and activity starter need preparation before class.</p>
+  <p class="deck-help">Use ← / → to navigate, P to present, Esc to exit.{showPresenterNotes && ' N opens speaker notes.'}</p>
   <p class="deck-message" role="status" data-message></p>
   <script>
     const frames = Array.from(
@@ -721,7 +862,8 @@ const slides = [
     const nextButton = document.querySelector<HTMLButtonElement>("[data-next]")
     const fullscreenButton =
       document.querySelector<HTMLButtonElement>("[data-fullscreen]")
-    const presenter = new URLSearchParams(location.search).has("presenter")
+    const presenter =
+      import.meta.env.DEV && new URLSearchParams(location.search).has("presenter")
     const sessionUrl = new URL(location.href)
     const session = sessionUrl.searchParams.get("session") ?? crypto.randomUUID()
     sessionUrl.searchParams.set("session", session)
@@ -741,9 +883,11 @@ const slides = [
     let presenting = false
     let showNotes = false
     const update = () => {
-      frames.forEach((frame, index) =>
+      frames.forEach((frame, index) => {
         frame.classList.toggle("is-current", index === current)
-      )
+        if (index !== current)
+          frame.querySelectorAll("video").forEach(video => video.pause())
+      })
       const upNext = document.querySelector("[data-up-next]")
       if (upNext)
         upNext.textContent = `Up next: ${
@@ -778,6 +922,7 @@ const slides = [
       navigate(current, false)
     }
     const toggleNotes = () => {
+      if (!import.meta.env.DEV) return
       showNotes = !showNotes
       document.querySelectorAll<HTMLElement>(".speaker-notes").forEach(note => {
         note.hidden = !showNotes
@@ -798,6 +943,7 @@ const slides = [
       }
     }
     const openView = (speaker: boolean) => {
+      if (speaker && !import.meta.env.DEV) return
       const url = new URL(location.href)
       url.searchParams.delete("presenter")
       url.searchParams.delete("present")
@@ -1612,7 +1758,7 @@ const slides = [
       box-shadow: none;
     }
   }
-  
+
   .visual-layout {
     display: grid;
     grid-template-columns: 1.25fr 1fr;
@@ -1651,44 +1797,7 @@ const slides = [
     gap: 24px;
     font-size: clamp(13px, 1.4vw, 19px);
   }
-  .context-files,
-  .skill-loop {
-    border: 1px solid #254c50;
-    border-radius: 12px;
-    padding: 20px;
-    background: rgba(10, 18, 27, 0.85);
-  }
-  .context-files {
-    display: grid;
-    gap: 8px;
-  }
-  .context-files code {
-    color: #1df9f8;
-  }
-  .context-files span {
-    font-size: 0.85em;
-    color: #a0a5b8;
-    margin-bottom: 8px;
-  }
-  .tool-rules {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    border-top: 1px solid #254c50;
-    padding-top: 10px;
-    font-size: 0.8em;
-  }
-  .skill-loop ol {
-    padding-left: 24px;
-    line-height: 1.7;
-    margin: 12px 0;
-  }
-  .skill-loop p {
-    color: #f1c36d;
-    margin: 0;
-    line-height: 1.5;
-  }
-  
+
   .presenter-info {
     max-width: 1280px;
     margin: 12px auto;
@@ -1791,7 +1900,7 @@ const slides = [
       display: block !important;
     }
   }
-  
+
   .sheet--video .slide-visual img {
     height: clamp(150px, 18vw, 230px);
   }
@@ -1863,7 +1972,7 @@ const slides = [
       display: none;
     }
   }
-  
+
   .sheet--visual {
     display: flex;
     flex-direction: column;
@@ -1893,7 +2002,8 @@ const slides = [
     flex-direction: column;
     height: 100%;
   }
-  .sheet--visual .slide-visual img {
+  .sheet--visual .slide-visual img,
+  .sheet--visual .slide-visual video {
     width: 100%;
     height: 100%;
     flex: 1;
@@ -1902,6 +2012,17 @@ const slides = [
     border: none;
     border-radius: 8px;
     background: transparent;
+  }
+  .slide-visual--light {
+    padding: clamp(12px, 1.8vw, 24px);
+    overflow: hidden;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.22);
+  }
+  .sheet--visual .slide-visual--light img {
+    background: #fff;
+    border-radius: 0;
   }
   .sheet--visual.sheet--video .video-link {
     position: absolute;
@@ -1928,15 +2049,61 @@ const slides = [
     color: #a0a5b8;
     font-size: 14px;
   }
-  .context-files span {
-    display: none;
+  .context-visual {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 16px;
+    flex: 1;
+    min-height: 0;
+  }
+  .context-comic {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+  }
+  .context-comic img {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  .context-comic figcaption {
+    margin-top: 8px;
+    text-align: center;
+    color: #c6cad8;
+    font-size: clamp(13px, 1.2vw, 17px);
   }
   .context-files {
-    align-content: center;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    min-width: 0;
+    min-height: 0;
+    align-content: stretch;
   }
-  .skill-loop p {
-    display: none;
+  .context-files > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    padding: 12px 16px;
+    border-top: 3px solid #19c4bd;
+    border-radius: 10px;
+    background: rgba(10, 18, 27, 0.86);
+  }
+  .context-files code {
+    color: #1df9f8;
+    font-size: clamp(14px, 1.35vw, 19px);
+  }
+  .context-files p {
+    margin: 10px 0 0;
+    color: #c6cad8;
+    font-size: clamp(12px, 1.15vw, 16px);
+    line-height: 1.35;
   }
   .presenter-view .sheet--visual {
     height: 360px;
@@ -1948,6 +2115,20 @@ const slides = [
   }
   .presenter-view .sheet--visual .slide-visual img {
     height: 100%;
+  }
+  .presenter-view .context-files > div {
+    padding: 6px;
+  }
+  .presenter-view .context-files code,
+  .presenter-view .context-files p {
+    font-size: 10px;
+    overflow-wrap: anywhere;
+  }
+  .presenter-view .context-files p {
+    margin-top: 5px;
+  }
+  .presenter-view .context-comic figcaption {
+    font-size: 10px;
   }
   .presenter-view .sheet--visual .video-link {
     font-size: 10px;
@@ -2035,6 +2216,92 @@ const slides = [
     display: flex;
     flex-direction: column;
     padding: 3% 5% 5%;
+  }
+  .sheet--activity {
+    display: flex;
+    flex-direction: column;
+    padding: 3% 4% 4%;
+  }
+  .sheet--activity .sheet-header {
+    display: none;
+  }
+  .sheet--activity .slide-copy {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    flex-direction: column;
+  }
+  .sheet--activity .slide-copy h2 {
+    margin: 0 0 8px;
+    font-size: clamp(28px, 3vw, 42px);
+  }
+  .sheet--activity .intro {
+    margin: 0 0 14px;
+    font-size: clamp(16px, 1.55vw, 21px);
+  }
+  .sheet--activity .activity-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+    gap: 24px;
+    align-items: stretch;
+    flex: 1;
+    min-height: 0;
+  }
+  .activity-preview {
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid #254c50;
+    border-radius: 12px;
+    background: #05070c;
+  }
+  .activity-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .activity-brief {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    gap: 12px;
+  }
+  .sheet--activity .activity-steps {
+    gap: 9px;
+    font-size: clamp(14px, 1.3vw, 18px);
+  }
+  .sheet--activity .activity-steps li {
+    padding-left: 16px;
+    border-left: 3px solid #19c4bd;
+  }
+  .starter-download {
+    display: inline-flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 14px;
+    border: 1px solid #19c4bd;
+    border-radius: 8px;
+    color: #1df9f8;
+    text-decoration: none;
+    font-size: clamp(13px, 1.2vw, 17px);
+  }
+  .starter-download small {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.75em;
+  }
+  .sheet--activity .activity-clock {
+    margin-top: auto;
+    padding: 14px;
+  }
+  .sheet--activity [data-timer] {
+    font-size: clamp(38px, 4.5vw, 62px);
+    margin-bottom: 8px;
+  }
+  .sheet--activity .folio {
+    bottom: 3%;
   }
   .sheet--resources .sheet-header,
   .sheet--resources .intro {
@@ -2134,6 +2401,26 @@ const slides = [
     height: 430px;
     min-height: 0;
   }
+  .presenter-view .sheet--activity {
+    height: 430px;
+    min-height: 0;
+    padding: 24px 24px 42px;
+  }
+  .presenter-view .sheet--activity .slide-copy h2 {
+    font-size: 24px;
+  }
+  .presenter-view .sheet--activity .intro,
+  .presenter-view .sheet--activity .activity-steps,
+  .presenter-view .sheet--activity .starter-download {
+    font-size: 10px;
+  }
+  .presenter-view .sheet--activity .activity-layout {
+    grid-template-columns: minmax(0, 1.2fr) minmax(180px, 0.8fr);
+    gap: 12px;
+  }
+  .presenter-view .sheet--activity [data-timer] {
+    font-size: 34px;
+  }
   .presenter-view .sheet--resources .slide-copy h2 {
     font-size: 26px;
     margin-bottom: 12px;
@@ -2168,6 +2455,9 @@ const slides = [
     .deck-fullscreen .sheet--resources {
       padding: 4vh 5vw 6vh;
     }
+    .deck-fullscreen .sheet--activity {
+      padding: 4vh 4vw 6vh;
+    }
   }
   @media (max-width: 760px) {
     .sheet--resources {
@@ -2187,6 +2477,24 @@ const slides = [
     }
     .contact-qr figcaption {
       font-size: 12px;
+    }
+    .sheet--activity {
+      height: auto;
+      min-height: 920px;
+      padding: 28px 24px 60px;
+    }
+    .sheet--activity .activity-layout,
+    .context-visual {
+      grid-template-columns: 1fr;
+    }
+    .activity-preview {
+      min-height: 320px;
+    }
+    .context-comic {
+      min-height: 0;
+    }
+    .context-files {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 </style>

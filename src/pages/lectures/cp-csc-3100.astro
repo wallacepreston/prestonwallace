@@ -348,7 +348,7 @@ const slides = [
     ],
   },
   {
-    title: "My actual workflow: Inspect, plan, implement, test",
+    title: "My actual workflow: Inspect, plan, implement, test, repeat.",
     time: "07:00–09:30",
     kind: "steps",
     theme: "dark",
@@ -360,17 +360,19 @@ const slides = [
       "Inspect the diff before continuing",
     ],
     notes: {
-      lead: "Show the workflow on one bounded change.",
+      lead: "My workflow on one feature:",
       bullets: [
-        "Inspect code; review the plan.",
-        "Implement; inspect the diff.",
-        "Demonstrate UI-only validation missing the API.",
-        "Label prepared defects as examples.",
+        "Inspect code/app myself; review requirements.",
+        "Write detailed prompt with correct context, file references, screenshots, figma links (there's an MCP), etc.",
+        "Prompt agent. (ask to create multiple PRs at a time)",
+        "Check app behavior: Click around. Does it do what I wanted? Does it look how I wanted?",
+        "Inspect the diff.",
+        "Ask for Review (AI review and human review)",
       ],
     },
   },
   {
-    title: "Check the first result",
+    title: "Vibe coding: Don't let this be you.",
     time: "09:30–11:30",
     kind: "checks",
     theme: "dark",
@@ -381,53 +383,18 @@ const slides = [
       "Reload and verify persistence",
     ],
     notes: {
-      lead: "‘This is fine’ is a claim. The burning room is the evidence. Check the behavior yourself.",
+      lead: "‘This is fine’ is a claim the agent (claude/codex) makes. ",
       bullets: [
-        "Start from expected behavior.",
-        "Try success, invalid input, and duplicates.",
-        "Reload and restart to test persistence.",
-        "Correct narrowly, then rerun the evidence.",
+        "The burning room (or broken app) is the evidence.",
+        "Start from expected behavior (as a human), then",
+        "Check the behavior yourself.",
       ],
-      audience: "What would convince you this survives reload?",
     },
     refs: [{ label: "KC Green: On Fire", url: "https://gunshowcomic.com/648" }],
   },
   {
-    title: "The software development life cycle",
+    title: "And don't let THIS be you, either.",
     time: "11:30–13:30",
-    kind: "sdlc",
-    theme: "dark",
-    intro: "One feature: sign up for an event without duplicate registrations.",
-    points: [
-      "Requirements",
-      "Design",
-      "Implementation",
-      "Testing",
-      "Deployment",
-      "Operation & maintenance",
-    ],
-    notes: {
-      activation: "Think of planning a dinner: choose the menu, cook, taste, serve, and improve. Map those steps to building software.",
-      lead: "Gromit is building while the train keeps moving. Software also keeps changing after release.",
-      cue: "Play the three-second loop briefly, then pause.",
-      bullets: [
-        "Requirements define observable behavior.",
-        "Design chooses the path through the system.",
-        "Implementation, testing, and deployment produce evidence.",
-        "Operations feed the next iteration.",
-        "AI speeds up steps; it does not remove them.",
-      ],
-    },
-    refs: [
-      {
-        label: "Gromit track-laying clip",
-        url: "https://imgflip.com/memetemplate/329066680/Gromit-placing-tracks",
-      },
-    ],
-  },
-  {
-    title: "One request across the stack",
-    time: "13:30–15:30",
     kind: "stack",
     theme: "dark",
     intro: "Follow the data. Check every boundary.",
@@ -457,8 +424,8 @@ const slides = [
     ],
   },
   {
-    title: "Turn a request into a task",
-    time: "15:30–17:00",
+    title: "How NOT to develop an app with AI",
+    time: "13:30–15:00",
     kind: "prompt",
     theme: "dark",
     intro: "Give Cursor the same context a teammate would need.",
@@ -469,7 +436,7 @@ const slides = [
       "Done: success, invalid input, duplicates, reload",
     ],
     notes: {
-      lead: "‘Draw the rest of the owl’ skips every decision that matters. A feature request needs those missing steps.",
+      lead: "‘Fill in the rest of the details’ skips every decision that matters. A feature request needs those missing steps.",
       bullets: [
         "State the user-visible goal.",
         "Point to the form, API, datastore, and tests.",
@@ -485,8 +452,8 @@ const slides = [
     ],
   },
   {
-    title: "Context engineering",
-    time: "17:00–20:00",
+    title: "Give the agent what it needs: Context engineering",
+    time: "15:00–18:00",
     kind: "context",
     theme: "dark",
     intro:
@@ -520,8 +487,8 @@ const slides = [
     ],
   },
   {
-    title: "Direct and verify one feature",
-    time: "20:00–30:00",
+    title: "ACTIVITY: Direct and verify one feature",
+    time: "18:00–28:00",
     kind: "activity",
     theme: "dark",
     intro: "Work in pairs: one person directs, one checks.",
@@ -552,7 +519,7 @@ const slides = [
   },
   {
     title: "Compare the evidence",
-    time: "30:00–32:00",
+    time: "28:00–30:00",
     kind: "questions",
     theme: "dark",
     intro: "What did your pair learn?",
@@ -580,7 +547,7 @@ const slides = [
   },
   {
     title: "Understand every PR",
-    time: "32:00–35:00",
+    time: "30:00–33:00",
     kind: "review",
     theme: "dark",
     intro: "Investigate the reviewer’s claims.",
@@ -602,7 +569,7 @@ const slides = [
   },
   {
     title: "AI-assisted coding, October 2026",
-    time: "35:00–37:00",
+    time: "33:00–35:00",
     kind: "industry",
     theme: "dark",
     intro: "Research snapshot: October 14. Refresh before the lecture.",
@@ -633,7 +600,7 @@ const slides = [
   },
   {
     title: "Bots that keep working",
-    time: "37:00–39:00",
+    time: "35:00–37:00",
     kind: "bots",
     theme: "dark",
     intro: "Persistent context, connected tools, and a clear finish line.",
@@ -658,7 +625,7 @@ const slides = [
   },
   {
     title: "Confidence is not understanding",
-    time: "39:00–40:00",
+    time: "37:00–38:00",
     kind: "confidence",
     theme: "dark",
     intro: "Calibrate confidence with evidence.",
@@ -676,6 +643,39 @@ const slides = [
       {
         label: "Kruger & Dunning",
         url: "https://pubmed.ncbi.nlm.nih.gov/10626367/",
+      },
+    ],
+  },
+  {
+    title: "What the SDLC feels like in 2026",
+    time: "38:00–40:00",
+    kind: "sdlc",
+    theme: "dark",
+    intro: "One feature: sign up for an event without duplicate registrations.",
+    points: [
+      "Requirements",
+      "Design",
+      "Implementation",
+      "Testing",
+      "Deployment",
+      "Operation & maintenance",
+    ],
+    notes: {
+      activation: "Think of your college routine: wake up, brush your teeth, sprint to class, take a test, grab lunch, go on a date, party, crash. Now imagine doing that entire cycle 10 times today. Even your toothbrush wants to drop out.",
+      lead: "Gromit is building while the train keeps moving. Software also keeps changing after release.",
+      cue: "Play the three-second loop briefly, then pause.",
+      bullets: [
+        "Requirements define observable behavior.",
+        "Design chooses the path through the system.",
+        "Implementation, testing, and deployment produce evidence.",
+        "Operations feed the next iteration.",
+        "AI speeds up steps; it does not remove them.",
+      ],
+    },
+    refs: [
+      {
+        label: "Gromit track-laying clip",
+        url: "https://imgflip.com/memetemplate/329066680/Gromit-placing-tracks",
       },
     ],
   },

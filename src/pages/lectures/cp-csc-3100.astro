@@ -167,10 +167,12 @@ const slides = [
     time: "00:00–00:30",
     kind: "cover",
     theme: "dark",
-    intro: "Beyond vibe coding",
     notes: {
       lead: "I build with AI and own the result.",
-      bullets: ["Introduce myself briefly."],
+      bullets: [
+        "Introduce myself briefly.",
+        "Career history (Network admin, Vue Engineer, Backend Engineer, Full-Stack, AI Engineer)",
+      ],
       audience: "Who has used AI to generate code?",
     },
   },
@@ -873,7 +875,6 @@ const slides = [
               <div class="orbit orbit--one" aria-hidden="true"></div>
               <div class="orbit orbit--two" aria-hidden="true"></div>
               <div class="cover-copy">
-                <p class="eyebrow">{slide.intro}</p>
                 <h1 id={`title-${index}`}>Building software<br />with <em>AI</em></h1>
                 <p class="cover-subtitle">Preston Wallace · CSC 3100: Software Engineering</p>
                 <p class="cover-date">October 19, 2026</p>
@@ -889,7 +890,7 @@ const slides = [
                 {!visualFor(slide) && ['activity', 'resources'].includes(slide.kind) && <p class="intro">{slide.intro}</p>}
                 {slide.kind === 'activity' ? (
                   <div class="activity-layout">
-                    <a class="starter-download" href={slide.starterLink} target="_blank" rel="noopener noreferrer"><span><small>Step 1 · Start here</small><strong>prestonwallace.com/csc-3100</strong></span><span aria-hidden="true">↗</span></a>
+                    <a class="starter-download" href={slide.starterLink} target="_blank" rel="noopener noreferrer"><strong>prestonwallace.com/csc-3100</strong><span aria-hidden="true">↗</span></a>
                     <figure class="activity-preview">
                       <img src="/img/lectures/lara-nichols/student-lab-app.png" alt="Launch Night event registration starter app" loading="eager" />
                     </figure>
@@ -921,7 +922,7 @@ const slides = [
                       </figure>
                       <div class="deck-access">
                         <a class="qr-code" href="https://prestonwallace.com/lectures/cp-csc-3100" aria-label="Scan or open this slide deck"><img src="/img/lectures/lara-nichols/cp-csc-3100-qr.svg" alt="QR code for prestonwallace.com/lectures/cp-csc-3100" width="156" height="156" /></a>
-                        <a class="deck-download" href="https://prestonwallace.com/lectures/cp-csc-3100"><span><small>Get the slide deck</small><strong>prestonwallace.com/<br />lectures/cp-csc-3100</strong></span><span aria-hidden="true">↗</span></a>
+                        <a class="deck-download" href="https://prestonwallace.com/lectures/cp-csc-3100"><strong>prestonwallace.com/<br />lectures/cp-csc-3100</strong><span aria-hidden="true">↗</span></a>
                       </div>
                     </div>
                   </div>
@@ -1494,13 +1495,6 @@ const slides = [
   .cover-copy {
     position: relative;
     margin: 16% 0 0 8%;
-  }
-  .eyebrow {
-    color: #19c4bd;
-    text-transform: uppercase;
-    font-size: clamp(12px, 1.3vw, 18px);
-    letter-spacing: 0.2em;
-    margin: 0 0 20px;
   }
   .cover-copy h1 {
     margin: 0;
@@ -2500,16 +2494,6 @@ const slides = [
     font-weight: 700;
     letter-spacing: -0.03em;
   }
-  .starter-download small,
-  .deck-download small {
-    display: block;
-    margin-bottom: 4px;
-    color: #f1c36d;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
   .deck-download {
     grid-column: auto;
     align-self: center;
@@ -2528,7 +2512,7 @@ const slides = [
     justify-self: center;
     box-sizing: border-box;
   }
-  .deck-download > span:first-child {
+  .deck-download > strong {
     min-width: 0;
   }
   .deck-download strong {
@@ -2664,10 +2648,6 @@ const slides = [
   .presenter-view .starter-download strong,
   .presenter-view .deck-download strong {
     font-size: 20px;
-  }
-  .presenter-view .starter-download small,
-  .presenter-view .deck-download small {
-    font-size: 9px;
   }
   .presenter-view .sheet--activity [data-timer] {
     font-size: 34px;

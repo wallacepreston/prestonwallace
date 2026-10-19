@@ -529,14 +529,18 @@ const slides = [
       "What remains unverified?",
     ],
     notes: {
-      lead: "Bring Fry’s skepticism to the debrief: what evidence actually supports the result?",
+      lead: "This is the two-minute activity debrief. Use TASK.md to connect each claim of success to a concrete check.",
       bullets: [
+        "The starter deliberately accepts duplicates; README.md says so.",
+        "Initial tests pass because they omit the duplicate case.",
         "Take two reports at 30 seconds each.",
-        "Ask for the context choice that changed output.",
-        "Ask which check exposed a problem.",
+        "Check duplicates with capitalization and whitespace changes.",
+        "Check protection after reload and server restart.",
+        "Confirm valid and invalid-email behavior still works.",
+        "Ask what context helped the agent.",
         "Name one thing that remains unverified.",
       ],
-      audience: "Which check changed your mind?",
+      audience: "What evidence shows your solution meets the requirements?",
     },
     refs: [
       {

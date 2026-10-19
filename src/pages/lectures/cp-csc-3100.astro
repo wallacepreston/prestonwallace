@@ -326,30 +326,8 @@ const slides = [
     },
   },
   {
-    title: "AI copies what you leave behind",
-    time: "06:30–07:00",
-    kind: "fence",
-    theme: "dark",
-    intro: "The codebase is part of the prompt.",
-    notes: {
-      lead: "The agent copies the gap in the example.",
-      bullets: [
-        "Repair patterns before scaling.",
-        "Remove debt and stale workaround comments.",
-        "Enforce good paths with lint and tests.",
-      ],
-      prep: "Lauren: patterns around 21:00; comments 23:44–24:22. Her framework’s comment ban was context-specific.",
-    },
-    refs: [
-      {
-        label: "Lauren timestamps",
-        url: lauren,
-      },
-    ],
-  },
-  {
     title: "My actual workflow: Inspect, plan, implement, test, repeat.",
-    time: "07:00–09:30",
+    time: "06:30–09:00",
     kind: "steps",
     theme: "dark",
     intro: "Make each change small enough to understand.",
@@ -373,7 +351,7 @@ const slides = [
   },
   {
     title: "Vibe coding: Don't let this be you.",
-    time: "09:30–11:30",
+    time: "09:00–11:00",
     kind: "checks",
     theme: "dark",
     intro: "Expected behavior → observed behavior → evidence → correction",
@@ -394,7 +372,7 @@ const slides = [
   },
   {
     title: "And don't let THIS be you, either.",
-    time: "11:30–13:30",
+    time: "11:00–13:00",
     kind: "stack",
     theme: "dark",
     intro: "Follow the data. Check every boundary.",
@@ -425,7 +403,7 @@ const slides = [
   },
   {
     title: "How NOT to develop an app with AI",
-    time: "13:30–15:00",
+    time: "13:00–14:30",
     kind: "prompt",
     theme: "dark",
     intro: "Give Cursor the same context a teammate would need.",
@@ -448,6 +426,28 @@ const slides = [
       {
         label: "Owl meme and credit",
         url: "https://commons.wikimedia.org/wiki/File:How_to_draw_an_owl_meme.png",
+      },
+    ],
+  },
+  {
+    title: "AI copies what you leave behind",
+    time: "14:30–15:00",
+    kind: "fence",
+    theme: "dark",
+    intro: "The codebase is part of the prompt.",
+    notes: {
+      lead: "The agent copies the gap in the example.",
+      bullets: [
+        "Repair patterns before scaling.",
+        "Remove debt and stale workaround comments.",
+        "Enforce good paths with lint and tests.",
+      ],
+      prep: "Lauren: patterns around 21:00; comments 23:44–24:22. Her framework’s comment ban was context-specific.",
+    },
+    refs: [
+      {
+        label: "Lauren timestamps",
+        url: lauren,
       },
     ],
   },
@@ -609,12 +609,9 @@ const slides = [
       "dots: cloud work, connected apps, Codex coordination",
     ],
     notes: {
-      activation: "Think of delegating a recurring task to an assistant. They need access, instructions, a deadline, and a point to check back.",
       lead: "Persistent bots coordinate coding agents across sessions.",
       bullets: [
-        "Grok Bot and dots are examples.",
-        "Define access and approval boundaries.",
-        "Handoff: one fix, diff, and evidence.",
+        "Examples: Grok Bot, Dots, Muse...",
       ],
     },
     refs: [
@@ -624,20 +621,19 @@ const slides = [
     ],
   },
   {
-    title: "Confidence is not understanding",
+    title: "The path learning software engineering",
     time: "37:00–38:00",
     kind: "confidence",
     theme: "dark",
     intro: "Calibrate confidence with evidence.",
     notes: {
-      lead: "This is the Dunning–Kruger effect: early confidence can outrun the ability to judge your own work.",
+      lead: "This is the Dunning–Kruger effect",
       bullets: [
-        "It can show up while learning new skills.",
-        "AI-assisted coding makes misplaced confidence especially tempting.",
-        "A convincing demo can precede understanding.",
-        "Calibrate confidence with tests and explanations.",
+        "I might be near the Plateau in my company (domain knowledge)",
+        "But I never feel like I'm quite there with software. And maybe that's good. Maybe you should never feel that way",
       ],
       prep: "Use the curve as a learning metaphor. It is not a universal learning trajectory or a measured AI-specific result.",
+      audience: "Where are you on this graph?",
     },
     refs: [
       {

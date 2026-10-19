@@ -435,19 +435,15 @@ const slides = [
     ],
   },
   {
-    title: "You asked for a dog. More cats arrive.",
+    title: "AI gets things wrong.",
     time: "14:30–15:00",
     kind: "genie",
     theme: "dark",
     notes: {
-      lead: "Working with AI can be frustrating: it agrees with the correction, then produces the same wrong result.",
+      lead: "Working with AI can be frustrating.",
       bullets: [
-        "An apology does not prove the fix.",
-        "Stop and verify one corrected example.",
-        "‘Keep going’ can multiply the original mistake.",
-        "Next: the same failure, repeated across a codebase.",
+        "...but not fixing its mistakes can be more frustrating...",
       ],
-      cue: "Pause briefly so students can read the comic left to right, top to bottom.",
     },
     refs: [
       {
@@ -457,13 +453,13 @@ const slides = [
     ],
   },
   {
-    title: "AI copies what you leave behind",
+    title: "AI copies what you leave behind (or what it leaves behind)",
     time: "15:00–15:30",
     kind: "fence",
     theme: "dark",
     intro: "The codebase is part of the prompt.",
     notes: {
-      lead: "The genie kept producing cats. Here, the agent copies the gap in the example across the whole fence.",
+      lead: "Fix before moving on.",
       bullets: [
         "Repair patterns before scaling.",
         "Remove debt and stale workaround comments.",
@@ -525,11 +521,11 @@ const slides = [
       "Plan and build duplicate protection",
       "Test, reload, and inspect the diff",
     ],
-    starterLink: "https://github.com/wallacepreston/csc-3100-ai-lab",
+    starterLink: "https://prestonwallace.com/csc-3100",
     notes: {
       lead: "Students open the starter repository in Codex or Cursor. Pairs can share one machine.",
       bullets: [
-        "Before timer: open the GitHub link on this slide.",
+        "Before timer: open prestonwallace.com/csc-3100; it redirects to GitHub.",
         "Before timer: clone the repo, or use Code → Download ZIP.",
         "Open csc-3100-ai-lab in Codex or Cursor.",
         "Before timer: run npm test and npm run dev.",
@@ -898,7 +894,7 @@ const slides = [
                     </figure>
                     <div class="activity-brief">
                       <ol class="activity-steps">{slide.points?.map(point => <li>{point}</li>)}</ol>
-                      <a class="starter-download" href={slide.starterLink} target="_blank" rel="noopener noreferrer"><span>Open starter on GitHub<small>wallacepreston/csc-3100-ai-lab</small></span><span aria-hidden="true">↗</span></a>
+                      <a class="starter-download" href={slide.starterLink} target="_blank" rel="noopener noreferrer"><span>Open starter on GitHub<small>prestonwallace.com/csc-3100</small></span><span aria-hidden="true">↗</span></a>
                       <div class="activity-clock">
                         <output data-timer aria-label="Activity time remaining">10:00</output>
                         <div><button type="button" data-timer-start>Start timer</button><button type="button" data-timer-reset>Reset</button></div>

@@ -919,7 +919,10 @@ const slides = [
                         <a class="linkedin-profile-card" href="https://www.linkedin.com/in/prestonwallace" aria-label="Connect with Preston Wallace on LinkedIn"><img src="/img/lectures/lara-nichols/linkedin-prestonwallace.png" alt="Preston Wallace’s LinkedIn card with headshot, professional title, and QR code" /></a>
                         <figcaption>Connect on LinkedIn</figcaption>
                       </figure>
-                      <a class="deck-download" href="https://prestonwallace.com/lectures/cp-csc-3100"><span><small>Get the slide deck</small><strong>prestonwallace.com/<wbr />lectures/cp-csc-3100</strong></span><span aria-hidden="true">↗</span></a>
+                      <div class="deck-access">
+                        <a class="qr-code" href="https://prestonwallace.com/lectures/cp-csc-3100" aria-label="Scan or open this slide deck"><img src="/img/lectures/lara-nichols/cp-csc-3100-qr.svg" alt="QR code for prestonwallace.com/lectures/cp-csc-3100" width="156" height="156" /></a>
+                        <a class="deck-download" href="https://prestonwallace.com/lectures/cp-csc-3100"><span><small>Get the slide deck</small><strong>prestonwallace.com/<br />lectures/cp-csc-3100</strong></span><span aria-hidden="true">↗</span></a>
+                      </div>
                     </div>
                   </div>
                 ) : slide.kind === 'context' ? (
@@ -2510,8 +2513,20 @@ const slides = [
   .deck-download {
     grid-column: auto;
     align-self: center;
-    padding: 24px;
-    font-size: clamp(24px, 2.5vw, 34px);
+    padding: 10px 16px;
+    font-size: clamp(20px, 2vw, 28px);
+  }
+  .deck-access {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 12px;
+    min-width: 0;
+    min-height: 0;
+  }
+  .deck-access .qr-code {
+    height: 100%;
+    justify-self: center;
+    box-sizing: border-box;
   }
   .deck-download > span:first-child {
     min-width: 0;

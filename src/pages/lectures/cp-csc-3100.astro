@@ -889,12 +889,12 @@ const slides = [
                 {!visualFor(slide) && ['activity', 'resources'].includes(slide.kind) && <p class="intro">{slide.intro}</p>}
                 {slide.kind === 'activity' ? (
                   <div class="activity-layout">
+                    <a class="starter-download" href={slide.starterLink} target="_blank" rel="noopener noreferrer"><span><small>Step 1 · Start here</small><strong>prestonwallace.com/csc-3100</strong></span><span aria-hidden="true">↗</span></a>
                     <figure class="activity-preview">
                       <img src="/img/lectures/lara-nichols/student-lab-app.png" alt="Launch Night event registration starter app" loading="eager" />
                     </figure>
                     <div class="activity-brief">
                       <ol class="activity-steps">{slide.points?.map(point => <li>{point}</li>)}</ol>
-                      <a class="starter-download" href={slide.starterLink} target="_blank" rel="noopener noreferrer"><span>Open starter on GitHub<small>prestonwallace.com/csc-3100</small></span><span aria-hidden="true">↗</span></a>
                       <div class="activity-clock">
                         <output data-timer aria-label="Activity time remaining">10:00</output>
                         <div><button type="button" data-timer-start>Start timer</button><button type="button" data-timer-reset>Reset</button></div>
@@ -2443,7 +2443,8 @@ const slides = [
   .sheet--activity .activity-layout {
     display: grid;
     grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
-    gap: 24px;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 16px 24px;
     align-items: stretch;
     flex: 1;
     min-height: 0;
@@ -2478,20 +2479,33 @@ const slides = [
     border-left: 3px solid #19c4bd;
   }
   .starter-download {
-    display: inline-flex;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding: 10px 14px;
+    padding: 10px 18px;
     border: 1px solid #19c4bd;
     border-radius: 8px;
     color: #1df9f8;
+    background: rgba(29, 249, 248, 0.07);
     text-decoration: none;
-    font-size: clamp(13px, 1.2vw, 17px);
+    font-size: clamp(24px, 3vw, 40px);
+    line-height: 1.15;
+  }
+  .starter-download strong {
+    display: block;
+    font-weight: 700;
+    letter-spacing: -0.03em;
   }
   .starter-download small {
     display: block;
-    margin-top: 4px;
-    font-size: 0.75em;
+    margin-bottom: 4px;
+    color: #f1c36d;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
   .sheet--activity .activity-clock {
     margin-top: auto;
@@ -2618,6 +2632,12 @@ const slides = [
   .presenter-view .sheet--activity .activity-layout {
     grid-template-columns: minmax(0, 1.2fr) minmax(180px, 0.8fr);
     gap: 12px;
+  }
+  .presenter-view .starter-download strong {
+    font-size: 20px;
+  }
+  .presenter-view .starter-download small {
+    font-size: 9px;
   }
   .presenter-view .sheet--activity [data-timer] {
     font-size: 34px;

@@ -919,10 +919,7 @@ const slides = [
                         <a class="linkedin-profile-card" href="https://www.linkedin.com/in/prestonwallace" aria-label="Connect with Preston Wallace on LinkedIn"><img src="/img/lectures/lara-nichols/linkedin-prestonwallace.png" alt="Preston Wallace’s LinkedIn card with headshot, professional title, and QR code" /></a>
                         <figcaption>Connect on LinkedIn</figcaption>
                       </figure>
-                      <figure class="contact-qr">
-                        <a class="qr-code" href="https://prestonwallace.com/lectures/cp-csc-3100" aria-label="Open this slide deck"><img src="/img/lectures/lara-nichols/cp-csc-3100-qr.svg" alt="QR code for prestonwallace.com/lectures/cp-csc-3100" width="156" height="156" /></a>
-                        <figcaption>Get these slides</figcaption>
-                      </figure>
+                      <a class="deck-download" href="https://prestonwallace.com/lectures/cp-csc-3100"><span><small>Get the slide deck</small><strong>prestonwallace.com/<wbr />lectures/cp-csc-3100</strong></span><span aria-hidden="true">↗</span></a>
                     </div>
                   </div>
                 ) : slide.kind === 'context' ? (
@@ -2478,7 +2475,8 @@ const slides = [
     padding-left: 16px;
     border-left: 3px solid #19c4bd;
   }
-  .starter-download {
+  .starter-download,
+  .deck-download {
     grid-column: 1 / -1;
     display: flex;
     align-items: center;
@@ -2493,12 +2491,14 @@ const slides = [
     font-size: clamp(24px, 3vw, 40px);
     line-height: 1.15;
   }
-  .starter-download strong {
+  .starter-download strong,
+  .deck-download strong {
     display: block;
     font-weight: 700;
     letter-spacing: -0.03em;
   }
-  .starter-download small {
+  .starter-download small,
+  .deck-download small {
     display: block;
     margin-bottom: 4px;
     color: #f1c36d;
@@ -2506,6 +2506,19 @@ const slides = [
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+  }
+  .deck-download {
+    grid-column: auto;
+    align-self: center;
+    padding: 24px;
+    font-size: clamp(24px, 2.5vw, 34px);
+  }
+  .deck-download > span:first-child {
+    min-width: 0;
+  }
+  .deck-download strong {
+    overflow-wrap: anywhere;
+    line-height: 1.3;
   }
   .sheet--activity .activity-clock {
     margin-top: auto;
@@ -2633,10 +2646,12 @@ const slides = [
     grid-template-columns: minmax(0, 1.2fr) minmax(180px, 0.8fr);
     gap: 12px;
   }
-  .presenter-view .starter-download strong {
+  .presenter-view .starter-download strong,
+  .presenter-view .deck-download strong {
     font-size: 20px;
   }
-  .presenter-view .starter-download small {
+  .presenter-view .starter-download small,
+  .presenter-view .deck-download small {
     font-size: 9px;
   }
   .presenter-view .sheet--activity [data-timer] {

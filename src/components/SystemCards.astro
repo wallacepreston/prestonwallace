@@ -2,6 +2,7 @@
 interface SystemCard {
   id?: string;
   title: string;
+  tags: string[];
   problem: string;
   type: string;
   architecture: string;
@@ -39,8 +40,13 @@ const hasDiagrams = systems.some((system) => Boolean(system.diagram));
       >
         <span class="system-accordion__index">{String(index + 1).padStart(2, '0')}</span>
         <span class="system-accordion__heading">
-          <span>{system.type}</span>
+          <span class="system-accordion__category">{system.type}</span>
           <strong>{system.title}</strong>
+          <span class="system-accordion__tags">
+            {system.tags.map(tag => (
+              <span class:list={['system-accordion__tag', { 'system-accordion__tag--adtech': tag === 'AdTech' }]}>{tag}</span>
+            ))}
+          </span>
         </span>
         <span class="system-accordion__metric">{system.metric ?? system.outcomes[0]}</span>
         <i class="fa fa-angle-down" aria-hidden="true"></i>

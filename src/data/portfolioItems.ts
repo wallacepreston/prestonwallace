@@ -1,516 +1,374 @@
+import { mntnPortfolioItems } from "./mntnProjects"
+
 export interface PortfolioItem {
-  isPlaceholder?: boolean;
-  slug: string;
-  title: string;
-  eyebrow: string;
-  summary: string;
-  challenge: string[];
+  isPlaceholder?: boolean
+  slug: string
+  title: string
+  eyebrow: string
+  summary: string
+  challenge: string[]
   approach: {
-    title: string;
-    detail: string;
-  }[];
+    title: string
+    detail: string
+  }[]
   results: {
-    value: string;
-    label: string;
-    detail: string;
-  }[];
+    value: string
+    label: string
+    detail: string
+  }[]
   screenshots: {
-    src: string;
-    alt: string;
-    caption: string;
-  }[];
+    src: string
+    alt: string
+    caption: string
+  }[]
   diagrams?: {
-    title: string;
-    caption: string;
-    source: string;
-  }[];
-  techStack: string[];
-  demoUrl: string;
-  demoEmbedUrl: string;
-  context: string;
-  approachLead: string;
-  resultsTitle: string;
-  resultsLead: string;
-  visualsTitle: string;
-  demoTitle?: string;
-  demoLead?: string;
+    title: string
+    caption: string
+    source: string
+  }[]
+  techStack: string[]
+  demoUrl: string
+  demoEmbedUrl: string
+  context: string
+  approachLead: string
+  resultsTitle: string
+  resultsLead: string
+  visualsTitle: string
+  demoTitle?: string
+  demoLead?: string
 }
 
 export const portfolioItems: PortfolioItem[] = [
+  ...mntnPortfolioItems,
   {
-    slug: 'llm-contact-discovery',
-    title: 'LLM Contact Discovery',
-    eyebrow: 'AI prospect research & data enrichment',
+    slug: "llm-contact-discovery",
+    title: "LLM Contact Discovery",
+    eyebrow: "AI prospect research & data enrichment",
     summary:
-      'A production-ready workflow that turns a plain-language university search into a reviewable, exportable directory of verified contacts.',
+      "A production-ready workflow that turns a plain-language university search into a reviewable, exportable directory of verified contacts.",
     challenge: [
-      'Finding the right contacts across university websites is slow, inconsistent, and difficult to scale. Useful information is scattered across faculty directories, profile pages, tables, subdomains, and PDFs, while titles and departments vary widely between institutions.',
-      'The system needed to discover contacts efficiently without treating an LLM as an unchecked source of truth. Every result had to remain traceable, reviewable, and useful to an operator.',
+      "Finding the right contacts across university websites is slow, inconsistent, and difficult to scale. Useful information is scattered across faculty directories, profile pages, tables, subdomains, and PDFs, while titles and departments vary widely between institutions.",
+      "The system needed to discover contacts efficiently without treating an LLM as an unchecked source of truth. Every result had to remain traceable, reviewable, and useful to an operator.",
     ],
     approach: [
       {
-        title: 'Interpret the search',
+        title: "Interpret the search",
         detail:
-          'OpenAI web search translates a plain-language query into likely university candidates, with confidence and source reasoning presented before a discovery run begins.',
+          "OpenAI web search translates a plain-language query into likely university candidates, with confidence and source reasoning presented before a discovery run begins.",
       },
       {
-        title: 'Crawl deterministically',
+        title: "Crawl deterministically",
         detail:
-          'A resumable breadth-first crawler explores sitemaps, directories, common subdomains, profile pages, and HTML tables. Deterministic parsing does the bulk of discovery; AI fills targeted gaps.',
+          "A resumable breadth-first crawler explores sitemaps, directories, common subdomains, profile pages, and HTML tables. Deterministic parsing does the bulk of discovery; AI fills targeted gaps.",
       },
       {
-        title: 'Validate and enrich',
+        title: "Validate and enrich",
         detail:
-          'Contacts are deduplicated, checked for valid names, sanitized through rules and batched AI review, then enriched with public emails, phone numbers, office details, and source URLs.',
+          "Contacts are deduplicated, checked for valid names, sanitized through rules and batched AI review, then enriched with public emails, phone numbers, office details, and source URLs.",
       },
       {
-        title: 'Keep people in control',
+        title: "Keep people in control",
         detail:
-          'Progress states, confidence scores, flags, source links, selective enrichment, and CSV export make the automation inspectable instead of opaque.',
+          "Progress states, confidence scores, flags, source links, selective enrichment, and CSV export make the automation inspectable instead of opaque.",
       },
     ],
     results: [
       {
-        value: '15,000',
-        label: 'page crawl ceiling',
+        value: "15,000",
+        label: "page crawl ceiling",
         detail:
-          'A resumable queue and persisted crawl state support broad institutional sites without losing progress.',
+          "A resumable queue and persisted crawl state support broad institutional sites without losing progress.",
       },
       {
-        value: '100',
-        label: 'contacts per enrichment pass',
+        value: "100",
+        label: "contacts per enrichment pass",
         detail:
-          'Priority ordering and controlled concurrency keep enrichment focused on the highest-value records.',
+          "Priority ordering and controlled concurrency keep enrichment focused on the highest-value records.",
       },
       {
-        value: '3',
-        label: 'operator stages',
+        value: "3",
+        label: "operator stages",
         detail:
-          'Search, discovery, and results turn an open-ended research task into a clear, repeatable workflow.',
+          "Search, discovery, and results turn an open-ended research task into a clear, repeatable workflow.",
       },
     ],
     screenshots: [
       {
-        src: '/img/portfolio/llm-contact-discovery/home.png',
-        alt: 'University Contact Finder home screen with an overview of the discovery workflow',
-        caption: 'A focused starting point explains the workflow before an operator begins.',
+        src: "/img/portfolio/llm-contact-discovery/home.png",
+        alt: "University Contact Finder home screen with an overview of the discovery workflow",
+        caption:
+          "A focused starting point explains the workflow before an operator begins.",
       },
       {
-        src: '/img/portfolio/llm-contact-discovery/search.png',
-        alt: 'University search screen showing candidate institutions returned for review',
-        caption: 'Plain-language search returns candidate institutions with context for selection.',
+        src: "/img/portfolio/llm-contact-discovery/search.png",
+        alt: "University search screen showing candidate institutions returned for review",
+        caption:
+          "Plain-language search returns candidate institutions with context for selection.",
       },
       {
-        src: '/img/portfolio/llm-contact-discovery/results.png',
-        alt: 'Contact discovery results table with filters, status, and export controls',
-        caption: 'Reviewable results expose contact details, confidence, status, and next actions.',
+        src: "/img/portfolio/llm-contact-discovery/results.png",
+        alt: "Contact discovery results table with filters, status, and export controls",
+        caption:
+          "Reviewable results expose contact details, confidence, status, and next actions.",
       },
     ],
     techStack: [
-      'Next.js 16',
-      'React 19',
-      'TypeScript',
-      'OpenAI API',
-      'Vercel AI SDK',
-      'PostgreSQL',
-      'Prisma',
-      'Neon',
-      'Inngest',
-      'Clerk',
-      'Cheerio',
-      'Zod',
-      'Tailwind CSS',
-      'shadcn/ui',
-      'Vitest',
-      'Vercel',
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "OpenAI API",
+      "Vercel AI SDK",
+      "PostgreSQL",
+      "Prisma",
+      "Neon",
+      "Inngest",
+      "Clerk",
+      "Cheerio",
+      "Zod",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Vitest",
+      "Vercel",
     ],
-    demoUrl: 'https://www.youtube.com/watch?v=GaPaiBukl_s',
-    demoEmbedUrl: 'https://www.youtube-nocookie.com/embed/GaPaiBukl_s',
+    demoUrl: "https://www.youtube.com/watch?v=GaPaiBukl_s",
+    demoEmbedUrl: "https://www.youtube-nocookie.com/embed/GaPaiBukl_s",
     context:
-      'Designed and built end-to-end as a full-stack AI system: product workflow, application architecture, crawler, AI orchestration, persistence, background processing, validation, and deployment.',
+      "Designed and built end-to-end as a full-stack AI system: product workflow, application architecture, crawler, AI orchestration, persistence, background processing, validation, and deployment.",
     approachLead:
-      'A hybrid architecture pairs deterministic crawling and validation with selective AI reasoning, so the system stays scalable, inspectable, and grounded in source data.',
-    resultsTitle: 'A repeatable research system.',
+      "A hybrid architecture pairs deterministic crawling and validation with selective AI reasoning, so the system stays scalable, inspectable, and grounded in source data.",
+    resultsTitle: "A repeatable research system.",
     resultsLead:
-      'The finished product replaces scattered manual browsing with one traceable workflow, while keeping operators in control of review and enrichment.',
-    visualsTitle: 'From search to actionable results.',
-    demoTitle: 'See the workflow in action.',
+      "The finished product replaces scattered manual browsing with one traceable workflow, while keeping operators in control of review and enrichment.",
+    visualsTitle: "From search to actionable results.",
+    demoTitle: "See the workflow in action.",
     demoLead:
-      'Follow the full journey from a university query to discovered, reviewable contacts.',
+      "Follow the full journey from a university query to discovered, reviewable contacts.",
   },
   {
-    slug: 'ai-instructor-validation',
-    title: 'AI Instructor Validation',
-    eyebrow: 'Real-time identity validation & access control',
+    slug: "ai-instructor-validation",
+    title: "AI Instructor Validation",
+    eyebrow: "Real-time identity validation & access control",
     summary:
-      'An AI-assisted access portal that verifies academic instructors against official university sources, routes uncertain cases for human approval, and returns a clear decision in one guided flow.',
+      "An AI-assisted access portal that verifies academic instructors against official university sources, routes uncertain cases for human approval, and returns a clear decision in one guided flow.",
     challenge: [
-      'Instructor access requests were a high-volume operational bottleneck. Teams had to confirm that an applicant belonged to a legitimate institution and department before granting access, turning a simple account request into repetitive research and follow-up.',
-      'The workflow needed to move quickly without letting AI make an opaque access-control decision. Strong matches could be approved automatically, but incomplete or conflicting evidence needed a safe path to manual review.',
+      "Instructor access requests were a high-volume operational bottleneck. Teams had to confirm that an applicant belonged to a legitimate institution and department before granting access, turning a simple account request into repetitive research and follow-up.",
+      "The workflow needed to move quickly without letting AI make an opaque access-control decision. Strong matches could be approved automatically, but incomplete or conflicting evidence needed a safe path to manual review.",
     ],
     approach: [
       {
-        title: 'Capture verified inputs',
+        title: "Capture verified inputs",
         detail:
-          'A focused account flow collects the instructor’s name, .edu email, institution, and department, with required-field, domain, and input validation before any external work begins.',
+          "A focused account flow collects the instructor’s name, .edu email, institution, and department, with required-field, domain, and input validation before any external work begins.",
       },
       {
-        title: 'Ground the decision',
+        title: "Ground the decision",
         detail:
-          'The backend searches public faculty information and asks OpenAI to evaluate name, institution, department, and email alignment. Validation is constrained to official school sources and returned as structured confidence and reasoning.',
+          "The backend searches public faculty information and asks OpenAI to evaluate name, institution, department, and email alignment. Validation is constrained to official school sources and returned as structured confidence and reasoning.",
       },
       {
-        title: 'Route by confidence',
+        title: "Route by confidence",
         detail:
-          'High-confidence matches are activated automatically. Missing university or department evidence is denied, while ambiguous matches remain pending and are routed to a department head for approval.',
+          "High-confidence matches are activated automatically. Missing university or department evidence is denied, while ambiguous matches remain pending and are routed to a department head for approval.",
       },
       {
-        title: 'Close the operational loop',
+        title: "Close the operational loop",
         detail:
-          'The system persists every request, records status changes in an audit log, sends outcome notifications, and gives internal teams search, filtering, reporting, and manual override controls.',
+          "The system persists every request, records status changes in an audit log, sends outcome notifications, and gives internal teams search, filtering, reporting, and manual override controls.",
       },
     ],
     results: [
       {
-        value: '85%',
-        label: 'less validation time',
+        value: "85%",
+        label: "less validation time",
         detail:
-          'Automated research and decision routing remove most of the repetitive work from instructor access reviews.',
+          "Automated research and decision routing remove most of the repetitive work from instructor access reviews.",
       },
       {
-        value: '≈5,000',
-        label: 'hours saved per year',
+        value: "≈5,000",
+        label: "hours saved per year",
         detail:
-          'The production workflow turns a recurring manual process into a scalable, real-time service.',
+          "The production workflow turns a recurring manual process into a scalable, real-time service.",
       },
       {
-        value: '3',
-        label: 'confidence-based paths',
+        value: "3",
+        label: "confidence-based paths",
         detail:
-          'Requests resolve to automated approval, manual review, or denial based on grounded evidence and explicit thresholds.',
+          "Requests resolve to automated approval, manual review, or denial based on grounded evidence and explicit thresholds.",
       },
     ],
     screenshots: [
       {
-        src: '/img/portfolio/ai-instructor-validation/demo-1-lets-get-started.png',
-        alt: 'Showroom welcome screen inviting an instructor to begin creating an account',
-        caption: 'A concise entry point sets expectations before the validation flow begins.',
+        src: "/img/portfolio/ai-instructor-validation/demo-1-lets-get-started.png",
+        alt: "Showroom welcome screen inviting an instructor to begin creating an account",
+        caption:
+          "A concise entry point sets expectations before the validation flow begins.",
       },
       {
-        src: '/img/portfolio/ai-instructor-validation/demo-2-create-account-validating.png',
-        alt: 'Create Account form validating instructor credentials',
-        caption: 'The interface keeps the applicant informed while official academic sources are checked.',
+        src: "/img/portfolio/ai-instructor-validation/demo-2-create-account-validating.png",
+        alt: "Create Account form validating instructor credentials",
+        caption:
+          "The interface keeps the applicant informed while official academic sources are checked.",
       },
       {
-        src: '/img/portfolio/ai-instructor-validation/demo-3-create-account-denied.png',
-        alt: 'Instructor access request denied with a manual review option',
-        caption: 'Unverified requests fail safely and provide a clear route to manual review.',
+        src: "/img/portfolio/ai-instructor-validation/demo-3-create-account-denied.png",
+        alt: "Instructor access request denied with a manual review option",
+        caption:
+          "Unverified requests fail safely and provide a clear route to manual review.",
       },
       {
-        src: '/img/portfolio/ai-instructor-validation/demo-4-create-account-approved.png',
-        alt: 'Instructor account approved after automated validation',
-        caption: 'Strong evidence produces an immediate, unambiguous approval outcome.',
+        src: "/img/portfolio/ai-instructor-validation/demo-4-create-account-approved.png",
+        alt: "Instructor account approved after automated validation",
+        caption:
+          "Strong evidence produces an immediate, unambiguous approval outcome.",
       },
     ],
     techStack: [
-      'React 19',
-      'TypeScript',
-      'Node.js',
-      'Express',
-      'OpenAI API',
-      'Perplexity AI SDK',
-      'PostgreSQL',
-      'Prisma',
-      'SendGrid',
-      'Tailwind CSS',
-      'Jest',
-      'Replit',
+      "React 19",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "OpenAI API",
+      "Perplexity AI SDK",
+      "PostgreSQL",
+      "Prisma",
+      "SendGrid",
+      "Tailwind CSS",
+      "Jest",
+      "Replit",
     ],
-    demoUrl: '',
-    demoEmbedUrl: '',
+    demoUrl: "",
+    demoEmbedUrl: "",
     context:
-      'Built as a unified full-stack application spanning the applicant experience, validation API, AI-assisted research, confidence-based decision logic, approval routing, email notifications, persistence, audit logging, and internal operations tooling.',
+      "Built as a unified full-stack application spanning the applicant experience, validation API, AI-assisted research, confidence-based decision logic, approval routing, email notifications, persistence, audit logging, and internal operations tooling.",
     approachLead:
-      'The architecture separates evidence gathering, AI interpretation, and policy-based routing so each decision remains explainable and uncertain cases stay under human control.',
-    resultsTitle: 'Faster access without giving up control.',
+      "The architecture separates evidence gathering, AI interpretation, and policy-based routing so each decision remains explainable and uncertain cases stay under human control.",
+    resultsTitle: "Faster access without giving up control.",
     resultsLead:
-      'The finished system automates the common path, preserves a human decision point for ambiguity, and gives every applicant a clear outcome.',
-    visualsTitle: 'One request, three transparent states.',
+      "The finished system automates the common path, preserves a human decision point for ambiguity, and gives every applicant a clear outcome.",
+    visualsTitle: "One request, three transparent states.",
   },
   {
-    slug: 'production-document-chat',
-    title: 'Production Document Chat',
-    eyebrow: 'Conversational analytics & customer activation',
+    slug: "production-document-chat",
+    title: "Production Document Chat",
+    eyebrow: "Conversational analytics & customer activation",
     summary:
-      'A multi-tenant AI assistant that gave winery teams a natural-language interface to their customer, club, order, and sales data—then let them turn answers into charts, exports, tags, and customer messages without leaving the conversation.',
+      "A multi-tenant AI assistant that gave winery teams a natural-language interface to their customer, club, order, and sales data—then let them turn answers into charts, exports, tags, and customer messages without leaving the conversation.",
     challenge: [
-      'A winery SaaS company held valuable customer and commerce data, but its customers still needed reports, technical queries, or operational help to use it. The information was available, yet answering everyday questions about sales, club members, tasting-room activity, and customer segments remained slow and inaccessible.',
-      'A useful chatbot needed more than generic document search. It had to keep every winery’s data isolated and current, preserve conversational context, generate trustworthy analysis, and safely connect recommendations to real actions in external customer systems.',
+      "A winery SaaS company held valuable customer and commerce data, but its customers still needed reports, technical queries, or operational help to use it. The information was available, yet answering everyday questions about sales, club members, tasting-room activity, and customer segments remained slow and inaccessible.",
+      "A useful chatbot needed more than generic document search. It had to keep every winery’s data isolated and current, preserve conversational context, generate trustworthy analysis, and safely connect recommendations to real actions in external customer systems.",
     ],
     approach: [
       {
-        title: 'Refresh each winery’s data nightly',
+        title: "Refresh each winery’s data nightly",
         detail:
-          'A scheduled pipeline compiled current customer, club membership, order header, and order-line data for every tenant. The latest datasets were attached to that winery’s dedicated assistant so answers reflected a consistent, recently synchronized snapshot.',
+          "A scheduled pipeline compiled current customer, club membership, order header, and order-line data for every tenant. The latest datasets were attached to that winery’s dedicated assistant so answers reflected a consistent, recently synchronized snapshot.",
       },
       {
-        title: 'Create a tenant-aware chat experience',
+        title: "Create a tenant-aware chat experience",
         detail:
-          'Authenticated users were scoped to authorized wineries and could switch context explicitly. Persistent threads, chat history, sync timestamps, prompt validation, and suggested questions made the assistant approachable while keeping conversations tied to the correct business.',
+          "Authenticated users were scoped to authorized wineries and could switch context explicitly. Persistent threads, chat history, sync timestamps, prompt validation, and suggested questions made the assistant approachable while keeping conversations tied to the correct business.",
       },
       {
-        title: 'Turn data into answers and artifacts',
+        title: "Turn data into answers and artifacts",
         detail:
-          'OpenAI Assistants and Code Interpreter analyzed the winery datasets to answer natural-language questions, calculate segments and summaries, create charts, and produce downloadable customer lists directly inside the chat workflow.',
+          "OpenAI Assistants and Code Interpreter analyzed the winery datasets to answer natural-language questions, calculate segments and summaries, create charts, and produce downloadable customer lists directly inside the chat workflow.",
       },
       {
-        title: 'Connect insight to action',
+        title: "Connect insight to action",
         detail:
-          'Guarded function calls integrated with Commerce7 and RedChirp, allowing users to look up or create tags, apply tags to customers or orders, and send targeted customer messages. Validation and queued processing kept consequential actions controlled and observable.',
+          "Guarded function calls integrated with Commerce7 and RedChirp, allowing users to look up or create tags, apply tags to customers or orders, and send targeted customer messages. Validation and queued processing kept consequential actions controlled and observable.",
       },
     ],
     results: [
       {
-        value: '$24K',
-        label: 'annual recurring revenue',
+        value: "$24K",
+        label: "annual recurring revenue",
         detail:
-          'The production assistant became a paid SaaS capability that made customer data directly useful to winery operators.',
+          "The production assistant became a paid SaaS capability that made customer data directly useful to winery operators.",
       },
       {
-        value: 'Nightly',
-        label: 'tenant data refresh',
+        value: "Nightly",
+        label: "tenant data refresh",
         detail:
-          'Each winery’s assistant received a consistent, up-to-date view of customers, memberships, orders, and sales activity.',
+          "Each winery’s assistant received a consistent, up-to-date view of customers, memberships, orders, and sales activity.",
       },
       {
-        value: '3-in-1',
-        label: 'analytics workflow',
+        value: "3-in-1",
+        label: "analytics workflow",
         detail:
-          'One conversational interface combined business Q&A, visual and downloadable analysis, and operational customer actions.',
+          "One conversational interface combined business Q&A, visual and downloadable analysis, and operational customer actions.",
       },
     ],
     screenshots: [
       {
-        src: '/img/portfolio/production-document-chat/prod-doc-chat-1-welcome-login.png',
-        alt: 'ChatDTC secure welcome screen with account login',
+        src: "/img/portfolio/production-document-chat/prod-doc-chat-1-welcome-login.png",
+        alt: "ChatDTC secure welcome screen with account login",
         caption:
-          'Secure authentication opens a tenant-aware assistant for authorized winery users.',
+          "Secure authentication opens a tenant-aware assistant for authorized winery users.",
       },
       {
-        src: '/img/portfolio/production-document-chat/prod-doc-chat-2-chat-suggestions-list.png',
-        alt: 'ChatDTC home screen with synced date, chat history, and suggested winery data questions',
+        src: "/img/portfolio/production-document-chat/prod-doc-chat-2-chat-suggestions-list.png",
+        alt: "ChatDTC home screen with synced date, chat history, and suggested winery data questions",
         caption:
-          'Suggested questions make customer, club, order, and sales analysis approachable from the first conversation.',
+          "Suggested questions make customer, club, order, and sales analysis approachable from the first conversation.",
       },
       {
-        src: '/img/portfolio/production-document-chat/prod-doc-chat-3-validation-switch-wineries.png',
-        alt: 'Winery selection and validation interface for switching the active business context',
+        src: "/img/portfolio/production-document-chat/prod-doc-chat-3-validation-switch-wineries.png",
+        alt: "Winery selection and validation interface for switching the active business context",
         caption:
-          'Explicit winery selection keeps every question and action scoped to the correct tenant.',
+          "Explicit winery selection keeps every question and action scoped to the correct tenant.",
       },
       {
-        src: '/img/portfolio/production-document-chat/prod-doc-chat-4-chat-customer-list-request.png',
-        alt: 'Chat conversation requesting a targeted customer list from winery data',
+        src: "/img/portfolio/production-document-chat/prod-doc-chat-4-chat-customer-list-request.png",
+        alt: "Chat conversation requesting a targeted customer list from winery data",
         caption:
-          'Operators describe a segment in plain language instead of building a report or database query.',
+          "Operators describe a segment in plain language instead of building a report or database query.",
       },
       {
-        src: '/img/portfolio/production-document-chat/prod-doc-chat-5-chat-customer-list-download.png',
-        alt: 'ChatDTC response providing a generated customer list for download',
+        src: "/img/portfolio/production-document-chat/prod-doc-chat-5-chat-customer-list-download.png",
+        alt: "ChatDTC response providing a generated customer list for download",
         caption:
-          'The assistant converts an analysis into a downloadable artifact ready for operational use.',
+          "The assistant converts an analysis into a downloadable artifact ready for operational use.",
       },
       {
-        src: '/img/portfolio/production-document-chat/prod-doc-chat-6-chat-sales-summary-graph-generation.png',
-        alt: 'ChatDTC generating a February sales summary visualization',
+        src: "/img/portfolio/production-document-chat/prod-doc-chat-6-chat-sales-summary-graph-generation.png",
+        alt: "ChatDTC generating a February sales summary visualization",
         caption:
-          'Code-assisted analysis turns a natural-language sales request into an on-demand visual summary.',
+          "Code-assisted analysis turns a natural-language sales request into an on-demand visual summary.",
       },
     ],
     techStack: [
-      'React 18',
-      'TypeScript',
-      'Material UI',
-      'Node.js',
-      'Express',
-      'OpenAI Assistants API',
-      'Code Interpreter',
-      'Socket.IO',
-      'Sequelize',
-      'MySQL',
-      'Microsoft SQL Server',
-      'Commerce7 API',
-      'RedChirp',
-      'SendGrid',
-      'LDAP',
-      'JWT',
-      'AWS EC2',
-      'PM2',
+      "React 18",
+      "TypeScript",
+      "Material UI",
+      "Node.js",
+      "Express",
+      "OpenAI Assistants API",
+      "Code Interpreter",
+      "Socket.IO",
+      "Sequelize",
+      "MySQL",
+      "Microsoft SQL Server",
+      "Commerce7 API",
+      "RedChirp",
+      "SendGrid",
+      "LDAP",
+      "JWT",
+      "AWS EC2",
+      "PM2",
     ],
-    demoUrl: '',
-    demoEmbedUrl: '',
+    demoUrl: "",
+    demoEmbedUrl: "",
     context:
-      'Built and operated as a production, multi-tenant AI product across two applications: a responsive React chat client and a Node/Express service responsible for authentication, tenant authorization, assistant orchestration, conversation persistence, streaming updates, data access, tool execution, and third-party integrations.',
+      "Built and operated as a production, multi-tenant AI product across two applications: a responsive React chat client and a Node/Express service responsible for authentication, tenant authorization, assistant orchestration, conversation persistence, streaming updates, data access, tool execution, and third-party integrations.",
     approachLead:
-      'The architecture joined a predictable nightly data pipeline with tenant-specific AI assistants and guarded operational tools, giving users fresh answers without exposing cross-winery data or treating every prompt as permission to act.',
-    resultsTitle: 'From stored data to a working conversation.',
+      "The architecture joined a predictable nightly data pipeline with tenant-specific AI assistants and guarded operational tools, giving users fresh answers without exposing cross-winery data or treating every prompt as permission to act.",
+    resultsTitle: "From stored data to a working conversation.",
     resultsLead:
-      'The product made winery data self-service: users could explore performance, build an audience, and activate that audience from the same interface.',
-    visualsTitle: 'Ask, analyze, download, and act.',
+      "The product made winery data self-service: users could explore performance, build an audience, and activate that audience from the same interface.",
+    visualsTitle: "Ask, analyze, download, and act.",
   },
-  {
-    slug: 'predictive-budget-spend-system',
-    title: 'Predictive Budget Spend System',
-    eyebrow: 'Predictive campaign planning & decision support',
-    summary:
-      'A two-phase machine-learning system that learns from historical campaign outcomes, then gives users an immediate High, Medium, or Low budget-spend prediction while they configure a campaign.',
-    challenge: [
-      'Campaign teams had to choose budgets, time frames, audiences, network blocklists, and delivery settings before they knew whether those parameters were likely to spend the full budget. Poorly balanced configurations could limit delivery and leave revenue unrealized.',
-      'The opportunity was to turn historical spend behavior into practical, pre-launch guidance. The prediction needed to arrive inside the existing campaign workflow and translate a model score into language a user could act on immediately.',
-    ],
-    approach: [
-      {
-        title: 'Build the historical dataset',
-        detail:
-          'Combine past campaign configurations—budget, time frame, audience size, network blocklists, targeting, and delivery parameters—with the observed outcome of whether each campaign spent its full budget on time.',
-      },
-      {
-        title: 'Train and validate the model',
-        detail:
-          'Use those labeled outcomes to identify delivery patterns, train the predictive model, evaluate its performance, and derive validated thresholds for High, Medium, and Low likelihood classifications.',
-      },
-      {
-        title: 'Serve predictions through an API',
-        detail:
-          'Deploy the trained model behind a REST endpoint that accepts a current campaign configuration, applies the same feature preparation used in training, and returns a spend-likelihood score and classification.',
-      },
-      {
-        title: 'Put guidance in the workflow',
-        detail:
-          'Request a prediction as campaign parameters change and display the result in the UI before launch, giving the user time to adjust the configuration while the decision is still reversible.',
-      },
-    ],
-    results: [
-      {
-        value: '40%',
-        label: 'revenue increase',
-        detail:
-          'Predictive budget-spend guidance helped teams recognize and act on campaign configurations with stronger delivery potential.',
-      },
-      {
-        value: '3',
-        label: 'clear classifications',
-        detail:
-          'High, Medium, and Low translate a raw model prediction into concise guidance that campaign users can understand.',
-      },
-      {
-        value: 'Pre-launch',
-        label: 'decision feedback',
-        detail:
-          'The prediction appears while a campaign is being configured, when budget, timing, audience, and delivery inputs can still be changed.',
-      },
-    ],
-    screenshots: [],
-    diagrams: [
-      {
-        title: 'Model training and threshold validation',
-        caption:
-          'The offline training pipeline connects each campaign configuration to its observed spend outcome, then validates both the model and the user-facing classification boundaries.',
-        source: `flowchart TD
-  subgraph INPUTS["HISTORICAL CAMPAIGN INPUTS"]
-    B["Budget amount"]
-    T["Campaign time frame"]
-    A["Audience size"]
-    N["Network blocklists"]
-    P["Targeting & delivery parameters"]
-  end
-
-  B --> J["Join configuration with outcome"]
-  T --> J
-  A --> J
-  N --> J
-  P --> J
-  S["Label: full budget spent<br/>within time frame?"] --> J
-  J --> Q["Clean, encode & prepare features"]
-  Q --> R["Training dataset"]
-  R --> M["Train predictive model"]
-  M --> V["Validate on historical holdout data"]
-  V --> TH["Derive High / Medium / Low thresholds"]
-  TH --> G{"Meets performance criteria?"}
-  G -->|"No"| Q
-  G -->|"Yes"| D[("Deploy model + thresholds")]`,
-      },
-      {
-        title: 'Two-phase system architecture',
-        caption:
-          'Historical outcomes produce a validated model; the full-stack application then uses that model for real-time campaign guidance.',
-        source: `flowchart LR
-  subgraph TRAIN["1 · TRAINING PHASE"]
-    A["Historical campaign<br/>configurations"] --> B["Feature preparation"]
-    O["Actual spend outcomes"] --> B
-    B --> C["Train predictive model"]
-    C --> D["Validate model &<br/>classification thresholds"]
-    D --> E[("Versioned model")]
-  end
-
-  subgraph APP["2 · FULL-STACK PREDICTION PHASE"]
-    U["Campaign UI"] -->|"Current configuration"| API["Prediction REST API"]
-    API --> F["Apply feature preparation"]
-    F --> M["Model inference"]
-    E -.->|"Deploy"| M
-    M --> K{"Classification"}
-    K --> H["High"]
-    K --> MD["Medium"]
-    K --> L["Low"]
-    H --> U
-    MD --> U
-    L --> U
-  end`,
-      },
-      {
-        title: 'Real-time classification request',
-        caption:
-          'The online path keeps model complexity behind a REST API and returns a simple classification to the campaign-planning interface.',
-        source: `sequenceDiagram
-  actor User
-  participant UI as Campaign UI
-  participant API as Prediction REST API
-  participant Prep as Feature Preparation
-  participant Model as Predictive Model
-
-  User->>UI: Configure budget, timing,<br/>audience and delivery settings
-  UI->>API: POST current campaign configuration
-  API->>Prep: Validate and transform inputs
-  Prep->>Model: Send model-ready features
-  Model-->>API: Return spend-likelihood score
-  API->>API: Apply validated thresholds
-  API-->>UI: Return High, Medium, or Low
-  UI-->>User: Display pre-launch guidance`,
-      },
-    ],
-    techStack: [
-      'Historical campaign data',
-      'Feature engineering',
-      'Supervised machine learning',
-      'Predictive classification',
-      'Model validation',
-      'Classification thresholds',
-      'REST API',
-      'Full-stack application integration',
-      'Campaign configuration UI',
-    ],
-    demoUrl: '',
-    demoEmbedUrl: '',
-    context:
-      'The portfolio visuals document the system at the architecture level because source code and product screenshots are not available. The work spans offline model training, threshold validation, model deployment, REST inference, and pre-launch UI feedback.',
-    approachLead:
-      'The design separates offline learning from online inference: training can evolve independently while the product consumes a stable, explainable prediction contract.',
-    resultsTitle: 'Prediction at the point of decision.',
-    resultsLead:
-      'Instead of reviewing underdelivery after launch, the system gives campaign teams an actionable signal while configuration choices can still be improved.',
-    visualsTitle: 'From historical outcomes to a live classification.',
-  },
-];
+]
 
 export const getPortfolioItem = (slug: string) =>
-  portfolioItems.find((item) => item.slug === slug);
+  portfolioItems.find(item => item.slug === slug)

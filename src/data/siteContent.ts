@@ -1,3 +1,5 @@
+import { mntnProjects } from "./mntnProjects"
+
 export const heroTestimonial = {
   name: "Jean Leconte II",
   detail: "Generative AI Engineer, AWS",
@@ -98,24 +100,21 @@ export const capabilities = [
 ]
 
 export const selectedWork = [
-  {
-    id: "predictive-budget-spend-system",
-    title: "Predictive budget-spend system",
-    href: "/portfolio/predictive-budget-spend-system",
-    problem:
-      "Campaign and revenue signals were spread across systems, making it harder to spot spend opportunities quickly.",
-    architecture:
-      "Data modeling, budget-spend prediction, workflow surfacing, and operational reporting.",
-    type: "Predictive operations workflow",
-    metric: "40% revenue lift",
-    outcomes: ["40% revenue increase", "fewer support tickets"],
-    details: [
-      "Connected operational and revenue signals to help teams act earlier on budget-spend patterns.",
-      "Kept the outcome tied to business movement rather than a standalone AI demo.",
-    ],
-  },
+  ...mntnProjects.map(project => ({
+    id: project.slug,
+    title: project.title,
+    href: `/portfolio/${project.slug}`,
+    problem: project.problem,
+    architecture: project.architecture,
+    type: project.category,
+    tags: ["AdTech", ...project.tags.filter(tag => tag !== "AdTech")],
+    metric: project.metric,
+    outcomes: project.results.map(result => result.label),
+    details: project.approach.map(step => step.detail),
+  })),
   {
     id: "llm-contact-discovery",
+    tags: ["AI", "Full-stack", "Data pipelines"],
     title: "LLM contact discovery",
     href: "/portfolio/llm-contact-discovery",
     image: "/img/portfolio/llm-contact-discovery/results.png",
@@ -134,9 +133,11 @@ export const selectedWork = [
   },
   {
     id: "ai-instructor-validation",
+    tags: ["AI", "Automation", "Access control"],
     title: "AI instructor validation",
     href: "/portfolio/ai-instructor-validation",
-    image: "/img/portfolio/ai-instructor-validation/demo-4-create-account-approved.png",
+    image:
+      "/img/portfolio/ai-instructor-validation/demo-4-create-account-approved.png",
     imageAlt: "AI Instructor Validation automated approval result",
     problem:
       "Manual instructor validation and access checks created delays and repetitive operational work.",
@@ -152,6 +153,7 @@ export const selectedWork = [
   },
   {
     id: "ai-office-hours-automation",
+    tags: ["AI", "OCR", "Salesforce", "Automation"],
     title: "AI office-hours automation",
     problem:
       "Office-hours workflows depended on repetitive document review and manual Salesforce updates.",
@@ -167,9 +169,11 @@ export const selectedWork = [
   },
   {
     id: "production-document-chat",
+    tags: ["AI", "Chat", "SaaS", "AWS"],
     title: "Production document chat",
     href: "/portfolio/production-document-chat",
-    image: "/img/portfolio/production-document-chat/prod-doc-chat-6-chat-sales-summary-graph-generation.png",
+    image:
+      "/img/portfolio/production-document-chat/prod-doc-chat-6-chat-sales-summary-graph-generation.png",
     imageAlt: "ChatDTC generating a winery sales summary from customer data",
     problem:
       "Users needed a reliable way to ask questions across data and documents in a production environment.",
@@ -181,54 +185,6 @@ export const selectedWork = [
     details: [
       "Deployed an AI chat platform for document and data access.",
       "Owned the EC2 infrastructure required to keep the product running in production.",
-    ],
-  },
-  {
-    id: "ai-rag-campaign-workflow",
-    title: "AI/RAG campaign workflow",
-    problem:
-      "Campaign build work was slowed by repeated research, scattered context, and handoffs.",
-    type: "RAG and workflow acceleration",
-    architecture:
-      "Retrieval workflows, campaign context, application integration, and human review loops.",
-    metric: "~15% faster builds",
-    outcomes: [
-      "approximately 15% reduction in campaign build time",
-      "approximately 15% churn reduction",
-    ],
-    details: [
-      "Used retrieval and workflow design to shorten campaign build cycles.",
-      "Kept campaign context available where operators were already doing the work.",
-    ],
-  },
-  {
-    id: "node-graphql-api-modernization",
-    title: "Node and GraphQL API modernization",
-    problem:
-      "Production APIs needed to handle product demand with lower latency and more predictable behavior.",
-    type: "Backend performance engineering",
-    architecture:
-      "Node services, GraphQL APIs, performance tuning, query optimization, and production monitoring.",
-    metric: "up to 90% faster APIs",
-    outcomes: ["up to 90% API performance improvement"],
-    details: [
-      "Improved the backend systems that product and AI-facing workflows depended on.",
-      "Focused the work on measurable response-time improvements and operational reliability.",
-    ],
-  },
-  {
-    id: "ci-cd-infrastructure-acceleration",
-    title: "CI/CD infrastructure acceleration",
-    problem:
-      "The engineering workflow was slowed by long test, build, and deploy cycles.",
-    type: "Infrastructure and delivery automation",
-    architecture:
-      "CI/CD pipeline optimization, infrastructure automation, build tuning, and release workflow cleanup.",
-    metric: "40% faster CI/CD",
-    outcomes: ["40% reduction in test-build-deploy time"],
-    details: [
-      "Reduced delivery friction so production work could move faster with less waiting.",
-      "Kept the improvement tied to the software delivery system rather than a single feature.",
     ],
   },
 ]
@@ -251,7 +207,7 @@ export const experienceHistory = [
     company: "Liquidity Services",
     period: "Apr 2019 - Jul 2021",
     summary:
-    "Built internal software solutions for reverse supply-chain operations handling millions of records.",
+      "Built internal software solutions for reverse supply-chain operations handling millions of records.",
     bullets: [
       "Created automated inventory data-collection tooling, improving warehouse efficiency by about 50%.",
       "Bootstrapped integration testing for REST and GraphQL endpoints, raising coverage from 0% to 70%+.",

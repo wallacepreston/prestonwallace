@@ -1,0 +1,222 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} noindex>
+  <nav class="resume-controls" aria-label="Resume actions">
+    <a href="/">prestonwallace.com</a>
+    <button type="button" data-print>Print / Save PDF</button>
+  </nav>
+  <main class="resume-sheet">
+    <article class="resume" aria-label={title}>
+      <slot />
+    </article>
+  </main>
+  <script>
+    document.querySelector('[data-print]')?.addEventListener('click', () => window.print());
+  </script>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+  }
+
+  html,
+  body {
+    background: #ebeef4;
+    color: #10121b;
+  }
+
+  body::before {
+    display: none;
+  }
+
+  .resume-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 16px 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: #147e6d;
+  }
+
+  .resume-controls button {
+    padding: 9px 15px;
+    border: 1px solid #147e6d;
+    border-radius: 6px;
+    background: #147e6d;
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .resume-controls button:hover {
+    background: #10121b;
+  }
+
+  .resume-controls :focus-visible {
+    outline: 2px solid #147e6d;
+    outline-offset: 4px;
+  }
+
+  .resume-sheet {
+    width: 8.5in;
+    min-height: 11in;
+    margin: 0 auto 32px;
+    padding: 0.36in 0.43in;
+    overflow: visible;
+    border-top: 5px solid #147e6d;
+    background: #fff;
+    box-shadow: 0 16px 48px rgb(16 18 27 / 12%);
+  }
+
+  .resume {
+    font-size: 12px;
+    line-height: 1.34;
+  }
+
+  .resume h1 {
+    margin: 0 0 3px;
+    color: #10121b;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 1;
+  }
+
+  .resume h1 + p {
+    margin-bottom: 6px;
+    color: #147e6d;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+  }
+
+  .resume h1 + p + p {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .resume a {
+    text-decoration: underline;
+    text-decoration-color: #b1c8c4;
+    text-underline-offset: 2px;
+  }
+
+  .resume blockquote {
+    margin: 11px 0;
+    padding: 5px 0 5px 12px;
+    border-left: 3px solid #19c4bd;
+    font-size: 12px;
+  }
+
+  .resume h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 13px 0 7px;
+    color: #147e6d;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    break-after: avoid;
+  }
+
+  .resume h2::after {
+    flex: 1;
+    height: 1px;
+    background: #dce5e4;
+    content: '';
+  }
+
+  .resume h3 {
+    margin: 9px 0 3px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    break-after: avoid;
+  }
+
+  .resume h3 em {
+    font-style: normal;
+    color: #147e6d;
+  }
+
+  .resume ul {
+    padding-left: 13px;
+    list-style: disc;
+  }
+
+  .resume li {
+    padding-left: 1px;
+  }
+
+  .resume li::marker {
+    color: #147e6d;
+  }
+
+  .resume hr {
+    margin: 12px 0 8px;
+    border: 0;
+    border-top: 1px solid #dce5e4;
+  }
+
+  .resume hr ~ p {
+    margin-top: 5px;
+    font-size: 11px;
+  }
+
+  .resume hr ~ p strong {
+    color: #147e6d;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+  }
+
+  @media screen and (max-width: 850px) {
+    .resume-controls {
+      padding: 12px 16px;
+    }
+
+    .resume-sheet {
+      width: 100%;
+      min-height: auto;
+      margin-bottom: 0;
+      padding: 24px 20px;
+    }
+  }
+
+  @media print {
+    @page {
+      size: letter portrait;
+      margin: 0;
+    }
+
+    html,
+    body {
+      width: 8.5in;
+      margin: 0;
+      background: #fff;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .resume-controls {
+      display: none;
+    }
+
+    .resume-sheet {
+      margin: 0;
+      box-shadow: none;
+    }
+  }
+</style>

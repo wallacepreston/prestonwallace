@@ -1,0 +1,20 @@
+---
+import { getCollection, render } from 'astro:content';
+import ResumeLayout from '../../layouts/ResumeLayout.astro';
+
+export async function getStaticPaths() {
+  const resumes = await getCollection('resumes');
+
+  return resumes.map((resume) => ({
+    params: { slug: resume.id },
+    props: { resume },
+  }));
+}
+
+const { resume } = Astro.props;
+const { Content } = await render(resume);
+---
+
+<ResumeLayout title={resume.data.title} description={resume.data.description}>
+  <Content />
+</ResumeLayout>

@@ -1,7 +1,7 @@
 ---
 title: "Hiring Starts with a Clear Picture of Skills"
 description: Darin Hobbs on Learning and Employment Records, skills-based hiring, learner-owned credential wallets, and AI that helps people plan their next career move.
-publishedAt: 2026-11-02
+publishedAt: 2026-10-19
 image: /images/blog/darin-hobbs-cover.png
 imageAlt: Portrait of Darin Hobbs, learning and employment records consultant.
 status: draft

@@ -1,10 +1,10 @@
 ---
 title: "The PDF Is Part of the Public Service"
 description: Lessons from Kacy Irby on document discovery, source-level PDF remediation, complex-table reading order, and human review in accessibility workflows.
-publishedAt: 2026-10-26
+publishedAt: 2026-10-12
 image: /images/blog/kacy-irby-cover.png
 imageAlt: Portrait of Kacy Irby, COO at Foresera.
-status: draft
+status: published
 ---
 
 An accessible website can still lead someone to an inaccessible document.

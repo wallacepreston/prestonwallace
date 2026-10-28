@@ -3,8 +3,8 @@ title: "Meeting People Where They Are: AI and the Church's Mission"
 description: "Matthew Banther shares his heart for life change, using AI to connect people seeking Christ with community, and helping churches embrace digital ministry now."
 publishedAt: 2026-11-09
 status: draft
-image: /images/blog/when-ai-moves-a-ministry-conversation-to-a-person.png
-imageAlt: Portrait of Matthew Banther on a dark blue background.
+image: /images/blog/matthew-banther-banner.png
+imageAlt: Matthew Banther wearing sunglasses against a blue city background.
 ---
 
 Someone asking questions online may be taking a first step toward a life-changing conversation. Matthew Banther wants the church to be there, ready to listen and help them find community.
@@ -35,7 +35,7 @@ His encouragement to churches is to start learning now. Understand how people us
 
 ## Helping staff serve people
 
-At Calvary, that learning is underway. The church has released initial ethical guidance, and a team of staff members with experience using AI are helping colleagues learn. Pastors across six campuses are exploring ways to share sermon archives and resources.
+At Calvary, that learning is underway. The church has released initial ethical guidance, and a team of staff members with experience using AI are helping colleagues learn.
 
 Matthew also uses sermons, commentaries, and seminary library material to support his own study. AI helps him work through long missiology papers and make the ideas easier to teach.
 

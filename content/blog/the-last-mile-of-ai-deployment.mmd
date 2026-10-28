@@ -1,0 +1,10 @@
+flowchart LR
+  A[Request] --> B[Find evidence]
+  B --> C[Evaluate decision]
+  C --> D{Enough evidence?}
+  D -->|Yes| E[Apply policy]
+  D -->|Unclear| F[Human review]
+  E --> G[Record outcome]
+  F --> G
+  G --> H[Add failures to evals]
+  H --> C

@@ -1,7 +1,7 @@
 ---
 title: "Teaching AI Judgment: Lessons from Dr. Justin Rose"
 description: How educator Justin Rose designs assignments that help students question AI output and practice independent judgment.
-publishedAt: 2026-10-27
+publishedAt: 2026-11-16
 image: /images/blog/teaching-ai-judgment-justin-rose.png
 imageAlt: LinkedIn portrait of educator Dr. Justin Rose.
 status: draft

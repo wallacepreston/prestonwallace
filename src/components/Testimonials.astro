@@ -45,21 +45,6 @@ const getInitials = (name: string) =>
             <div class="testimonial-carousel__group" aria-hidden={isClone ? "true" : undefined}>
               {testimonialGroup.map((testimonial) => (
                 <article class="testimonial-card">
-                  <div class="testimonial-card__top">
-                    {testimonial.socialUrl && (
-                      <a
-                        class="testimonial-linkedin"
-                        href={testimonial.socialUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`${testimonial.name} on LinkedIn`}
-                        tabindex={isClone ? -1 : undefined}
-                      >
-                        <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                      </a>
-                    )}
-                  </div>
-
                   <blockquote>{testimonial.quote}</blockquote>
 
                   <footer class="testimonial-card__footer">
@@ -77,6 +62,18 @@ const getInitials = (name: string) =>
                     <div>
                       <strong>{testimonial.name}</strong>
                       <span>{testimonial.detail}</span>
+                      {testimonial.socialUrl && (
+                        <a
+                          class="testimonial-linkedin"
+                          href={testimonial.socialUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          tabindex={isClone ? -1 : undefined}
+                        >
+                          <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                          {testimonial.socialUrl.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
+                        </a>
+                      )}
                     </div>
                   </footer>
                 </article>

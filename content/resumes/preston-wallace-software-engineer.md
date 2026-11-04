@@ -16,8 +16,8 @@ description: Building AI-powered systems and scalable platforms from 0→1 to pr
 **Frontend:** React, TypeScript, Next.js, tRPC, Tailwind, React Native, Vue  
 **Backend:** Node.js, GraphQL, REST, Prisma, PostgreSQL, MySQL, MongoDB, Python  
 **Architecture:** Micro Frontends, Backend-for-Frontend (BFF), Event-Driven Systems (SQS/Kafka)  
-**Cloud & Infra:** AWS, GCP, Docker, Kubernetes, CI/CD, Terraform, IaC  
-**AI / LLM:** Generative AI, LLM Application Development, RAG Pipelines, Vector Search, AI Agents, Agentic AI, Production LLM Systems, Workflow Automation, Prompt Engineering, Model Context Protocol (MCP), Eval Loops, OpenAI, Claude, Gemini, n8n
+**Cloud & Infra:** AWS, GCP, Docker, Kubernetes, CI/CD, IaC  
+**AI / LLM:** Generative AI, LLM Application Development, RAG Pipelines, Vector Search, AI Agents, Agentic AI, Production LLM Systems, Workflow Automation, Prompt Engineering, Model Context Protocol (MCP), Eval Loops, OpenAI, Claude, Gemini
 
 ## EXPERIENCE
 

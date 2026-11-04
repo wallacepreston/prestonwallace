@@ -2454,16 +2454,13 @@ h1 span {
   z-index: 1;
 }
 
-.testimonial-card__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
 .testimonial-linkedin {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
   color: var(--muted-strong);
-  font-size: 1.28rem;
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
 }
 
 .testimonial-linkedin:hover,
@@ -2472,7 +2469,7 @@ h1 span {
 }
 
 .testimonial-card blockquote {
-  margin: 34px 0 0;
+  margin: 0 0 28px;
   color: var(--muted-strong);
   font-size: 1.06rem;
   line-height: 1.72;
@@ -2517,6 +2514,7 @@ h1 span {
 .testimonial-card__footer div {
   display: grid;
   gap: 3px;
+  min-width: 0;
 }
 
 .testimonial-card__footer strong {

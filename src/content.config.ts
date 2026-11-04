@@ -18,6 +18,7 @@ const resumes = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    layout: z.enum(["resume", "letter"]).default("resume"),
   }),
 })
 

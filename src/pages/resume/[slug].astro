@@ -15,6 +15,6 @@ const { resume } = Astro.props;
 const { Content } = await render(resume);
 ---
 
-<ResumeLayout title={resume.data.title} description={resume.data.description}>
+<ResumeLayout title={resume.data.title} description={resume.data.description} layout={resume.data.layout}>
   <Content />
 </ResumeLayout>

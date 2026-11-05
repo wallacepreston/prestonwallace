@@ -12,3 +12,5 @@ Preserve relevant skills and experience from the base resume, including the full
 Build and check print preview at Letter size and 100% scale, with browser headers and footers disabled. Additional resume files are ignored by Git and only included in a deployed build if supplied separately. Resume pages are public when deployed even though they are noindex; do not deploy or submit without authorization.
 
 Complete the resume, and when my qualifications don't meet all the requirements/keywords for the position, list out for me in chat conversation the gaps in my experience.
+
+For each tailored resume, add its local URL to the matching row in `ai-engineer-job-search/data/applications.csv` under `resume_url`. Use `http://localhost:4321/resume/<markdown-filename-without-extension>/`. Add the column if absent, preserve other rows and application status, and avoid duplicate applications. If no matching application exists, create a record without assuming it was submitted. Include the same clickable local URL in the final chat response.

@@ -23,6 +23,8 @@ description: Building AI-powered systems and scalable platforms from 0→1 to pr
 
 ### Senior Full-Stack Software Engineer (TypeScript/React) - _MNTN_ (Full-Time, Remote) | Jul 2021 - Present
 
+- **Agentic AI, Nova campaign assistant:** Built LangChain tools for a hosted agent using LangGraph through Managed Deep Agents, with API integrations, scoped access, and human approval for write actions
+
 - MNTN Go: Led **0→1 platform rewrite**; defined architecture, bootstrapped repo, built CI/CD, and integrated with legacy systems while establishing system boundaries and API contracts for scalable, loosely coupled services
 - **Owned AdDNA (AI/RAG)** across 10 engineers: designed pipeline; reduced campaign build time and churn (~15%)
 - **Deliverability (AI):** Built predictive budget-spend system, increasing revenue by 40% and decreasing support tickets.

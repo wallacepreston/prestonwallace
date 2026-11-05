@@ -217,7 +217,7 @@ export const experienceHistory = [
   {
     title: "Lead Software Engineering Curriculum Writer",
     company: "Multiverse",
-    period: "Dec 2021 - Present",
+    period: "Dec 2021 - Mar 2023",
     summary:
       "Created intensive admissions assessments and wrote technical SWE apprenticeship content for enterprise programs.",
     bullets: [

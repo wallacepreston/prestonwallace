@@ -1,4 +1,5 @@
 import type { PortfolioItem } from "./portfolioItems"
+import { mntnScreenshots } from "./mntnScreenshots"
 
 interface MntnProject {
   slug: string
@@ -566,7 +567,7 @@ export const mntnProjects: MntnProject[] = [
   {
     slug: "database-migration-tooling",
     tags: ["Database", "Developer tooling"],
-    title: "Repeatable Database Migration Tooling",
+    title: "Database Migration Tooling",
     category: "Database tooling & test-environment reliability",
     summary:
       "Ordered SQL migrations and an applied-migration ledger for repeatable database setup and schema changes.",
@@ -620,19 +621,19 @@ export const mntnProjects: MntnProject[] = [
   },
   {
     slug: "ai-rag-campaign-workflow",
-    tags: ["AI", "Hackathon", "Prototype"],
-    title: "AdDNA Campaign Prototype",
-    category: "Hackathon prototype & AI-assisted campaign planning",
+    tags: ["AI", "Hackathon"],
+    title: "AdDNA AI Campaign Builder",
+    category: "Hackathon project & AI-assisted campaign planning",
     summary:
-      "A one-day prototype turning a company URL into an editable starting point for an advertising campaign.",
+      "A one-day project turning a company URL into an editable starting point for an advertising campaign.",
     problem:
       "Campaign planning required repeated website research and manual decisions about audiences, keywords and budgets.",
     architecture:
       "Next.js frontend, Java Spring Boot REST backend and AI-assisted website analysis.",
-    metric: "One-day working prototype",
+    metric: "One-day working demo",
     approach: [
       {
-        title: "Bootstrap the prototype",
+        title: "Bootstrap the application",
         detail:
           "Bootstrapped frontend and backend for a ten-person team spanning product, database and engineering. Learned Java during implementation; configured Next.js, React, TypeScript, Tailwind, Spring Boot, PostgreSQL and Turborepo.",
       },
@@ -644,7 +645,7 @@ export const mntnProjects: MntnProject[] = [
       {
         title: "Explore the campaign-planning scope",
         detail:
-          "The initial concept also included scraping/RAG, location/device targeting, budget dates and creative-image inspiration. The prototype includes mock fallbacks and randomized estimates; those broader outputs need further validation.",
+          "The initial concept also included scraping/RAG, location/device targeting, budget dates and creative-image inspiration. The application includes mock fallbacks and randomized estimates; those broader outputs need further validation.",
       },
       {
         title: "Hand off the next stage",
@@ -655,7 +656,7 @@ export const mntnProjects: MntnProject[] = [
     results: [
       {
         value: "One day",
-        label: "Working hackathon prototype",
+        label: "Working hackathon demo",
         detail:
           "A cross-functional ten-person team produced an end-to-end demo.",
       },
@@ -680,12 +681,12 @@ export const mntnProjects: MntnProject[] = [
     workflow:
       'flowchart TD\n  A["Company URL"] --> B["Java analysis API"]\n  B --> C["AI-assisted analysis"]\n  C --> D["Summary, audience and budget"]\n  D --> E["Editable planning UI"]',
     context:
-      "Hackathon prototype ownership covers the application foundation and documented UI contributions. Later production Shopper Graph work belongs to the subsequent team. Earlier portfolio notes associate the broader initiative with approximately 15% reductions in build time/churn; prototype attribution and measurement remain unconfirmed.",
+      "Hackathon project ownership covers the application foundation and documented UI contributions. Later production Shopper Graph work belongs to the subsequent team. Earlier portfolio notes associate the broader initiative with approximately 15% reductions in build time/churn; attribution to this project and measurement remain unconfirmed.",
   },
   {
     slug: "nova-assistant",
     tags: ["AI agents", "Prototype", "APIs"],
-    title: "Nova Campaign Assistant",
+    title: "Nova AI Campaign Assistant",
     category: "Agentic UI prototype & controlled API actions",
     summary:
       "A conversational prototype for describing campaign changes, reviewing proposed actions and working with campaign reports.",
@@ -740,21 +741,21 @@ export const mntnProjects: MntnProject[] = [
   },
   {
     slug: "mntn-public-mcp-validation",
-    tags: ["MCP", "AI", "Validation"],
-    title: "MNTN Public MCP Validation",
-    category: "AI integration validation & protocol research",
+    tags: ["MCP", "AI"],
+    title: "MNTN Public MCP",
+    category: "AI integration & protocol research",
     summary:
-      "Validation and integration research for customer-facing AI access to MNTN campaign and reporting capabilities.",
+      "Integration research for customer-facing AI access to MNTN campaign and reporting capabilities.",
     problem:
       "Exposing an advertising platform to AI assistants requires understandable tools and authorization that follows the caller.",
     architecture:
       "External AI client, public MCP server and authenticated PAPI requests.",
-    metric: "MCP validation",
+    metric: "MCP integration research",
     approach: [
       {
-        title: "Validate the public interface",
+        title: "Explore the public interface",
         detail:
-          "Worked with and validated the customer-facing MCP for advertiser, campaign, flight, audience and reporting access.",
+          "Worked with the customer-facing MCP for advertiser, campaign, flight, audience and reporting access.",
       },
       {
         title: "Understand action and access boundaries",
@@ -769,7 +770,7 @@ export const mntnProjects: MntnProject[] = [
     ],
     results: [
       {
-        value: "Validation",
+        value: "Integration",
         label: "Public AI integration contribution",
         detail:
           "Contribution covers working with the MCP and understanding its platform integration.",
@@ -791,7 +792,7 @@ export const mntnProjects: MntnProject[] = [
     workflow:
       'flowchart TD\n  A["External AI assistant"] --> B["Public MCP tools"]\n  B --> C["Caller authorization"]\n  C --> D["PAPI"]\n  D --> E["Campaign and reporting data"]',
     context:
-      "Validation and integration research contribution. Authorship of the public MCP server is not part of this project claim.",
+      "Integration research contribution. Authorship of the public MCP server is not part of this project claim.",
   },
   {
     slug: "quickframe-creative-workflows",
@@ -1213,7 +1214,14 @@ export const mntnPortfolioItems: PortfolioItem[] = mntnProjects.map(
     challenge: [project.problem],
     approach: project.approach,
     results: project.results,
-    screenshots: [],
+    screenshots: (mntnScreenshots[project.slug] ?? []).map(filename => {
+      const caption = filename.replace(/\.png$/, "").replace(/_/g, " ")
+      return {
+        src: `/img/app_screenshots/${encodeURIComponent(filename)}`,
+        alt: `${project.title}: ${caption}`,
+        caption: caption.charAt(0).toUpperCase() + caption.slice(1),
+      }
+    }),
     diagrams: [
       {
         title: project.title,
@@ -1228,6 +1236,8 @@ export const mntnPortfolioItems: PortfolioItem[] = mntnProjects.map(
     approachLead: project.architecture,
     resultsTitle: "Project outcomes",
     resultsLead: project.summary,
-    visualsTitle: "How the workflow fits together",
+    visualsTitle: (mntnScreenshots[project.slug]?.length ?? 0) > 0
+      ? "Project screenshots and workflow"
+      : "How the workflow fits together",
   })
 )

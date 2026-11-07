@@ -1969,6 +1969,10 @@ h1 span {
   grid-column: 1 / -1;
 }
 
+.portfolio-gallery + .portfolio-diagram-grid {
+  margin-top: 48px;
+}
+
 .portfolio-gallery figure {
   margin: 0;
 }

@@ -26,6 +26,8 @@ import {
 const portfolioBySlug = new Map(portfolioItems.map((item) => [item.slug, item]));
 const portfolioSystems = selectedWork.map((system) => ({
   ...system,
+  image: system.id ? portfolioBySlug.get(system.id)?.screenshots[0]?.src : undefined,
+  imageAlt: system.id ? portfolioBySlug.get(system.id)?.screenshots[0]?.alt : undefined,
   diagram: system.id ? portfolioBySlug.get(system.id)?.diagrams?.[0]?.source : undefined,
 }));
 ---

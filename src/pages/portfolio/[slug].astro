@@ -73,7 +73,7 @@ const nextItem = portfolioItems[(currentIndex + 1) % portfolioItems.length];
           <div class="portfolio-hero__actions">
             <a class="button button-primary" href={item.demoEmbedUrl ? '#demo' : '#visuals'}>
               <i class={`fa ${item.demoEmbedUrl ? 'fa-play' : 'fa-picture-o'}`} aria-hidden="true"></i>
-              {item.demoEmbedUrl ? 'Watch the demo' : 'View the workflow'}
+              {item.demoEmbedUrl ? 'Watch the demo' : item.screenshots.length ? 'View screenshots' : 'View the workflow'}
             </a>
             <a class="button button-ghost" href="#approach">
               Explore the build
@@ -83,7 +83,12 @@ const nextItem = portfolioItems[(currentIndex + 1) % portfolioItems.length];
         </div>
 
         <div class="portfolio-hero__visual">
-          {item.diagrams?.length ? (
+          {item.screenshots.length ? (
+            <div class="portfolio-browser" aria-hidden="true">
+              <div class="portfolio-browser__bar"><span></span><span></span><span></span></div>
+              <img src={item.screenshots[0].src} alt="" />
+            </div>
+          ) : item.diagrams?.length ? (
             <div class="portfolio-diagram portfolio-diagram--hero" aria-hidden="true">
               <pre class="mermaid">{item.diagrams[0].source}</pre>
             </div>
@@ -159,22 +164,7 @@ const nextItem = portfolioItems[(currentIndex + 1) % portfolioItems.length];
           <p class="eyebrow">Visual assets</p>
           <h2 id="visuals-title" class="section-title">{item.visualsTitle}</h2>
         </div>
-        {item.diagrams?.length ? (
-          <div class="portfolio-diagram-grid">
-            {item.diagrams.map((diagram, index) => (
-              <figure class={index === 0 ? 'portfolio-diagram-card portfolio-diagram-card--wide' : 'portfolio-diagram-card'}>
-                <div class="portfolio-diagram">
-                  <p>{diagram.title}</p>
-                  <pre class="mermaid">{diagram.source}</pre>
-                </div>
-                <figcaption>
-                  <span>{String(index + 1).padStart(2, '0')}</span>
-                  {diagram.caption}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        ) : (
+        {item.screenshots.length > 0 && (
           <div class="portfolio-gallery">
             {item.screenshots.map((screenshot, index) => (
               <figure class={index === 0 ? 'portfolio-gallery__wide' : ''}>
@@ -185,6 +175,22 @@ const nextItem = portfolioItems[(currentIndex + 1) % portfolioItems.length];
                 <figcaption>
                   <span>{String(index + 1).padStart(2, '0')}</span>
                   {screenshot.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
+        {item.diagrams?.length && (
+          <div class="portfolio-diagram-grid">
+            {item.diagrams.map((diagram, index) => (
+              <figure class={index === 0 ? 'portfolio-diagram-card portfolio-diagram-card--wide' : 'portfolio-diagram-card'}>
+                <div class="portfolio-diagram">
+                  <p>{diagram.title}</p>
+                  <pre class="mermaid">{diagram.source}</pre>
+                </div>
+                <figcaption>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  {diagram.caption}
                 </figcaption>
               </figure>
             ))}

@@ -7,9 +7,9 @@ Read `prestonwallace/content/resumes/README.md` and `prestonwallace/content/resu
 
 Search `prestonwallace/` for role-relevant experience and project evidence, including `src/data/portfolioItems.ts` and `src/data/mntnProjects.ts`. Do not mention "prototype" in resumes. Avoid implying deployment or production status without evidence, and distinguish contributions by others; verify dates and metrics before reuse.
 
-Preserve relevant skills and experience from the base resume, including the full AI / LLM skills line when relevant. Tailor by reordering and adding supported detail; do not remove relevant information merely to save space. Compare the tailored version against the base resume before finishing and restore relevant omissions. Respect explicit exclusions, including n8n and Terraform.
+Preserve relevant skills and experience from the base resume, including the full AI / LLM skills line when relevant. Tailor by reordering, condensing, and adding supported detail; prioritize the most relevant evidence when space is limited. Compare the tailored version against the base resume before finishing and restore material omissions where space permits. Respect explicit exclusions, including n8n and Terraform.
 
-Build and check print preview at Letter size and 100% scale, with browser headers and footers disabled. Additional resume files are ignored by Git and only included in a deployed build if supplied separately. Resume pages are public when deployed even though they are noindex; do not deploy or submit without authorization.
+Build and check print preview at Letter size and 100% scale, with browser headers and footers disabled. Every tailored resume must fit on one page: shorten wrapped lines and remove less-relevant content as needed, then verify that all content fits on that page. Additional resume files are ignored by Git and only included in a deployed build if supplied separately. Resume pages are public when deployed even though they are noindex; do not deploy or submit without authorization.
 
 Complete the resume, and when my qualifications don't meet all the requirements/keywords for the position, list out for me in chat conversation the gaps in my experience.
 

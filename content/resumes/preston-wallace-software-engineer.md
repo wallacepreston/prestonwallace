@@ -23,33 +23,35 @@ description: Building AI-powered systems and scalable platforms from 0→1 to pr
 
 ### Senior Full-Stack Software Engineer (TypeScript/React) - _MNTN_ (Full-Time, Remote) | Jul 2021 - Present
 
-- **Agentic AI, Nova campaign assistant:** Built LangChain tools for a hosted agent using LangGraph through Managed Deep Agents, with API integrations, scoped access, and human approval for write actions
+- **Nova agent:** Built LangChain API tools with scoped access and human approval for writes.
 
-- MNTN Go: Led **0→1 platform rewrite**; defined architecture, bootstrapped repo, built CI/CD, and integrated with legacy systems while establishing system boundaries and API contracts for scalable, loosely coupled services
-- **Owned AdDNA (AI/RAG)** across 10 engineers: designed pipeline; reduced campaign build time and churn (~15%)
-- **Deliverability (AI):** Built predictive budget-spend system, increasing revenue by 40% and decreasing support tickets.
-- Introduced **micro frontends + BFF**, reducing merge conflicts ~50% and improving team velocity
+- **MNTN Go:** Led 0→1 frontend rewrite, architecture, CI/CD, and legacy integrations.
+- **AdDNA (AI/RAG):** Bootstrapped React and Java Spring Boot for a 10-person campaign team.
+- **Deliverability (AI):** Built forecast integration and controls; reported 40% revenue increase.
+- Introduced **micro frontends + BFF**, reducing merge conflicts ~50% and improving velocity.
 - Architected Node + GraphQL APIs improving performance up to **90%**
-- Designed & owned **CI/CD pipeline + infrastructure (Docker, IaC, AWS/GCP)**, reducing test-build-deploy time by 40%.
-- Doubled developer velocity using **AI-assisted workflows** (background agents) and strong system design patterns
-- Bootstrapped, tested & shipped flighted budgets feature, boosting seasonal ad revenue up to 30%.
+- Built reusable campaign and budget API contracts with validation and contract tests.
+- Added Grafana alerts, synthetic monitors, and operational error context.
+- Owned **CI/CD and infrastructure** (Docker, IaC, AWS/GCP), reducing delivery time by 40%.
+- Doubled developer velocity using **AI-assisted workflows** and system design patterns.
+- Built and tested flighted budgets, supporting seasonal ad revenue growth up to 30%.
 
 ### Full-Stack Software Engineer (Node/Vue/REST) - _Liquidity Services_ (Full-Time, Remote) | Apr 2019 - Jul 2021
 
-- **Owned development of warehouse management system**, reducing processing time 20% and saving ~$2M annually
-- Designed and implemented internal inventory data-collection tool, improving data lookup efficiency by ~85%
+- Owned **warehouse management system** development; cut processing time 20%, saving ~$2M/year.
+- Built an inventory data-collection tool, improving lookup efficiency by ~85%.
 - **Defined API patterns and improved system reliability**, increasing test coverage from 0% → 70%
-- Led integration with external systems (e.g., Stripe), eliminating sensitive data storage and improving security posture
+- Integrated external systems including Stripe, eliminating sensitive data storage.
 
 ### Lead SWE Instructor / Curriculum Writer - _Multiverse, Fullstack Academy_ (Part-Time, Remote) | 2019 - 2023
 
-- Wrote & delivered 12-week SWE bootcamp (Google, Verizon, Barclays), generating $10M+ revenue, achieving +70 NPS.
-- Led 6 instructors, managed 10-cohort curriculum, and delivered 550+ hours content of live code demo on Web Dev
+- Wrote and delivered 12-week bootcamp; reported $10M+ revenue and +70 NPS.
+- Led 6 instructors, managed 10-cohort curriculum, and delivered 550+ live hours.
 
 ### Network Admin, Assistant Manager, Web Dev - _K.Jons Diamonds & Gems_ Atascadero, CA | until 2018
 
-- Designed and managed major version of company e-commerce site, with 1000+ items, and total inventory value of $800K.
-- Increased traffic to site by 100%, and landed site first-position worldwide in Google SERP listings for keywords.
+- Built and managed an e-commerce site with 1,000+ items and $800K inventory.
+- Increased site traffic by 100% and achieved first-position Google rankings for keywords.
 
 ## SELECTED AI SYSTEMS
 

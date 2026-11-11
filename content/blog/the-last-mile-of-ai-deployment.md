@@ -1,10 +1,10 @@
 ---
 title: "The Last Mile of AI Deployment: When 95% Isn't Enough"
 description: How to handle hallucinations, conflicting evidence, human review, and evaluation when moving AI applications into production.
-publishedAt: 2026-11-23
+publishedAt: 2026-11-02
 image: /images/blog/the-last-mile-of-ai-deployment.png
 imageAlt: AI deployment workflow from evidence and evaluation to decisions, review, and feedback.
-status: draft
+status: published
 ---
 
 An AI feature can look ready in a demo and still fail the people who depend on it. It answers common questions, handles clean documents, and produces convincing results. Then it encounters a faculty page that is out of date, two sources that disagree, or a request where the evidence is missing.

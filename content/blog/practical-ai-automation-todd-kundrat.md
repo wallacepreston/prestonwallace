@@ -4,7 +4,7 @@ description: "Lessons on choosing AI and deterministic tools, controlling workfl
 publishedAt: 2026-10-30
 image: /images/blog/practical-ai-automation-todd-kundrat.png
 imageAlt: "Portrait of automation consultant Todd Kundrat."
-status: draft
+status: published
 ---
 
 An automation can work technically and still miss the outcome a business needs. The system might generate leads without improving follow-up, or process data with an AI workflow that costs too much to run at scale.

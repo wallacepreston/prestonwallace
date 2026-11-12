@@ -743,24 +743,24 @@ export const mntnProjects: MntnProject[] = [
     slug: "mntn-public-mcp-validation",
     tags: ["MCP", "AI"],
     title: "MNTN Public MCP",
-    category: "AI integration & protocol research",
+    category: "AI integration & protocol",
     summary:
-      "Integration research for customer-facing AI access to MNTN campaign and reporting capabilities.",
+      "Customer-facing AI access to MNTN campaign and reporting capabilities.",
     problem:
       "Exposing an advertising platform to AI assistants requires understandable tools and authorization that follows the caller.",
     architecture:
       "External AI client, public MCP server and authenticated PAPI requests.",
-    metric: "MCP integration research",
+    metric: "MCP platform integration",
     approach: [
       {
-        title: "Explore the public interface",
+        title: "Expose platform capabilities",
         detail:
-          "Worked with the customer-facing MCP for advertiser, campaign, flight, audience and reporting access.",
+          "The customer-facing MCP provides advertiser, campaign, flight, audience and reporting access.",
       },
       {
-        title: "Understand action and access boundaries",
+        title: "Maintain action and access boundaries",
         detail:
-          "Researched how campaign lifecycle actions and caller authorization flow through the MCP server into PAPI.",
+          "Campaign lifecycle actions and caller authorization flow through the MCP server into PAPI.",
       },
       {
         title: "Evaluate future product integration",
@@ -771,13 +771,13 @@ export const mntnProjects: MntnProject[] = [
     results: [
       {
         value: "Integration",
-        label: "Public AI integration contribution",
+        label: "Public AI integration",
         detail:
-          "Contribution covers working with the MCP and understanding its platform integration.",
+          "AI clients access advertiser, campaign, flight, audience and reporting capabilities.",
       },
       {
         value: "Caller-scoped",
-        label: "Authorization model research",
+        label: "Authorization model",
         detail:
           "Requests retain the caller identity when forwarded to platform APIs.",
       },
@@ -792,7 +792,7 @@ export const mntnProjects: MntnProject[] = [
     workflow:
       'flowchart TD\n  A["External AI assistant"] --> B["Public MCP tools"]\n  B --> C["Caller authorization"]\n  C --> D["PAPI"]\n  D --> E["Campaign and reporting data"]',
     context:
-      "Integration research contribution. Authorship of the public MCP server is not part of this project claim.",
+      "The public MCP connects AI clients to MNTN platform APIs with caller-scoped authorization.",
   },
   {
     slug: "quickframe-creative-workflows",

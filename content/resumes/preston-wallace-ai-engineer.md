@@ -10,7 +10,7 @@ description: Enterprise AI applications, agents, and full-stack systems.
 [(805) 286 0588](tel:+18052860588) – [wallace.preston@gmail.com](mailto:wallace.preston@gmail.com) - [prestonwallace.com](https://prestonwallace.com)  
 [linkedin.com/in/prestonwallace](https://linkedin.com/in/prestonwallace) - [github.com/wallacepreston](https://github.com/wallacepreston)
 
-> Full-stack engineer building **AI applications, agents, and enterprise platforms**.  
+> Engineer building **AI applications, agents, and enterprise platforms**.  
 > Owns architecture, integrations, delivery, and operational reliability end to end.
 
 **AI / LLM:** Generative AI, LLM Application Development, RAG Pipelines, Vector Search, AI Agents, Agentic AI, Production LLM Systems, Workflow Automation, Prompt Engineering, Model Context Protocol (MCP), Evals, OpenAI, Claude, Gemini  

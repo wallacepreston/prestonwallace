@@ -4,7 +4,7 @@ description: Lessons from Ryan Granito on mortgage maturity data, title records,
 publishedAt: 2026-11-09
 image: /images/blog/ryan-granito-cover.png
 imageAlt: Portrait of Ryan Granito, Managing Director at Concord Summit Capital.
-status: draft
+status: published
 ---
 
 In real-estate finance, finding more deals is not enough. A producer needs to find the small set of opportunities that can close.

@@ -78,4 +78,5 @@ content/blog/conversations/*
 # Local resume versions
 /content/resumes/*.md
 !/content/resumes/preston-wallace-software-engineer.md
+!/content/resumes/preston-wallace-ai-engineer.md
 !/content/resumes/README.md

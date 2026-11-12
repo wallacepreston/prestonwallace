@@ -3,7 +3,7 @@ name: tailor-resume
 description: Tailor Preston Wallace's resume to a specific role using the personal site's resume template.
 ---
 
-Read `prestonwallace/content/resumes/README.md` and `prestonwallace/content/resumes/preston-wallace-software-engineer.md`. Create a role-specific Markdown copy in the same directory, keeping the required frontmatter and resume structure. Tailor the emphasis to the supplied role using supported experience; do not invent facts or metrics. Keep the original unchanged unless the user explicitly asks to update the homepage resume. Review uncertain employment dates and metrics before external use.
+Read `prestonwallace/content/resumes/README.md` and `prestonwallace/content/resumes/preston-wallace-ai-engineer.md`. Create a role-specific Markdown copy in the same directory, keeping the required frontmatter and resume structure. Tailor the emphasis to the supplied role using supported experience; do not invent facts or metrics. Keep the original unchanged unless the user explicitly asks to update the homepage resume. Review uncertain employment dates and metrics before external use.
 
 Search `prestonwallace/` for role-relevant experience and project evidence, including `src/data/portfolioItems.ts` and `src/data/mntnProjects.ts`. Do not mention "prototype" in resumes. Avoid implying deployment or production status without evidence, and distinguish contributions by others; verify dates and metrics before reuse.
 

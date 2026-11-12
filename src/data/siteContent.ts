@@ -191,15 +191,31 @@ export const selectedWork = [
 
 export const experienceHistory = [
   {
-    title: "Software Engineer (Node/React/GraphQL)",
+    title: "Software Engineer, LAB",
     company: "MNTN",
-    period: "Jul 2021 - Present",
+    period: "Feb 2023 - Oct 2026",
     summary:
-      "Integrating user-facing elements with server-side logic while building reusable, testable, low-latency, and secure applications.",
+      "Built AI applications and campaign platforms, owning architecture, integrations, and delivery.",
     bullets: [
-      "Designing and implementing high-availability, performant backend and frontend systems.",
-      "Collaborating with Product Designers, Product Managers, and Engineers to ship production features.",
-      "Building efficient Node and GraphQL services that support React product surfaces.",
+      "Built Nova Agent for launching and managing campaigns through chat, using LangChain Managed Deep Agents, and an MCP server connecting AI clients to MNTN's Public API.",
+      "Led the MNTN Express frontend rebuild, including architecture, a component library, CI/CD, and legacy integrations.",
+      "Bootstrapped AdDNA, a React and Java Spring Boot RAG web scraping service, for a 10-person team.",
+      "Integrated ML forecasts and guardrails for campaign delivery, contributing to a reported 40% revenue lift.",
+      "Bootstrapped the Campaign Suite monorepo with micro frontends and a backend for frontend, owning infrastructure as code and CI/CD.",
+      "Increased developer velocity with AI-assisted workflows and system design patterns.",
+    ],
+  },
+  {
+    title: "Back-End Engineer",
+    company: "MNTN",
+    period: "Jul 2021 - Feb 2023",
+    summary:
+      "Built campaign APIs, data pipelines, and operational tooling for advertising systems.",
+    bullets: [
+      "Built a flighted-budget data pipeline for scheduled and queued budget updates.",
+      "Architected Node.js and GraphQL APIs, improving performance by up to 90%.",
+      "Built campaign and budget API contracts, validation, and contract tests.",
+      "Managed Grafana alerts, synthetic monitors, and operational error context.",
     ],
   },
   {
@@ -320,7 +336,7 @@ export const founder = {
   summary:
     "I am a startup-tested engineer focused on building scalable SaaS and AI systems that simplify complex workflows.",
   paragraphs: [
-    "I currently work at MNTN where I build production systems with React, TypeScript, Node.js, and GraphQL.",
+    "At MNTN, I built production systems with React, TypeScript, Node.js, and GraphQL, including AI applications and campaign platforms.",
     "My work spans micro frontends, event-driven services, AI workflows, and cloud infrastructure with measurable business impact.",
     "Outside product engineering, I have led technical instruction and curriculum writing for software engineering programs.",
   ],
@@ -333,7 +349,7 @@ export const longFormBio = {
     "That is where I make the difference.",
     "I build AI agents that carry repetitive workflows forward: gathering information, drafting outreach, updating systems, routing requests, and involving people when judgment is needed. The result is more time, more consistent execution, and greater capacity to grow without simply adding more manual work.",
     "My background spans full-stack engineering, AI systems, and 0 to 1 product development. I have led major platform and RAG initiatives and delivered systems that increased revenue by up to 40%, created more than $500,000 in annual efficiency gains, and saved approximately 5,000 hours of work per year.",
-    "I currently build AI systems full-time at MNTN and take on a limited number of independent client projects during evenings and weekends.",
+    "I build AI systems and take on a limited number of independent client projects.",
   ],
   approach: [
     {

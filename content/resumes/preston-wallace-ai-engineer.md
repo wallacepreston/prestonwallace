@@ -25,13 +25,13 @@ description: Enterprise AI applications, agents, and full-stack systems.
 - **Nova Agent:** Interface for launching & managing campaigns using chat, built with LangChain Managed Deep Agents.
 - **MNTN MCP:** MCP server connecting AI clients to MNTN’s Public API for campaign, audience, budget and reporting tools.
 - **MNTN Express:** Led 0→1 frontend rebuild, architecture, component library, CI/CD, and legacy integrations.
+- **AdDNA (AI/RAG):** Bootstrapped React and Java Spring Boot RAG webscraping service for a 10-person team.
 - Increased developer velocity using **AI-assisted workflows** and system design patterns.
 - **Deliverability (AI):** Integrated Python-based ML forecasts and guardrails for campaign delivery; reported 40% revenue lift.
 - Bootstrapped Campaign Suite monorepo with micro frontends and Backend for Frontend (BFF); owned IaC and CI/CD.
 
 ### Back-End Engineer • _MNTN_ • Jul 2021 - Feb 2023
 
-- **AdDNA (AI/RAG):** Bootstrapped React and Java Spring Boot RAG webscraping service for a 10-person team.
 - Flighted-budget **data pipeline** for scheduled and queued budget updates.
 - **API Optimization:** Architected Node.js and GraphQL APIs, improving performance up to 90%.
 - Built campaign and budget API contracts, validation, and contract tests.

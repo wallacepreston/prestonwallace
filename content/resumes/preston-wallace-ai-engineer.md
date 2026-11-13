@@ -20,7 +20,7 @@ description: Enterprise AI applications, agents, and full-stack systems.
 
 ## EXPERIENCE
 
-### Software Engineer, LAB • _MNTN_ • Feb 2023 - Oct 2026
+### Senior Software Engineer, LAB • _MNTN_ • Feb 2023 - Oct 2026
 
 - **Nova Agent:** Interface for launching & managing campaigns using chat, built with LangChain Managed Deep Agents.
 - **MNTN MCP:** MCP server connecting AI clients to MNTN’s Public API for campaign, audience, budget and reporting tools.

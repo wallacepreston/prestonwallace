@@ -20,7 +20,7 @@ description: Enterprise AI applications, agents, and full-stack systems.
 
 ## EXPERIENCE
 
-### Senior Software Engineer, LAB • _MNTN_ • Feb 2023 - Oct 2026
+### Senior Full-Stack Software Engineer, LAB • _MNTN_ • Jul 2021 - Oct 2026
 
 - **Nova Agent:** Interface for launching & managing campaigns using chat, built with LangChain Managed Deep Agents.
 - **MNTN MCP:** MCP server connecting AI clients to MNTN’s Public API for campaign, audience, budget and reporting tools.
@@ -29,9 +29,6 @@ description: Enterprise AI applications, agents, and full-stack systems.
 - Increased developer velocity using **AI-assisted workflows** and system design patterns.
 - **Deliverability (AI):** Integrated Python-based ML forecasts and guardrails for campaign delivery; reported 40% revenue lift.
 - Bootstrapped Campaign Suite monorepo with micro frontends and Backend for Frontend (BFF); owned IaC and CI/CD.
-
-### Back-End Engineer • _MNTN_ • Jul 2021 - Feb 2023
-
 - Flighted-budget **data pipeline** for scheduled and queued budget updates.
 - **API Optimization:** Architected Node.js and GraphQL APIs, improving performance up to 90%.
 - Built campaign and budget API contracts, validation, and contract tests.

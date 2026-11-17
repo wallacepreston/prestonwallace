@@ -33,21 +33,27 @@ description: Enterprise AI applications, agents, and full-stack systems.
 - **API Optimization:** Architected Node.js and GraphQL APIs, improving performance up to 90%.
 - Migrated Sequelize models to TypeScript and hardened cross-advertiser record access.
 - Built campaign and budget API contracts, validation, and contract tests.
-- Managed Grafana alerts, synthetic monitors, and operational error context.
 
 ### Full-Stack Software Engineer • _Liquidity Services_ • Apr 2019 - Jul 2021
 
 - Owned warehouse software; cut processing time 20%, saving approximately **$2M/year**.
 - Improved inventory lookup efficiency ~85% and raised test coverage from 0% to 70%.
 
-### Lead SWE Instructor / Curriculum Writer • _Multiverse, Fullstack Academy_ • 2019 - 2023
+### Lead Software Engineering Curriculum Writer • _Multiverse_ • Dec 2021 - Mar 2023
+
+- Created admissions assessments and apprenticeship curriculum; led writers and reviewed lessons.
+
+### Lead Software Engineering Instructor • _Fullstack Academy_ • Apr 2019 - Nov 2021
 
 - Led 6 instructors, managed 10-cohort curriculum, and delivered 550+ live hours.
 
-### Network Admin, Assistant Manager, Web Dev • _K.Jons Diamonds & Gems_ • Atascadero, CA • Until 2018
+### Network Administrator / Assistant Manager • _K.Jons Diamonds & Gems_ • Feb 2010 - Oct 2018
 
-- Designed and managed a major version of the company e-commerce site, with 1,000+ items and $800K in inventory value.
-- Increased site traffic by 100% and achieved first-position worldwide Google search rankings for keywords.
+- Managed network operations and an e-commerce site with 1,000+ items and approximately $800K in inventory.
+
+### Web Developer • _K.Jons Diamonds & Gems_ • Feb 2008 - Feb 2010
+
+- Migrated the site from HTML to WordPress; doubled traffic and improved search rankings.
 
 ## SELECTED AI SYSTEMS
 

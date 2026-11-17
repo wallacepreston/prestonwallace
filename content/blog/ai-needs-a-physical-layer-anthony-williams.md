@@ -4,7 +4,7 @@ description: Lessons from Anthony Williams on AI in proptech, smart-home middlew
 publishedAt: 2026-11-16
 image: /images/blog/ai-needs-a-physical-layer-anthony-williams.png
 imageAlt: Professional portrait of Anthony Williams.
-status: draft
+status: published
 ---
 
 AI can coordinate a workflow, analyze activity, and decide which action should happen next. In the physical world, that action still depends on devices, APIs, connectivity, and a reliable fallback.
